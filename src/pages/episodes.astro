@@ -1,0 +1,88 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SHOW_URL } from "../data/brands";
+import { getAllEpisodes, appleEpisodeUrl, findBrandByAppleId } from "../lib/episodes";
+
+const episodes = getAllEpisodes();
+---
+
+<BaseLayout>
+  <section class="page-head">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="nav.episodes">節目</span>
+      <h1 class="page-head__title" data-i18n="episodes.title">所有節目</h1>
+      <p class="page-head__sub" data-i18n="episodes.sub">我們訪談的每一位創辦人。點擊收聽。</p>
+      <div class="subscribe">
+        <a class="btn btn--accent" href={SHOW_URL} target="_blank" rel="noreferrer" data-i18n="episodes.listenApple">在 Apple Podcasts 收聽</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive">
+    <div class="wrap">
+      {episodes.length === 0 ? (
+        <p class="archive__empty" data-i18n="episodes.empty">節目正在同步中⋯</p>
+      ) : (
+        <ul class="archive__list">
+          {episodes.map((ep) => {
+            const brand = findBrandByAppleId(ep.appleId);
+            return (
+              <li class="archive__row">
+                <a href={appleEpisodeUrl(ep.appleId)} target="_blank" rel="noreferrer">
+                  <span class="archive__num">{ep.num ? `EP #${ep.num}` : "EP"}</span>
+                  <span class="archive__title">{ep.titleZh}</span>
+                  {brand && <span class="archive__brand">{brand.nameZh}</span>}
+                  <span class="archive__cta">→</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head { padding: 60px 0 40px; text-align: center; border-bottom: 1px solid var(--c-line); }
+  .page-head__title {
+    margin: 8px 0 12px;
+    font-family: var(--font-zh);
+    font-weight: 900;
+    font-size: clamp(36px, 6vw, 56px);
+    letter-spacing: -0.01em;
+  }
+  html[lang="en"] .page-head__title { font-family: var(--font-en); font-style: italic; }
+  .page-head__sub { color: var(--c-muted); font-size: 16px; margin-bottom: 24px; }
+  .subscribe { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  .archive { padding: 40px 0 80px; }
+  .archive__empty { text-align: center; color: var(--c-muted); padding: 60px 0; }
+  .archive__list { list-style: none; padding: 0; margin: 0; }
+  .archive__row { border-bottom: 1px solid var(--c-line); }
+  .archive__row a {
+    display: grid;
+    grid-template-columns: 80px 1fr auto 24px;
+    gap: 20px;
+    align-items: center;
+    padding: 18px 0;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s var(--ease);
+  }
+  .archive__row a:hover { color: var(--c-orange); }
+  .archive__num {
+    font-family: var(--font-en);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--c-orange);
+  }
+  .archive__title { font-size: 15px; font-weight: 600; }
+  .archive__brand { color: var(--c-muted); font-size: 13px; }
+  .archive__cta { color: var(--c-muted); font-family: var(--font-en); }
+  @media (max-width: 720px) {
+    .archive__row a { grid-template-columns: 56px 1fr 24px; gap: 12px; }
+    .archive__brand { display: none; }
+  }
+</style>

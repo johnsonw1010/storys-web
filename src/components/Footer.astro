@@ -1,0 +1,98 @@
+---
+import { SHOW_URL } from "../data/brands";
+---
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <img src="/brand/Logo_STORYS_icon-logotype-vertical-dark.svg" alt="STORYS" />
+      <p class="site-footer__tag" data-i18n="footer.tag">
+        從第一步，到每一步 · first step to every step
+      </p>
+    </div>
+    <div class="site-footer__links">
+      <a href="/map" data-i18n="nav.map">地圖</a>
+      <a href="/episodes" data-i18n="nav.episodes">節目</a>
+      <a href="/about" data-i18n="nav.about">關於</a>
+      <a href="/contact" data-i18n="nav.contact">聯絡</a>
+      <a href="/apply" data-i18n="nav.apply">申請受訪</a>
+    </div>
+    <div class="site-footer__listen">
+      <span class="eyebrow" data-i18n="footer.listenOn">在這裡收聽</span>
+      <div class="site-footer__listen-links">
+        <a href={SHOW_URL} target="_blank" rel="noreferrer">Apple Podcasts</a>
+        <a href="https://open.spotify.com/show/" target="_blank" rel="noreferrer">Spotify</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap site-footer__copy">
+    <small data-i18n="footer.copy">© 2026 Storys Podcast · JJT Production</small>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 80px;
+    padding: 60px 0 30px;
+    background: var(--c-deep);
+    color: var(--c-cream);
+  }
+  .site-footer__inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .site-footer__brand img { height: 64px; width: auto; display: block; margin-bottom: 16px; }
+  .site-footer__tag {
+    font-family: var(--font-en);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--c-sage);
+    max-width: 320px;
+  }
+  .site-footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: var(--font-en);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .site-footer__links a {
+    text-decoration: none;
+    color: var(--c-cream);
+    transition: color 0.2s var(--ease);
+  }
+  .site-footer__links a:hover { color: var(--c-orange); }
+
+  .site-footer__listen .eyebrow { color: var(--c-orange); display: block; margin-bottom: 10px; }
+  .site-footer__listen-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: var(--font-en);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .site-footer__listen-links a {
+    text-decoration: none;
+    color: var(--c-cream);
+    transition: color 0.2s var(--ease);
+  }
+  .site-footer__listen-links a:hover { color: var(--c-orange); }
+
+  .site-footer__copy {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(199, 208, 178, 0.18);
+    font-family: var(--font-en);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--c-sage);
+  }
+
+  @media (max-width: 720px) {
+    .site-footer__inner { grid-template-columns: 1fr; }
+  }
+</style>

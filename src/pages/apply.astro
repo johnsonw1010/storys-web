@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="page-head">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="nav.apply">申請受訪</span>
+      <h1 class="page-head__title" data-i18n="apply.title">申請受訪</h1>
+      <p class="page-head__sub" data-i18n="apply.sub">我們想認識你的品牌。填一份簡短的表單，我們會跟你聯絡。</p>
+    </div>
+  </section>
+
+  <section class="apply-section">
+    <div class="wrap apply-section__inner">
+      <form
+        name="brand-application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/apply?sent=1"
+        class="form"
+      >
+        <input type="hidden" name="form-name" value="brand-application" />
+        <p class="netlify-honeypot"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <label class="field">
+          <span data-i18n="apply.field.brand">品牌名稱</span>
+          <input type="text" name="brand" required />
+        </label>
+        <label class="field">
+          <span data-i18n="apply.field.founder">創辦人名字</span>
+          <input type="text" name="founder" required />
+        </label>
+        <label class="field">
+          <span data-i18n="contact.field.email">Email</span>
+          <input type="email" name="email" required />
+        </label>
+        <label class="field">
+          <span data-i18n="apply.field.website">官方網站</span>
+          <input type="url" name="website" placeholder="https://" />
+        </label>
+        <label class="field">
+          <span data-i18n="apply.field.story">為什麼想上 Storys？</span>
+          <textarea name="story" rows="5" required></textarea>
+        </label>
+        <label class="field">
+          <span data-i18n="apply.field.timing">理想錄音時間</span>
+          <input type="text" name="timing" />
+        </label>
+        <button class="btn btn--accent" type="submit" data-i18n="apply.submit">送出申請</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  if (typeof window !== "undefined" && new URL(window.location.href).searchParams.get("sent") === "1") {
+    const head = document.querySelector(".page-head .wrap");
+    if (head) {
+      const note = document.createElement("p");
+      note.className = "page-head__success";
+      note.dataset.i18n = "contact.success";
+      note.textContent = "已收到，感謝你的訊息。我們會盡快回覆。";
+      head.appendChild(note);
+    }
+  }
+</script>
+
+<style>
+  .page-head { padding: 60px 0 40px; text-align: center; border-bottom: 1px solid var(--c-line); }
+  .page-head__title {
+    margin: 8px 0 12px;
+    font-family: var(--font-zh);
+    font-weight: 900;
+    font-size: clamp(36px, 6vw, 56px);
+    letter-spacing: -0.01em;
+  }
+  .page-head__sub { color: var(--c-muted); font-size: 16px; }
+  :global(.page-head__success) {
+    margin-top: 18px;
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: var(--c-orange);
+    color: var(--c-cream);
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  .apply-section { padding: 60px 0 80px; }
+  .apply-section__inner { max-width: 640px; }
+
+  .form { display: flex; flex-direction: column; gap: 16px; background: white; border: 1px solid var(--c-line); border-radius: 16px; padding: 32px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field span {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--c-forest);
+  }
+  .field input, .field textarea {
+    border: 1px solid var(--c-line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 15px;
+    background: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--c-orange);
+    box-shadow: 0 0 0 3px rgba(240, 109, 45, 0.18);
+  }
+  .form .btn { align-self: flex-start; margin-top: 8px; }
+</style>

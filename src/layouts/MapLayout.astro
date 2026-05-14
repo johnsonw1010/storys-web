@@ -1,0 +1,33 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  hideHeader={true}
+  hideFooter={true}
+  bodyClass="map-body"
+>
+  <slot />
+</BaseLayout>
+
+<style is:global>
+  body.map-body {
+    background: #0a0e08;
+    color: var(--c-cream);
+    overflow: hidden;
+  }
+  body.map-body main {
+    flex: 1;
+    position: relative;
+    min-height: 100vh;
+  }
+</style>

@@ -1,0 +1,37 @@
+name: Sync episodes from RSS
+
+on:
+  schedule:
+    - cron: "0 4 * * *"   # daily at 04:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Run sync script
+        run: npm run sync-episodes
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- src/data/episodes.json; then
+            echo "No episode changes."
+            exit 0
+          fi
+          git config user.name "storys-bot"
+          git config user.email "bot@storys.fm"
+          git add src/data/episodes.json
+          git commit -m "chore: sync episodes from RSS"
+          git push

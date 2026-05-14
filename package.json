@@ -1,0 +1,23 @@
+{
+  "name": "storys-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "sync-episodes": "node scripts/sync-episodes.mjs",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "astro": "^4.16.18"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "fast-xml-parser": "^4.5.0",
+    "typescript": "^5.6.3"
+  }
+}

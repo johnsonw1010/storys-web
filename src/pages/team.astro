@@ -1,0 +1,143 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface Member {
+  id: string;
+  name: string;
+  nameZh: string;
+  role: string;
+  roleZh: string;
+  bio: string;
+  bioZh: string;
+}
+
+const team: Member[] = [
+  {
+    id: "timothy",
+    name: "Timothy Pan",
+    nameZh: "Timothy Pan",
+    role: "Host · Storys Podcast",
+    roleZh: "主持人 · Storys Podcast",
+    bio: "Interviews founders with the curiosity of an outsider and the rigor of an insider. Asks the question nobody else will.",
+    bioZh: "用局外人的好奇心，問每一位創辦人最關鍵的那一題。",
+  },
+  {
+    id: "jonathan",
+    name: "Jonathan Hsiao",
+    nameZh: "Jonathan Hsiao",
+    role: "Co-host · Producer",
+    roleZh: "共同主持 · 製作人",
+    bio: "Brings operational depth — every interview moves from origin story to the spreadsheet underneath.",
+    bioZh: "把訪談帶到細節——從第一個客戶，問到後台 spreadsheet。",
+  },
+  {
+    id: "johnson",
+    name: "Johnson Wang",
+    nameZh: "Johnson Wang",
+    role: "Co-host · Strategy",
+    roleZh: "共同主持 · 策略",
+    bio: "Thinks in compounding loops and market structure. The strategist of the studio.",
+    bioZh: "從市場結構與複利思考——錄音室裡的策略腦。",
+  },
+];
+---
+
+<BaseLayout>
+  <section class="page-head">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="nav.team">團隊</span>
+      <h1 class="page-head__title" data-i18n="team.title">團隊</h1>
+      <p class="page-head__sub" data-i18n="team.sub">錄音室裡的三個聲音。</p>
+    </div>
+  </section>
+
+  <section class="team-grid">
+    <div class="wrap">
+      <div class="team-grid__inner">
+        {team.map((m) => (
+          <article class="member">
+            <div class="member__photo" aria-hidden="true">
+              <span class="member__initials">{m.name.split(" ").map((p) => p[0]).join("")}</span>
+            </div>
+            <div class="member__body">
+              <h2 class="member__name">{m.nameZh}</h2>
+              <p class="member__name-en">{m.name}</p>
+              <p class="member__role">{m.roleZh}</p>
+              <p class="member__role-en">{m.role}</p>
+              <p class="member__bio">{m.bioZh}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-head { padding: 60px 0 40px; text-align: center; border-bottom: 1px solid var(--c-line); }
+  .page-head__title {
+    margin: 8px 0 12px;
+    font-family: var(--font-zh);
+    font-weight: 900;
+    font-size: clamp(36px, 6vw, 56px);
+    letter-spacing: -0.01em;
+  }
+  .page-head__sub { color: var(--c-muted); font-size: 16px; }
+
+  .team-grid { padding: 60px 0 80px; }
+  .team-grid__inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 900px) { .team-grid__inner { grid-template-columns: 1fr; } }
+
+  .member {
+    background: white;
+    border: 1px solid var(--c-line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .member__photo {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, var(--c-forest), var(--c-sage));
+    display: grid;
+    place-items: center;
+    color: var(--c-cream);
+  }
+  .member__initials {
+    font-family: var(--font-en);
+    font-style: italic;
+    font-weight: 900;
+    font-size: 56px;
+    letter-spacing: -0.02em;
+  }
+  .member__body { padding: 24px 24px 28px; }
+  .member__name {
+    margin: 0;
+    font-family: var(--font-zh);
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--c-deep);
+  }
+  .member__name-en {
+    margin: 2px 0 14px;
+    font-family: var(--font-en);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--c-muted);
+  }
+  .member__role {
+    margin: 0;
+    font-size: 13px;
+    color: var(--c-orange);
+    font-weight: 700;
+  }
+  .member__role-en {
+    margin: 2px 0 14px;
+    font-family: var(--font-en);
+    font-size: 12px;
+    color: var(--c-muted);
+  }
+  .member__bio { margin: 0; font-size: 14px; line-height: 1.6; color: var(--c-forest); }
+</style>

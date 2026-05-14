@@ -1,0 +1,83 @@
+:root {
+  --c-deep: #162114;
+  --c-forest: #324425;
+  --c-sage: #c7d0b2;
+  --c-cream: #f6f8ee;
+  --c-orange: #f06d2d;
+  --c-golden: #f0a92d;
+  --c-line: #d8dec5;
+  --c-muted: #5b6b4b;
+
+  --font-zh: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --font-en: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  --max-w: 1200px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--c-cream);
+  color: var(--c-deep);
+  font-family: var(--font-zh);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.55;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: inherit; }
+
+/* Utility container */
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+@media (max-width: 720px) {
+  .wrap { padding: 0 20px; }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 22px;
+  font-family: var(--font-en);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--c-deep);
+  border-radius: 999px;
+  background: var(--c-deep);
+  color: var(--c-cream);
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.btn:hover { transform: translateY(-1px); background: var(--c-forest); }
+
+.btn--ghost { background: transparent; color: var(--c-deep); }
+.btn--ghost:hover { background: var(--c-deep); color: var(--c-cream); }
+
+.btn--accent { background: var(--c-orange); border-color: var(--c-orange); color: var(--c-cream); }
+.btn--accent:hover { background: #d9551b; border-color: #d9551b; }
+
+/* Eyebrow / section headings */
+.eyebrow {
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-orange);
+}
+
+/* Honeypot for forms (Netlify pattern) */
+.netlify-honeypot { display: none; }

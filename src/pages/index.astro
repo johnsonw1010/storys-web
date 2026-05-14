@@ -1,0 +1,281 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { BRANDS, SHOW_URL } from "../data/brands";
+import { getLatestEpisodes, appleEpisodeUrl, findBrandByAppleId } from "../lib/episodes";
+
+const retailBrands = BRANDS.filter((b) => b.type === "retail");
+const totalLocations = retailBrands.reduce((sum, b) => sum + (b.locations?.length ?? 0), 0);
+const totalEpisodes = BRANDS.reduce((sum, b) => sum + b.episodes.filter((e) => e.num).length, 0);
+
+const featured = BRANDS.slice(0, 6);
+const latest = getLatestEpisodes(5);
+
+const logoSrc = (domain: string) =>
+  `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <span class="eyebrow" data-i18n="home.hero.eyebrow">Storys Podcast｜原 創業之聲</span>
+      <h1 class="hero__title">
+        <span data-i18n="home.hero.title">從第一步，</span>
+        <span class="hero__accent" data-i18n="home.hero.titleAccent">到每一步。</span>
+      </h1>
+      <p class="hero__sub-en" data-i18n="home.hero.titleEn">first step to every step</p>
+      <p class="hero__body" data-i18n="home.hero.sub">
+        我們訪談每一位創辦人——從第一步走到每一步。把他們的故事帶回到他們親手蓋起的場域。
+      </p>
+
+      <div class="hero__stats">
+        <div class="stat">
+          <strong>{BRANDS.length}</strong>
+          <span data-i18n="hero.statBrands">個品牌</span>
+        </div>
+        <div class="stat">
+          <strong>{totalLocations}</strong>
+          <span data-i18n="hero.statLocations">個實體據點</span>
+        </div>
+        <div class="stat">
+          <strong>{totalEpisodes}</strong>
+          <span data-i18n="hero.statEpisodes">集 Podcast</span>
+        </div>
+      </div>
+
+      <div class="hero__cta">
+        <a class="btn btn--accent" href={SHOW_URL} target="_blank" rel="noreferrer" data-i18n="home.hero.ctaListen">收聽 Storys</a>
+        <a class="btn btn--ghost" href="/map" data-i18n="home.hero.ctaMap">瀏覽地圖</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured">
+    <div class="wrap">
+      <header class="section-head">
+        <span class="eyebrow" data-i18n="hero.featuredLabel">最新訪談</span>
+        <h2 class="section-title" data-i18n="home.featured.title">受訪品牌</h2>
+        <p class="section-sub" data-i18n="home.featured.sub">點擊任一品牌，前往地圖查看完整資訊。</p>
+      </header>
+      <div class="featured__grid">
+        {featured.map((b) => (
+          <a class="brand-tile" href="/map">
+            <span class="brand-tile__logo">
+              <img src={logoSrc(b.domain)} alt="" loading="lazy" />
+            </span>
+            <div class="brand-tile__body">
+              <span class="brand-tile__cat" data-i18n={`cat.${b.category}`}>{b.category}</span>
+              <span class="brand-tile__name-zh">{b.nameZh}</span>
+              <span class="brand-tile__name-en">{b.nameEn}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="section-foot">
+        <a class="btn btn--ghost" href="/map" data-i18n="home.featured.cta">看所有品牌</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="latest">
+    <div class="wrap">
+      <header class="section-head">
+        <h2 class="section-title" data-i18n="home.latest.title">最新節目</h2>
+      </header>
+      <ul class="episode-list">
+        {latest.map((ep) => {
+          const brand = findBrandByAppleId(ep.appleId);
+          return (
+            <li class="episode-row">
+              <a href={appleEpisodeUrl(ep.appleId)} target="_blank" rel="noreferrer">
+                <span class="episode-num">{ep.num ? `EP #${ep.num}` : "EP"}</span>
+                <span class="episode-title">{ep.titleZh}</span>
+                {brand && <span class="episode-brand">{brand.nameZh}</span>}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      <div class="section-foot">
+        <a class="btn btn--ghost" href="/episodes" data-i18n="home.latest.cta">看全部節目</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-cta">
+    <div class="wrap about-cta__inner">
+      <div>
+        <span class="eyebrow" data-i18n="about.eyebrow">關於 Storys</span>
+        <h2 class="about-cta__title" data-i18n="home.about.title">關於 Storys</h2>
+        <p class="about-cta__body" data-i18n="home.about.body">我們紀錄每一位創辦人的旅程——從沒沒無聞到被聽見。</p>
+        <a class="btn" href="/team" data-i18n="home.about.cta">認識我們</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 80px 0 60px;
+    text-align: center;
+  }
+  .hero__inner { max-width: 880px; margin: 0 auto; }
+  .hero__title {
+    margin: 14px 0 6px;
+    font-family: var(--font-zh);
+    font-weight: 900;
+    font-size: clamp(40px, 7vw, 72px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--c-deep);
+  }
+  .hero__accent { color: var(--c-orange); display: block; }
+  html[lang="en"] .hero__title { font-family: var(--font-en); font-style: italic; }
+  .hero__sub-en {
+    font-family: var(--font-en);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--c-muted);
+    margin: 6px 0 24px;
+  }
+  .hero__body {
+    font-size: 17px;
+    color: var(--c-forest);
+    max-width: 620px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+  }
+  .hero__stats {
+    display: inline-flex;
+    gap: 36px;
+    margin-bottom: 32px;
+    padding: 18px 28px;
+    border: 1px solid var(--c-line);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.5);
+  }
+  .stat { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .stat strong {
+    font-family: var(--font-en);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--c-orange);
+    line-height: 1;
+  }
+  .stat span {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--c-muted);
+  }
+  .hero__cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  .featured, .latest, .about-cta { padding: 70px 0; }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+  .section-title {
+    margin: 8px 0 6px;
+    font-family: var(--font-zh);
+    font-weight: 900;
+    font-size: clamp(28px, 4vw, 42px);
+    letter-spacing: -0.01em;
+  }
+  html[lang="en"] .section-title { font-family: var(--font-en); font-style: italic; }
+  .section-sub { color: var(--c-muted); font-size: 15px; }
+  .section-foot { text-align: center; margin-top: 32px; }
+
+  .featured__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--c-line);
+    border: 1px solid var(--c-line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) {
+    .featured__grid { grid-template-columns: repeat(2, 1fr); }
+    .hero__stats { gap: 22px; padding: 14px 18px; }
+  }
+  .brand-tile {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    padding: 24px;
+    background: var(--c-cream);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s var(--ease);
+  }
+  .brand-tile:hover { background: #eef1de; }
+  .brand-tile__logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: white;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border: 1px solid var(--c-line);
+  }
+  .brand-tile__logo img { width: 28px; height: 28px; object-fit: contain; }
+  .brand-tile__body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .brand-tile__cat {
+    font-family: var(--font-en);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--c-orange);
+  }
+  .brand-tile__name-zh { font-weight: 700; font-size: 15px; color: var(--c-deep); }
+  .brand-tile__name-en {
+    font-family: var(--font-en);
+    font-size: 12px;
+    color: var(--c-muted);
+  }
+
+  .episode-list { list-style: none; padding: 0; margin: 0; }
+  .episode-row {
+    border-bottom: 1px solid var(--c-line);
+  }
+  .episode-row:last-child { border-bottom: 0; }
+  .episode-row a {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 18px 0;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s var(--ease);
+  }
+  .episode-row a:hover { color: var(--c-orange); }
+  .episode-num {
+    font-family: var(--font-en);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--c-orange);
+  }
+  .episode-title { font-size: 15px; font-weight: 600; }
+  .episode-brand { color: var(--c-muted); font-size: 13px; }
+  @media (max-width: 720px) {
+    .episode-row a { grid-template-columns: 64px 1fr; gap: 12px; }
+    .episode-brand { display: none; }
+  }
+
+  .about-cta { background: var(--c-forest); color: var(--c-cream); margin-top: 80px; }
+  .about-cta__inner { text-align: center; max-width: 720px; margin: 0 auto; }
+  .about-cta__inner .eyebrow { color: var(--c-golden); }
+  .about-cta__title {
+    margin: 8px 0 14px;
+    font-family: var(--font-zh);
+    font-weight: 900;
+    font-size: clamp(28px, 4vw, 42px);
+  }
+  html[lang="en"] .about-cta__title { font-family: var(--font-en); font-style: italic; }
+  .about-cta__body { font-size: 16px; color: var(--c-sage); margin-bottom: 28px; }
+  .about-cta .btn { background: var(--c-orange); border-color: var(--c-orange); color: var(--c-cream); }
+  .about-cta .btn:hover { background: #d9551b; border-color: #d9551b; }
+</style>

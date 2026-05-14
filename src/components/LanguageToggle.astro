@@ -1,0 +1,35 @@
+---
+// Visual + behavior for the 繁中 / EN toggle.
+// State is held in localStorage under `storys.lang` and applied to all
+// `[data-i18n]` and `[data-i18n-attr]` elements on the page.
+---
+
+<div class="lang-toggle" role="group" aria-label="Language">
+  <button type="button" class="lang-btn" data-lang="zh">繁中</button>
+  <span class="lang-sep" aria-hidden="true">·</span>
+  <button type="button" class="lang-btn" data-lang="en">EN</button>
+</div>
+
+<style>
+  .lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-en);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .lang-btn {
+    background: none;
+    border: none;
+    padding: 4px 2px;
+    color: var(--c-muted);
+    cursor: pointer;
+    transition: color 0.2s var(--ease);
+  }
+  .lang-btn:hover { color: var(--c-deep); }
+  .lang-btn[aria-pressed="true"] { color: var(--c-orange); }
+  .lang-sep { color: var(--c-line); }
+</style>

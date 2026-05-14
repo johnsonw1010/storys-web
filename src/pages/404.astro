@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="404 · Storys">
+  <section class="notfound">
+    <div class="wrap">
+      <span class="eyebrow">404</span>
+      <h1>找不到這一頁。</h1>
+      <p>Looks like that path isn't on the map.</p>
+      <a class="btn" href="/">回首頁 · Back home</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound { padding: 120px 0; text-align: center; }
+  .notfound h1 {
+    margin: 12px 0 6px;
+    font-family: var(--font-zh);
+    font-weight: 900;
+    font-size: clamp(40px, 6vw, 64px);
+    letter-spacing: -0.01em;
+  }
+  .notfound p {
+    font-family: var(--font-en);
+    font-style: italic;
+    color: var(--c-muted);
+    margin-bottom: 28px;
+  }
+</style>
