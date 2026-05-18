@@ -48,6 +48,8 @@ storys-web/
 │   ├── pages/
 │   │   ├── index.astro        # Homepage
 │   │   ├── map.astro          # v3-immersive interactive atlas
+│   │   ├── brands/[id].astro  # Dedicated page per brand (one per brand in brands.ts)
+│   │   ├── visit.astro        # Visit Planner — build a Taipei walking route
 │   │   ├── episodes.astro     # All episodes (Apple links)
 │   │   ├── about.astro
 │   │   ├── team.astro         # Timothy, Jonathan, Johnson
@@ -190,6 +192,18 @@ That's the loop. No CMS required for v1. If a non-engineer needs to edit later, 
 - Default language is **zh** on first visit.
 
 ---
+
+## Featured pages
+
+### `/brands/[id]` — dedicated brand page
+Every brand in `brands.ts` automatically gets a permanent URL: `storys.fm/brands/zhenfan`, `storys.fm/brands/vacanza`, etc. Pages include hero, locations (retail only), all episodes, related brands by category, and a CTA to apply. These are great to share with sponsors — they get a permanent SEO link from your domain to theirs.
+
+Generated automatically by `src/pages/brands/[id].astro` via Astro's `getStaticPaths()` — no manual work to add new pages, just add a brand to `brands.ts`.
+
+### `/visit` — Visit Planner
+Pick 2–6 retail brands. The page builds a numbered walking route on a dark Leaflet map, then offers one-click "Open in Google Maps" with all stops as waypoints. The route is encoded in the URL hash (e.g. `/visit#zhenfan,vacanza,nubra`) so anyone can share a curated route just by sharing the URL — no server, no accounts.
+
+Great for Instagram captions and audience engagement.
 
 ## Future
 

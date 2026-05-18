@@ -1,0 +1,467 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { BRANDS } from "../data/brands";
+
+// Only retail brands with at least one geocoded location can be on a walking route.
+const candidates = BRANDS.filter(
+  (b) => b.type === "retail" && (b.locations?.length ?? 0) > 0,
+).map((b) => ({
+  id: b.id,
+  nameZh: b.nameZh,
+  nameEn: b.nameEn,
+  category: b.category,
+  domain: b.domain,
+  loc: b.locations![0],
+}));
+
+const bootstrap = `window.__VISIT_BRANDS__ = ${JSON.stringify(candidates)};`;
+---
+
+<BaseLayout
+  title="散步路線 · My Storys Walk"
+  description="Pick 2–6 brands from the show. We'll route a Taipei day for you."
+>
+  <section class="visit-head">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="visit.featured.label">Storys 推薦路線</span>
+      <h1 class="visit-head__title" data-i18n="visit.title">我的 Storys 散步路線</h1>
+      <p class="visit-head__sub" data-i18n="visit.sub">選 2–6 個品牌，我們為你規劃台北一日行程。</p>
+    </div>
+  </section>
+
+  <section class="visit-app">
+    <div class="wrap visit-app__grid">
+      <!-- Picker (left) -->
+      <aside class="picker">
+        <header class="picker__head">
+          <h2 class="picker__title" data-i18n="visit.pick">選擇品牌</h2>
+          <p class="picker__sub" data-i18n="visit.pickSub">選 2 個以上才能規劃路線。</p>
+        </header>
+        <ul class="picker__list" id="picker-list"></ul>
+      </aside>
+
+      <!-- Route + Map (right) -->
+      <section class="route">
+        <header class="route__head">
+          <div>
+            <span class="eyebrow" data-i18n="visit.selected">已選</span>
+            <span class="route__count" id="route-count">0</span>
+          </div>
+          <div class="route__actions">
+            <button class="btn btn--ghost btn--sm" id="route-clear" type="button" data-i18n="visit.clear">清除</button>
+            <button class="btn btn--ghost btn--sm" id="route-share" type="button" data-i18n="visit.share">分享路線</button>
+            <a class="btn btn--accent btn--sm" id="route-gmaps" href="#" target="_blank" rel="noreferrer" data-i18n="visit.openGmaps" hidden>在 Google Maps 開啟</a>
+          </div>
+        </header>
+
+        <div id="visit-map" class="route__map" aria-label="Walking route map"></div>
+
+        <ol class="route__list" id="route-list">
+          <li class="route__empty" data-i18n="visit.empty">尚未選擇任何品牌。</li>
+        </ol>
+      </section>
+    </div>
+  </section>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <script is:inline set:html={bootstrap}></script>
+  <script
+    is:inline
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script is:inline>
+    (() => {
+      "use strict";
+      const BRANDS = window.__VISIT_BRANDS__ || [];
+      const PICKER = document.getElementById("picker-list");
+      const ROUTE_LIST = document.getElementById("route-list");
+      const ROUTE_COUNT = document.getElementById("route-count");
+      const GMAPS_BTN = document.getElementById("route-gmaps");
+      const SHARE_BTN = document.getElementById("route-share");
+      const CLEAR_BTN = document.getElementById("route-clear");
+      const MAP_EL = document.getElementById("visit-map");
+
+      let selected = decodeHash(location.hash);
+      let map, markers = [], polyline;
+
+      function escapeHtml(s) {
+        return String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+      }
+      function logoSrc(domain) { return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`; }
+      function gmapsUrl(loc) {
+        const q = loc.addressZh || loc.addressEn || `${loc.lat},${loc.lng}`;
+        return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+      }
+
+      function decodeHash(hash) {
+        const t = hash.startsWith("#") ? hash.slice(1) : hash;
+        if (!t) return [];
+        return t.split(",")
+          .map((id) => id.trim())
+          .filter((id) => /^[a-z0-9-]+$/i.test(id) && BRANDS.some((b) => b.id === id))
+          .slice(0, 12);
+      }
+      function encodeHash(ids) { return ids.join(","); }
+
+      function renderPicker() {
+        PICKER.innerHTML = BRANDS.map((b) => {
+          const isSelected = selected.includes(b.id);
+          return `
+            <li class="picker__row ${isSelected ? "is-selected" : ""}" data-id="${escapeHtml(b.id)}">
+              <span class="picker__logo">
+                <img src="${escapeHtml(logoSrc(b.domain))}" alt="" loading="lazy" />
+              </span>
+              <span class="picker__body">
+                <span class="picker__name">${escapeHtml(b.nameZh)}</span>
+                <span class="picker__cat">${escapeHtml(b.category)}</span>
+              </span>
+              <span class="picker__check" aria-hidden="true">${isSelected ? "✓" : "+"}</span>
+            </li>
+          `;
+        }).join("");
+        PICKER.querySelectorAll(".picker__row").forEach((row) => {
+          row.addEventListener("click", () => toggle(row.dataset.id));
+        });
+      }
+
+      function toggle(id) {
+        const i = selected.indexOf(id);
+        if (i >= 0) selected.splice(i, 1);
+        else if (selected.length < 12) selected.push(id);
+        location.hash = encodeHash(selected);
+        renderAll();
+      }
+
+      function clear() {
+        selected = [];
+        location.hash = "";
+        renderAll();
+      }
+
+      function renderRoute() {
+        ROUTE_COUNT.textContent = String(selected.length);
+        if (selected.length === 0) {
+          ROUTE_LIST.innerHTML = '<li class="route__empty" data-i18n="visit.empty">尚未選擇任何品牌。</li>';
+          GMAPS_BTN.hidden = true;
+          return;
+        }
+        const stops = selected.map((id) => BRANDS.find((b) => b.id === id)).filter(Boolean);
+        ROUTE_LIST.innerHTML = stops.map((b, idx) => `
+          <li class="route__stop">
+            <span class="route__num">${idx + 1}</span>
+            <span class="route__stop-body">
+              <a class="route__name" href="/brands/${escapeHtml(b.id)}">${escapeHtml(b.nameZh)}</a>
+              <span class="route__addr">${escapeHtml(b.loc.addressZh)}</span>
+              <a class="route__addr-link" href="${escapeHtml(gmapsUrl(b.loc))}" target="_blank" rel="noreferrer">Google Maps →</a>
+            </span>
+          </li>
+        `).join("");
+
+        if (stops.length >= 2) {
+          GMAPS_BTN.hidden = false;
+          GMAPS_BTN.href = buildGmapsDirections(stops);
+        } else {
+          GMAPS_BTN.hidden = true;
+        }
+      }
+
+      function buildGmapsDirections(stops) {
+        // https://www.google.com/maps/dir/?api=1&origin=...&destination=...&waypoints=a|b|c&travelmode=walking
+        const origin = `${stops[0].loc.lat},${stops[0].loc.lng}`;
+        const destination = `${stops[stops.length - 1].loc.lat},${stops[stops.length - 1].loc.lng}`;
+        const waypoints = stops.slice(1, -1).map((s) => `${s.loc.lat},${s.loc.lng}`).join("|");
+        const params = new URLSearchParams({
+          api: "1",
+          origin,
+          destination,
+          travelmode: "walking",
+        });
+        if (waypoints) params.set("waypoints", waypoints);
+        return `https://www.google.com/maps/dir/?${params.toString()}`;
+      }
+
+      function initMap() {
+        map = L.map(MAP_EL, {
+          center: [25.0418, 121.5430],
+          zoom: 12,
+          scrollWheelZoom: false,
+          zoomControl: true,
+        });
+        L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png", {
+          attribution: '&copy; OpenStreetMap &copy; CARTO',
+          subdomains: "abcd",
+          maxZoom: 19,
+        }).addTo(map);
+        L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png", {
+          pane: "shadowPane",
+          subdomains: "abcd",
+          maxZoom: 19,
+        }).addTo(map);
+      }
+
+      function renderMap() {
+        markers.forEach((m) => map.removeLayer(m));
+        markers = [];
+        if (polyline) { map.removeLayer(polyline); polyline = null; }
+        if (selected.length === 0) return;
+
+        const stops = selected.map((id) => BRANDS.find((b) => b.id === id)).filter(Boolean);
+        const latlngs = stops.map((s) => [s.loc.lat, s.loc.lng]);
+
+        stops.forEach((s, idx) => {
+          const icon = L.divIcon({
+            className: "visit-marker",
+            html: `<span class="visit-marker__core"><span class="visit-marker__num">${idx + 1}</span></span>`,
+            iconSize: [28, 28],
+            iconAnchor: [14, 14],
+          });
+          const m = L.marker([s.loc.lat, s.loc.lng], { icon }).addTo(map);
+          markers.push(m);
+        });
+
+        if (latlngs.length >= 2) {
+          polyline = L.polyline(latlngs, {
+            color: "#f06d2d",
+            weight: 3,
+            opacity: 0.85,
+            dashArray: "6 8",
+          }).addTo(map);
+        }
+
+        const group = L.featureGroup(markers);
+        map.fitBounds(group.getBounds().pad(0.25));
+      }
+
+      function renderAll() {
+        renderPicker();
+        renderRoute();
+        renderMap();
+      }
+
+      SHARE_BTN.addEventListener("click", async () => {
+        const url = `${location.origin}${location.pathname}#${encodeHash(selected)}`;
+        try {
+          await navigator.clipboard.writeText(url);
+          SHARE_BTN.textContent = "✓ Copied";
+          setTimeout(() => {
+            const dict = (window.__STORYS_I18N__ || {})[localStorage.getItem("storys.lang") || "zh"] || {};
+            SHARE_BTN.textContent = dict["visit.share"] || "分享路線";
+          }, 1500);
+        } catch (e) {
+          prompt("Copy this link:", url);
+        }
+      });
+      CLEAR_BTN.addEventListener("click", clear);
+      window.addEventListener("hashchange", () => {
+        selected = decodeHash(location.hash);
+        renderAll();
+      });
+
+      initMap();
+      renderAll();
+    })();
+  </script>
+</BaseLayout>
+
+<style is:global>
+  .visit-head { padding: 60px 0 30px; text-align: center; border-bottom: 1px solid var(--c-line); }
+  .visit-head__title {
+    margin: 8px 0 12px;
+    font-family: var(--font-zh);
+    font-weight: 900;
+    font-size: clamp(36px, 6vw, 56px);
+    letter-spacing: -0.01em;
+  }
+  .visit-head__sub { color: var(--c-muted); font-size: 16px; }
+
+  .visit-app { padding: 40px 0 80px; }
+  .visit-app__grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .visit-app__grid { grid-template-columns: 1fr; }
+  }
+
+  .picker {
+    background: white;
+    border: 1px solid var(--c-line);
+    border-radius: 16px;
+    overflow: hidden;
+    position: sticky;
+    top: 90px;
+    max-height: calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+  }
+  .picker__head { padding: 20px 22px 14px; border-bottom: 1px solid var(--c-line); }
+  .picker__title {
+    margin: 0 0 4px;
+    font-family: var(--font-zh);
+    font-weight: 800;
+    font-size: 18px;
+  }
+  .picker__sub { margin: 0; font-size: 12px; color: var(--c-muted); }
+  .picker__list { list-style: none; margin: 0; padding: 6px; overflow-y: auto; flex: 1; }
+  .picker__row {
+    display: grid;
+    grid-template-columns: 32px 1fr 24px;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s var(--ease);
+  }
+  .picker__row:hover { background: #f6f8ee; }
+  .picker__row.is-selected { background: rgba(240, 109, 45, 0.10); box-shadow: inset 3px 0 0 var(--c-orange); }
+  .picker__logo {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: white;
+    border: 1px solid var(--c-line);
+    display: grid;
+    place-items: center;
+  }
+  .picker__logo img { width: 22px; height: 22px; object-fit: contain; }
+  .picker__body { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+  .picker__name {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--c-deep);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .picker__cat {
+    font-family: var(--font-en);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-orange);
+  }
+  .picker__check {
+    font-family: var(--font-en);
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--c-muted);
+    text-align: center;
+  }
+  .picker__row.is-selected .picker__check { color: var(--c-orange); }
+
+  .route {
+    background: #0d1810;
+    color: var(--c-cream);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .route__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    border-bottom: 1px solid rgba(246, 248, 238, 0.10);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .route__head .eyebrow { color: var(--c-golden); display: block; }
+  .route__count {
+    font-family: var(--font-en);
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--c-cream);
+  }
+  .route__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn--sm { padding: 8px 14px; font-size: 11px; }
+  .route .btn--ghost { color: var(--c-cream); border-color: rgba(246, 248, 238, 0.20); }
+  .route .btn--ghost:hover { background: var(--c-orange); border-color: var(--c-orange); color: var(--c-cream); }
+
+  .route__map {
+    height: 380px;
+    background: #0a0e08;
+  }
+
+  .route__list { list-style: none; margin: 0; padding: 18px 0; }
+  .route__empty { padding: 30px 24px; text-align: center; color: rgba(246, 248, 238, 0.45); font-size: 13px; }
+  .route__stop {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 14px;
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(246, 248, 238, 0.08);
+  }
+  .route__stop:last-child { border-bottom: 0; }
+  .route__num {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--c-orange);
+    color: var(--c-cream);
+    display: grid;
+    place-items: center;
+    font-family: var(--font-en);
+    font-size: 13px;
+    font-weight: 800;
+  }
+  .route__stop-body { display: flex; flex-direction: column; gap: 4px; }
+  .route__name {
+    color: var(--c-cream);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .route__name:hover { color: var(--c-orange); }
+  .route__addr { font-size: 12.5px; color: rgba(246, 248, 238, 0.66); }
+  .route__addr-link {
+    font-family: var(--font-en);
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-golden);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(240, 169, 45, 0.40);
+    padding-bottom: 1px;
+    align-self: flex-start;
+  }
+  .route__addr-link:hover { color: var(--c-orange); border-color: var(--c-orange); }
+
+  /* Visit map markers */
+  .visit-marker { background: transparent !important; border: none !important; }
+  .visit-marker__core {
+    display: grid;
+    place-items: center;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--c-orange);
+    border: 2px solid var(--c-cream);
+    box-shadow: 0 4px 14px rgba(240, 109, 45, 0.55);
+  }
+  .visit-marker__num {
+    font-family: var(--font-en);
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--c-cream);
+    line-height: 1;
+  }
+
+  .route__map .leaflet-control-attribution {
+    background: rgba(13, 24, 16, 0.6) !important;
+    color: rgba(246, 248, 238, 0.55) !important;
+  }
+  .route__map .leaflet-control-zoom a {
+    background: rgba(13, 24, 16, 0.85) !important;
+    color: var(--c-cream) !important;
+    border: 0 !important;
+  }
+</style>

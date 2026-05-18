@@ -1,0 +1,94 @@
+---
+import type { Brand } from "../data/brands";
+
+interface Props {
+  brand: Brand;
+}
+
+const { brand } = Astro.props;
+const logoSrc = brand.logo
+  ? `/brand/logos/${brand.id}.png`
+  : `https://www.google.com/s2/favicons?domain=${brand.domain}&sz=128`;
+---
+
+<header class="brand-hero" data-cat={brand.category}>
+  <div class="wrap brand-hero__inner">
+    <div class="brand-hero__mark">
+      <img src={logoSrc} alt={brand.nameEn} />
+    </div>
+    <span class="eyebrow" data-i18n={`cat.${brand.category}`}>{brand.category}</span>
+    <h1 class="brand-hero__name-zh">{brand.nameZh}</h1>
+    <p class="brand-hero__name-en">{brand.nameEn}</p>
+    <p class="brand-hero__desc-zh">{brand.descZh}</p>
+    <p class="brand-hero__desc-en">{brand.descEn}</p>
+    <div class="brand-hero__cta">
+      {brand.website && (
+        <a class="btn btn--accent" href={brand.website} target="_blank" rel="noreferrer">
+          {brand.nameEn} →
+        </a>
+      )}
+      {brand.type === "retail" && (
+        <a class="btn btn--ghost" href="/map">看地圖 · See on map</a>
+      )}
+    </div>
+  </div>
+</header>
+
+<style>
+  .brand-hero {
+    padding: 80px 0 60px;
+    text-align: center;
+    background: linear-gradient(180deg, var(--c-cream) 0%, #eef1de 100%);
+    border-bottom: 1px solid var(--c-line);
+  }
+  .brand-hero[data-cat="food"]       { background: linear-gradient(180deg, #fff5e1 0%, var(--c-cream) 100%); }
+  .brand-hero[data-cat="fashion"]    { background: linear-gradient(180deg, #fbeee8 0%, var(--c-cream) 100%); }
+  .brand-hero[data-cat="wellness"]   { background: linear-gradient(180deg, #ecf0e0 0%, var(--c-cream) 100%); }
+  .brand-hero[data-cat="tech"]       { background: linear-gradient(180deg, #e7ecdf 0%, var(--c-cream) 100%); }
+  .brand-hero[data-cat="creator"]    { background: linear-gradient(180deg, #fbe2d4 0%, var(--c-cream) 100%); }
+
+  .brand-hero__inner { max-width: 720px; margin: 0 auto; }
+  .brand-hero__mark {
+    width: 88px;
+    height: 88px;
+    border-radius: 24px;
+    background: white;
+    border: 1px solid var(--c-line);
+    margin: 0 auto 20px;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 12px 32px rgba(22, 33, 20, 0.08);
+  }
+  .brand-hero__mark img { width: 56px; height: 56px; object-fit: contain; }
+  .brand-hero__name-zh {
+    margin: 8px 0 4px;
+    font-family: var(--font-zh);
+    font-weight: 900;
+    font-size: clamp(40px, 6vw, 64px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .brand-hero__name-en {
+    font-family: var(--font-en);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--c-muted);
+    margin: 0 0 20px;
+  }
+  .brand-hero__desc-zh, .brand-hero__desc-en {
+    max-width: 580px;
+    margin: 12px auto;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--c-forest);
+  }
+  .brand-hero__desc-en { font-family: var(--font-en); color: var(--c-muted); font-style: italic; font-size: 14px; }
+  .brand-hero__cta {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+</style>

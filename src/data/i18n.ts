@@ -22,6 +22,8 @@ export const I18N: Record<Lang, Record<string, string>> = {
     "nav.contact": "聯絡",
     "nav.apply": "申請受訪",
     "nav.online": "線上品牌",
+    "nav.visit": "散步路線",
+    "nav.brands": "品牌",
 
     // home
     "home.hero.eyebrow": "Storys Podcast｜原 創業之聲",
@@ -119,6 +121,31 @@ export const I18N: Record<Lang, Record<string, string>> = {
     "footer.copy": "© 2026 Storys Podcast · JJT Production",
     "footer.listenOn": "在這裡收聽",
 
+    // visit planner
+    "visit.title": "我的 Storys 散步路線",
+    "visit.sub": "選 2–6 個品牌，我們為你規劃台北一日行程。",
+    "visit.pick": "選擇品牌",
+    "visit.pickSub": "選 2 個以上才能規劃路線。",
+    "visit.selected": "已選",
+    "visit.clear": "清除",
+    "visit.share": "分享路線",
+    "visit.shareCopied": "連結已複製。",
+    "visit.openGmaps": "在 Google Maps 開啟",
+    "visit.checklist": "我的清單",
+    "visit.empty": "尚未選擇任何品牌。",
+    "visit.tooFew": "再選一個就能規劃路線。",
+    "visit.stop": "第 {n} 站",
+    "visit.featured.label": "Storys 推薦路線",
+
+    // brand page
+    "brand.related": "同類品牌",
+    "brand.ctaTitle": "想被 Storys 採訪？",
+    "brand.ctaSub": "Tell us about your brand. We'd love to listen.",
+    "brand.ctaButton": "申請受訪",
+
+    // map detail panel (extra key for new brand-page link)
+    "detail.brandPage": "查看完整頁面",
+
     // category labels
     "cat.food": "餐飲",
     "cat.fashion": "時尚",
@@ -147,6 +174,8 @@ export const I18N: Record<Lang, Record<string, string>> = {
     "nav.contact": "Contact",
     "nav.apply": "Apply",
     "nav.online": "Online",
+    "nav.visit": "Visit Planner",
+    "nav.brands": "Brands",
 
     "home.hero.eyebrow": "Storys Podcast · formerly 創業之聲",
     "home.hero.title": "First step,",
@@ -234,6 +263,28 @@ export const I18N: Record<Lang, Record<string, string>> = {
     "footer.tag": "first step to every step · 從第一步，到每一步",
     "footer.copy": "© 2026 Storys Podcast · JJT Production",
     "footer.listenOn": "Listen on",
+
+    "visit.title": "My Storys Walk",
+    "visit.sub": "Pick 2–6 brands. We'll route a Taipei day for you.",
+    "visit.pick": "Pick brands",
+    "visit.pickSub": "Pick at least 2 to build a route.",
+    "visit.selected": "Selected",
+    "visit.clear": "Clear",
+    "visit.share": "Share route",
+    "visit.shareCopied": "Link copied.",
+    "visit.openGmaps": "Open in Google Maps",
+    "visit.checklist": "My checklist",
+    "visit.empty": "No brands picked yet.",
+    "visit.tooFew": "Pick one more to plan a route.",
+    "visit.stop": "Stop {n}",
+    "visit.featured.label": "Storys curated walk",
+
+    "brand.related": "You might also like",
+    "brand.ctaTitle": "Want to be on Storys?",
+    "brand.ctaSub": "Tell us about your brand. We'd love to listen.",
+    "brand.ctaButton": "Apply",
+
+    "detail.brandPage": "Full brand page",
 
     "cat.food": "Food & Drink",
     "cat.fashion": "Fashion",

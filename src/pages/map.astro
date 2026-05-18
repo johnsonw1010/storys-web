@@ -457,16 +457,25 @@ const bootstrap = `
              </a>`
           : "";
 
+        const brandPageCta = `
+          <a class="im-detail-brand-link" href="/brands/${escapeHtml(brand.id)}">
+            ${escapeHtml(t("detail.brandPage") || "查看完整頁面 · Full brand page")} →
+          </a>
+        `;
+
         inner.innerHTML = `
           ${brandPhotoForDetail(brand)}
           <div class="im-detail-body">
             <span class="im-detail-cat">${escapeHtml(cat)}</span>
-            <h3 class="im-detail-name">${escapeHtml(nameMain)}</h3>
+            <a class="im-detail-name-link" href="/brands/${escapeHtml(brand.id)}">
+              <h3 class="im-detail-name">${escapeHtml(nameMain)}</h3>
+            </a>
             <span class="im-detail-alt">${escapeHtml(nameAlt)}</span>
             <p class="im-detail-desc">${escapeHtml(desc)}</p>
             ${locHtml}
             ${epHtml}
             ${websiteCta}
+            ${brandPageCta}
           </div>
         `;
       }
@@ -1060,6 +1069,25 @@ const bootstrap = `
     transition: gap .25s var(--im-ease), background .2s;
   }
   .im-detail-cta:hover { background: #d95a1c; color: var(--im-c-cream); gap: 12px; }
+
+  .im-detail-name-link { text-decoration: none; color: inherit; }
+  .im-detail-name-link:hover .im-detail-name { color: var(--im-c-orange); }
+  .im-detail-brand-link {
+    display: inline-block;
+    margin-top: 14px;
+    margin-left: 12px;
+    font-family: var(--font-en);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--im-c-text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--im-c-line-strong);
+    padding-bottom: 2px;
+    transition: color 0.2s var(--im-ease), border-color 0.2s var(--im-ease);
+  }
+  .im-detail-brand-link:hover { color: var(--im-c-orange); border-color: var(--im-c-orange); }
 
   /* Featured floater */
   .im-featured {

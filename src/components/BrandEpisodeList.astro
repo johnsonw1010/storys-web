@@ -1,0 +1,78 @@
+---
+import type { Brand } from "../data/brands";
+import { appleEpisodeUrl } from "../lib/episodes";
+
+interface Props {
+  brand: Brand;
+}
+
+const { brand } = Astro.props;
+const episodes = brand.episodes.filter((e) => e.num !== null);
+---
+
+{episodes.length > 0 && (
+  <section class="brand-episodes">
+    <div class="wrap">
+      <header class="section-head">
+        <span class="eyebrow">Podcast 集數 · Episodes</span>
+        <h2 class="section-title">收聽這個故事</h2>
+      </header>
+      <ul class="episode-list">
+        {episodes.map((ep) => (
+          <li class="episode-row">
+            <a href={appleEpisodeUrl(ep.appleId)} target="_blank" rel="noreferrer">
+              <span class="episode-num">EP #{ep.num}</span>
+              <span class="episode-title">{ep.titleZh}</span>
+              <span class="episode-cta">在 Apple Podcasts 收聽 →</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style>
+  .brand-episodes { padding: 60px 0; border-top: 1px solid var(--c-line); }
+  .section-head { text-align: center; margin-bottom: 32px; }
+  .section-title {
+    margin: 6px 0;
+    font-family: var(--font-zh);
+    font-weight: 900;
+    font-size: clamp(26px, 4vw, 36px);
+  }
+  .episode-list { list-style: none; padding: 0; margin: 0; max-width: 800px; margin: 0 auto; }
+  .episode-row { border-bottom: 1px solid var(--c-line); }
+  .episode-row:last-child { border-bottom: 0; }
+  .episode-row a {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 18px 0;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s var(--ease);
+  }
+  .episode-row a:hover { color: var(--c-orange); }
+  .episode-num {
+    font-family: var(--font-en);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--c-orange);
+  }
+  .episode-title { font-size: 15px; font-weight: 600; }
+  .episode-cta {
+    font-family: var(--font-en);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-muted);
+  }
+  @media (max-width: 720px) {
+    .episode-row a { grid-template-columns: 64px 1fr; gap: 12px; }
+    .episode-cta { display: none; }
+  }
+</style>

@@ -1,0 +1,91 @@
+---
+import type { Brand } from "../data/brands";
+
+interface Props {
+  brand: Brand;
+}
+
+const { brand } = Astro.props;
+const locations = brand.locations ?? [];
+
+function gmapsUrl(loc: { addressZh?: string; addressEn?: string; lat: number; lng: number }): string {
+  const q = loc.addressZh ?? loc.addressEn ?? `${loc.lat},${loc.lng}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+}
+---
+
+{locations.length > 0 && (
+  <section class="brand-locations">
+    <div class="wrap">
+      <header class="section-head">
+        <span class="eyebrow">實體據點 · Locations</span>
+        <h2 class="section-title">{locations.length} 個據點</h2>
+      </header>
+      <ul class="loc-list">
+        {locations.map((loc) => (
+          <li class="loc">
+            <div class="loc__body">
+              <h3 class="loc__name">{loc.nameZh}</h3>
+              <p class="loc__name-en">{loc.nameEn}</p>
+              <p class="loc__addr">{loc.addressZh}</p>
+              <p class="loc__addr-en">{loc.addressEn}</p>
+            </div>
+            <a class="loc__cta" href={gmapsUrl(loc)} target="_blank" rel="noreferrer">
+              Google Maps →
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style>
+  .brand-locations { padding: 60px 0; border-top: 1px solid var(--c-line); background: #fbfaf2; }
+  .section-head { text-align: center; margin-bottom: 32px; }
+  .section-title {
+    margin: 6px 0;
+    font-family: var(--font-zh);
+    font-weight: 900;
+    font-size: clamp(26px, 4vw, 36px);
+  }
+  .loc-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+  .loc {
+    background: white;
+    border: 1px solid var(--c-line);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .loc__name {
+    margin: 0;
+    font-family: var(--font-zh);
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--c-deep);
+  }
+  .loc__name-en {
+    margin: 2px 0 12px;
+    font-family: var(--font-en);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--c-muted);
+  }
+  .loc__addr { margin: 4px 0; font-size: 14px; color: var(--c-forest); }
+  .loc__addr-en { margin: 4px 0 0; font-family: var(--font-en); font-size: 12px; color: var(--c-muted); }
+  .loc__cta {
+    align-self: flex-start;
+    font-family: var(--font-en);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-orange);
+    text-decoration: none;
+    border-bottom: 2px solid var(--c-orange);
+    padding-bottom: 2px;
+  }
+  .loc__cta:hover { color: var(--c-deep); border-color: var(--c-deep); }
+</style>

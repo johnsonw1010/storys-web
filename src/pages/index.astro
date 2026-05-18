@@ -45,6 +45,7 @@ const logoSrc = (domain: string) =>
       <div class="hero__cta">
         <a class="btn btn--accent" href={SHOW_URL} target="_blank" rel="noreferrer" data-i18n="home.hero.ctaListen">收聽 Storys</a>
         <a class="btn btn--ghost" href="/map" data-i18n="home.hero.ctaMap">瀏覽地圖</a>
+        <a class="btn btn--ghost" href="/visit" data-i18n="nav.visit">散步路線</a>
       </div>
     </div>
   </section>
@@ -58,7 +59,7 @@ const logoSrc = (domain: string) =>
       </header>
       <div class="featured__grid">
         {featured.map((b) => (
-          <a class="brand-tile" href="/map">
+          <a class="brand-tile" href={`/brands/${b.id}`}>
             <span class="brand-tile__logo">
               <img src={logoSrc(b.domain)} alt="" loading="lazy" />
             </span>

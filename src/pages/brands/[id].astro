@@ -1,0 +1,128 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BrandHero from "../../components/BrandHero.astro";
+import BrandLocations from "../../components/BrandLocations.astro";
+import BrandEpisodeList from "../../components/BrandEpisodeList.astro";
+import { BRANDS } from "../../data/brands";
+
+export function getStaticPaths() {
+  return BRANDS.map((brand) => ({
+    params: { id: brand.id },
+    props: { brand },
+  }));
+}
+
+const { brand } = Astro.props;
+const otherBrands = BRANDS.filter((b) => b.id !== brand.id && b.category === brand.category).slice(0, 3);
+---
+
+<BaseLayout
+  title={`${brand.nameZh} · Storys Podcast`}
+  description={brand.descEn}
+>
+  <BrandHero brand={brand} />
+  <BrandLocations brand={brand} />
+  <BrandEpisodeList brand={brand} />
+
+  {otherBrands.length > 0 && (
+    <section class="related">
+      <div class="wrap">
+        <header class="section-head">
+          <span class="eyebrow">同類品牌 · You might also like</span>
+        </header>
+        <div class="related__grid">
+          {otherBrands.map((b) => (
+            <a class="brand-tile" href={`/brands/${b.id}`}>
+              <span class="brand-tile__logo">
+                <img src={`https://www.google.com/s2/favicons?domain=${b.domain}&sz=128`} alt="" loading="lazy" />
+              </span>
+              <div class="brand-tile__body">
+                <span class="brand-tile__cat" data-i18n={`cat.${b.category}`}>{b.category}</span>
+                <span class="brand-tile__name-zh">{b.nameZh}</span>
+                <span class="brand-tile__name-en">{b.nameEn}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="brand-cta">
+    <div class="wrap brand-cta__inner">
+      <h2 class="brand-cta__title">想被 Storys 採訪？</h2>
+      <p class="brand-cta__sub">Want to be on Storys? Tell us about your brand.</p>
+      <a class="btn btn--accent" href="/apply">申請受訪 · Apply</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .related { padding: 60px 0; border-top: 1px solid var(--c-line); }
+  .section-head { text-align: center; margin-bottom: 32px; }
+  .related__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--c-line);
+    border: 1px solid var(--c-line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) {
+    .related__grid { grid-template-columns: 1fr; }
+  }
+  .brand-tile {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    padding: 24px;
+    background: var(--c-cream);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s var(--ease);
+  }
+  .brand-tile:hover { background: #eef1de; }
+  .brand-tile__logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: white;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border: 1px solid var(--c-line);
+  }
+  .brand-tile__logo img { width: 28px; height: 28px; object-fit: contain; }
+  .brand-tile__body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .brand-tile__cat {
+    font-family: var(--font-en);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--c-orange);
+  }
+  .brand-tile__name-zh { font-weight: 700; font-size: 15px; color: var(--c-deep); }
+  .brand-tile__name-en {
+    font-family: var(--font-en);
+    font-size: 12px;
+    color: var(--c-muted);
+  }
+
+  .brand-cta { padding: 80px 0; background: var(--c-forest); color: var(--c-cream); text-align: center; }
+  .brand-cta__title {
+    margin: 0 0 8px;
+    font-family: var(--font-zh);
+    font-weight: 900;
+    font-size: clamp(28px, 4vw, 40px);
+  }
+  .brand-cta__sub {
+    font-family: var(--font-en);
+    font-style: italic;
+    color: var(--c-sage);
+    margin: 0 0 24px;
+  }
+  .brand-cta .btn { background: var(--c-orange); border-color: var(--c-orange); color: var(--c-cream); }
+  .brand-cta .btn:hover { background: #d9551b; border-color: #d9551b; }
+</style>
