@@ -16,6 +16,9 @@ const { title, description } = Astro.props;
   hideFooter={true}
   bodyClass="map-body"
 >
+  <Fragment slot="head">
+    <slot name="head" />
+  </Fragment>
   <slot />
 </BaseLayout>
 
