@@ -1,4 +1,329 @@
 {
-  "syncedAt": null,
-  "items": []
+  "syncedAt": "2026-05-27T08:04:51.719Z",
+  "items": [
+    {
+      "num": 52,
+      "titleZh": "#52 Storys｜Kure8訪後回顧｜在手搖飲紅海中賣生活方式，康普茶如何用品牌力突圍？",
+      "appleId": "1000767556276",
+      "publishDate": "2026-05-13T09:00:00Z"
+    },
+    {
+      "num": 51,
+      "titleZh": "#51 Storys｜創業是一場沒有終點的無限賽局！Kure8 創辦人 Nehemiah：只要還在場上，挫折就只是邁向成功的入場券",
+      "appleId": "1000764276375",
+      "publishDate": "2026-04-29T09:00:00Z"
+    },
+    {
+      "num": 50,
+      "titleZh": "#50 Storys｜登義訪後回顧｜從夕陽產業到百貨新星，二代接班如何讓傳統中藥走進新時代？",
+      "appleId": "1000761504794",
+      "publishDate": "2026-04-15T09:00:00Z"
+    },
+    {
+      "num": 49,
+      "titleZh": "#49 Storys｜差點破產！登義漢方營運長吳孟宸：我靠一包「中藥」救回五年的心血？",
+      "appleId": "1000758618871",
+      "publishDate": "2026-04-01T09:00:01Z"
+    },
+    {
+      "num": 48,
+      "titleZh": "#48 Storys | Megan 訪後回顧 | 國民閨密 Megan 的真實力：從情傷黑洞到「拿回主控權」的底氣進化論",
+      "appleId": "1000755928779",
+      "publishDate": "2026-03-18T09:00:00Z"
+    },
+    {
+      "num": 47,
+      "titleZh": "#47 Storys｜從 iPhone 5 美妝影片到品牌創辦人：Megan 揭秘 10 年創業韌性，為什麼「先開始」比「準備好」更重要？",
+      "appleId": "1000753021284",
+      "publishDate": "2026-03-04T09:00:00Z"
+    },
+    {
+      "num": 46,
+      "titleZh": "#46 Storys 春節特輯｜創業家必備的「韌性」與「初衷」：回顧 16 位創辦人的成功密碼！",
+      "appleId": "1000750291915",
+      "publishDate": "2026-02-18T09:00:00Z"
+    },
+    {
+      "num": 45,
+      "titleZh": "#45 Storys | NunoX 訪後回顧 | 解讀 Jac 謝賀祥：從 Acer 到 Yahoo 的大廠磨練，領悟紡織世家的傳承與品牌國際化心法",
+      "appleId": "1000747996663",
+      "publishDate": "2026-02-04T09:00:00Z"
+    },
+    {
+      "num": 44,
+      "titleZh": "#44 Storys | NunoX 創辦人 謝賀祥 Jac | 燒光積蓄、小孩出生...他卻堅持回頭救傳產？「這輩子我非解這一題不可！」",
+      "appleId": "1000746018831",
+      "publishDate": "2026-01-21T09:00:00Z"
+    },
+    {
+      "num": 43,
+      "titleZh": "#43 Storys | 【特別公告】12 歲上大學的 AI 傳奇：專訪 Speak 創辦人 Andrew Hsu（內含 YouTube 雙語版連結）",
+      "appleId": "1000744368136",
+      "publishDate": "2026-01-08T23:00:00Z"
+    },
+    {
+      "num": 42,
+      "titleZh": "#42 Storys | NuBra 訪後回顧 | 解讀小慧姐：從業務天花板到品牌創辦人，領悟中興百貨時期的貴人學與接班智慧",
+      "appleId": "1000742525950",
+      "publishDate": "2025-12-23T23:00:00Z"
+    },
+    {
+      "num": 41,
+      "titleZh": "#41 Storys | NuBra Taiwan & 福忠字號創辦人 小慧姊 | 革命性女性穿搭，破億營收！如何在官司與SARS中逆轉勝？feat. 福忠字號",
+      "appleId": "1000740517642",
+      "publishDate": "2025-12-10T01:16:01Z"
+    },
+    {
+      "num": 41,
+      "titleZh": "#41 Storys | NuBra Taiwan & 福忠字號創辦人 小慧姊 | 革命性女性穿搭，破億營收！如何在官司與SARS中逆轉勝？feat. 福忠字號",
+      "appleId": "1000740503014",
+      "publishDate": "1970-01-01T00:33:45Z"
+    },
+    {
+      "num": 40,
+      "titleZh": "#40 Storys | AppWorks 訪後回顧 | 解讀 Jamie 林之晨：從網路泡沫的倖存者到造浪者，與父親林芳郁醫師的利他傳承",
+      "appleId": "1000738440284",
+      "publishDate": "2025-11-25T23:00:00Z"
+    },
+    {
+      "num": 39,
+      "titleZh": "#39 Storys | AppWorks 創辦人 林之晨 Jamie | 從翹課學霸到創造兆元市值，如何在挫敗中找到 ”非成功不可的理由”",
+      "appleId": "1000736340024",
+      "publishDate": "2025-11-11T23:00:00Z"
+    },
+    {
+      "num": 38,
+      "titleZh": "#38 Storys | WeMo 訪後回顧 & 討論",
+      "appleId": "1000733944393",
+      "publishDate": "2025-10-28T23:00:00Z"
+    },
+    {
+      "num": 37,
+      "titleZh": "#37 Storys | WeMo 共同創辦人 吳昕霈 Jeffrey | 我跳脫千萬年薪的「安逸焦慮」，跳入創業，就是為了給台灣下一代更好的城市交通",
+      "appleId": "1000731878500",
+      "publishDate": "2025-10-14T22:49:01Z"
+    },
+    {
+      "num": 36,
+      "titleZh": "#36 He Wrote a Book at 13… Now He’s Building a $1B AI Startup | Andrew Hsu’s Story #speak",
+      "appleId": "1000729417747",
+      "publishDate": "2025-09-30T23:00:00Z"
+    },
+    {
+      "num": 35,
+      "titleZh": "#35 Storys | Speak 共同創辦人暨 CTO Andrew Hsu 徐安廬的故事：從天才少年到 AI 創業者｜Speak 創辦人特別篇",
+      "appleId": "1000727120347",
+      "publishDate": "2025-09-16T23:01:00Z"
+    },
+    {
+      "num": 34,
+      "titleZh": "#34 Storys | Speak Cofounder & CTO: Andrew Hsu | A child prodigy turned tech serial entrepreneur, building the next Ed Tech Giant with AI",
+      "appleId": "1000727120488",
+      "publishDate": "2025-09-16T23:00:00Z"
+    },
+    {
+      "num": 33,
+      "titleZh": "#33 Storys | PressPlay 訪後討論 & Storys 品牌 Rebrand!",
+      "appleId": "1000724645734",
+      "publishDate": "2025-09-02T23:00:00Z"
+    },
+    {
+      "num": 32,
+      "titleZh": "#32 Storys | PressPlay 共同創辦人暨 PressPlay Academy 執行長 | 林鼎鈞 Dennis | 創作者的下一步：從訂閱經濟到品牌經營，PressPlay 的內容產業進化論",
+      "appleId": "1000722716287",
+      "publishDate": "2025-08-19T23:00:00Z"
+    },
+    {
+      "num": 31,
+      "titleZh": "#31 Storys | PopDaily 訪後收穫 & 十場訪談的回顧",
+      "appleId": "1000720813139",
+      "publishDate": "2025-08-05T23:00:00Z"
+    },
+    {
+      "num": 30,
+      "titleZh": "#30 Storys | PopDaily & 阿金人生進化中 創辦人 黃晨皓 Kim | 他靠內容翻轉命運，卻在成功後選擇教人面對焦慮與自我──阿金聊創業的內外修煉",
+      "appleId": "1000718528705",
+      "publishDate": "2025-07-22T23:00:00Z"
+    },
+    {
+      "num": 29,
+      "titleZh": "#29 Storys | CYBERBIZ - 主持人訪後收穫",
+      "appleId": "1000716398883",
+      "publishDate": "2025-07-08T23:00:00Z"
+    },
+    {
+      "num": 28,
+      "titleZh": "#28 Storys | CYBERBIZ 順立智慧 | Part 5 | 創辦人 蘇基明 Jimmy | 精心佈局：從電商平台到智慧零售",
+      "appleId": "1000714418630",
+      "publishDate": "2025-06-24T23:04:00Z"
+    },
+    {
+      "num": 27,
+      "titleZh": "#27 Storys | CYBERBIZ 順立智慧 | Part 4 | 創辦人 蘇基明 Jimmy | 正式啟動快速成長飛輪：蹲馬步四年，疫情後起飛",
+      "appleId": "1000714418598",
+      "publishDate": "2025-06-24T23:03:00Z"
+    },
+    {
+      "num": 26,
+      "titleZh": "#26 Storys | CYBERBIZ 順立智慧 | Part 3 | 創辦人 蘇基明 Jimmy | 三條線同時開打的現實考驗",
+      "appleId": "1000714418631",
+      "publishDate": "2025-06-24T23:02:00Z"
+    },
+    {
+      "num": 25,
+      "titleZh": "#25 Storys | CYBERBIZ 順立智慧 | Part 2 | 創辦人 蘇基明 Jimmy | 創業起心動念 & 偶然的矽谷行與台灣軟體缺口",
+      "appleId": "1000714418539",
+      "publishDate": "2025-06-24T23:01:00Z"
+    },
+    {
+      "num": 24,
+      "titleZh": "#24 Storys | CYBERBIZ 順立智慧 | Part 1 | 創辦人 蘇基明 Jimmy | 苗栗小孩的工科人生 & 技術人修煉路",
+      "appleId": "1000714418540",
+      "publishDate": "2025-06-24T23:00:00Z"
+    },
+    {
+      "num": 23,
+      "titleZh": "#23 Storys | Cofit - 主持人訪後收穫",
+      "appleId": "1000712363677",
+      "publishDate": "2025-06-10T23:00:00Z"
+    },
+    {
+      "num": 22,
+      "titleZh": "#22 Storys | Cofit & 初日醫學 | Part 4 | 創辦人 林暐淳 Johnson 分享從一張照片到AI與診所的瘦身改革",
+      "appleId": "1000710194159",
+      "publishDate": "2025-05-27T23:03:00Z"
+    },
+    {
+      "num": 21,
+      "titleZh": "#21 Storys | Cofit & 初日醫學 | Part 3 | 創辦人 林暐淳 Johnson 分享從廣告到陪伴，Cofit 行銷做法的大進化",
+      "appleId": "1000710194272",
+      "publishDate": "2025-05-27T23:02:00Z"
+    },
+    {
+      "num": 20,
+      "titleZh": "#20 Storys | Cofit & 初日醫學 | Part 2 | 創辦人 林暐淳 Johnson 分享差點撐不下去的第一年，Cofit 怎麼挺過來的？",
+      "appleId": "1000710194271",
+      "publishDate": "2025-05-27T23:01:00Z"
+    },
+    {
+      "num": 19,
+      "titleZh": "#19 Storys | Cofit & 初日醫學 | Part 1 | 創辦人 林暐淳 Johnson 分享大學生怎麼自己創業開課？Johnson 的第一間公司",
+      "appleId": "1000710194273",
+      "publishDate": "2025-05-27T23:00:00Z"
+    },
+    {
+      "num": 18,
+      "titleZh": "#18 Storys | 4foodie - 主持人訪後收穫 & 觀眾提問",
+      "appleId": "1000708387751",
+      "publishDate": "2025-05-13T23:00:00Z"
+    },
+    {
+      "num": 17,
+      "titleZh": "#17 Storys | 4Foodie 創辦人 徐詩晴 Ava：不只是追蹤數！4Foodie教你如何把流量變成真實收入",
+      "appleId": "1000705474928",
+      "publishDate": "2025-04-29T23:00:00Z"
+    },
+    {
+      "num": 16,
+      "titleZh": "#16 Storys | 貝殼放大 - 主持人訪後收穫 & 觀眾提問",
+      "appleId": "1000703674337",
+      "publishDate": "2025-04-15T23:00:00Z"
+    },
+    {
+      "num": 15,
+      "titleZh": "#15 Storys | 貝殼放大 | 創辦人 林大涵如何從 0 到 50 億集資，打造募資領航品牌",
+      "appleId": "1000701804283",
+      "publishDate": "2025-04-01T23:00:00Z"
+    },
+    {
+      "num": 14,
+      "titleZh": "#14 Storys | Vacanza - 主持人訪後收穫 & 觀眾提問",
+      "appleId": "1000699729058",
+      "publishDate": "2025-03-18T23:00:00Z"
+    },
+    {
+      "num": 13,
+      "titleZh": "#13 Storys | Vacanza 創辦人 亦 & 蟲蟲 (Part 5/5)｜夫妻共同打造家庭和永續經營企業的訣竅",
+      "appleId": "1000698809052",
+      "publishDate": "2025-03-11T23:02:00Z"
+    },
+    {
+      "num": 12,
+      "titleZh": "#12 Storys | Vacanza 創辦人 亦 & 蟲蟲 (Part 4/5)｜三年內成長超過五倍的秘訣",
+      "appleId": "1000698809074",
+      "publishDate": "2025-03-11T23:01:00Z"
+    },
+    {
+      "num": 11,
+      "titleZh": "#11 Storys | Vacanza 創辦人 亦 & 蟲蟲 (Part 3/5)｜東區開店背後原因竟然是因為…",
+      "appleId": "1000698809014",
+      "publishDate": "2025-03-11T23:00:00Z"
+    },
+    {
+      "num": 10,
+      "titleZh": "#10 Storys | Vacanza 創辦人 亦 & 蟲蟲 (Part 2/5)｜結識蟲蟲和品牌名稱的由來 & 夜市商圈經營迭代擴張",
+      "appleId": "1000697737497",
+      "publishDate": "2025-03-04T23:01:00Z"
+    },
+    {
+      "num": 9,
+      "titleZh": "#9 Storys | Vacanza 創辦人 亦 & 蟲蟲 (Part 1/5)｜踏上飾品銷售的起源",
+      "appleId": "1000697737498",
+      "publishDate": "2025-03-04T23:00:00Z"
+    },
+    {
+      "num": 8,
+      "titleZh": "#8 Storys | 酷遊天 KKday - 主持人訪後收穫 & 觀眾提問",
+      "appleId": "1000693768117",
+      "publishDate": "2025-02-18T23:00:00Z"
+    },
+    {
+      "num": 7,
+      "titleZh": "#7 Storys | 酷遊天 KKday | 從易遊網到 KKday，創辦人陳明明如何用 20 年經驗打造旅遊產業新時代？ | 陳明明",
+      "appleId": "1000689073825",
+      "publishDate": "2025-02-04T23:00:00Z"
+    },
+    {
+      "num": 6,
+      "titleZh": "#6 Storys | 真芳炭烤土司 ZhenFang - 主持人訪後收穫 & 觀眾提問",
+      "appleId": "1000684914835",
+      "publishDate": "2025-01-21T23:00:00Z"
+    },
+    {
+      "num": 5,
+      "titleZh": "#5 Storys | 真芳炭烤土司 ZhenFang | 堅持與熱愛：創辦人 Russell 如何帶領真芳成為觀光客心中的早餐首選 | 張文哲",
+      "appleId": "1000683093233",
+      "publishDate": "2025-01-07T23:00:00Z"
+    },
+    {
+      "num": 4,
+      "titleZh": "#4 Storys | 拓元售票 tixCraft - 主持人訪後收穫 & 聽眾提問",
+      "appleId": "1000681602676",
+      "publishDate": "2024-12-24T23:00:00Z"
+    },
+    {
+      "num": 3,
+      "titleZh": "#3 Storys | 拓元售票 tixCraft | 從棒球迷到票務產業巨擘：創辦人 KT 與拓元如何改寫售票遊戲規則 | 邱光宗",
+      "appleId": "1000679943845",
+      "publishDate": "2024-12-10T22:30:00Z"
+    },
+    {
+      "num": 2,
+      "titleZh": "#2 Storys | 普羅森 Phrozen - 主持人訪後收穫 & 聽眾提問",
+      "appleId": "1000678337524",
+      "publishDate": "2024-11-26T23:00:00Z"
+    },
+    {
+      "num": 1,
+      "titleZh": "#1 Storys | 普羅森 Phrozen | 3D 列印革命： 創辦人 Ray 如何讓台灣品牌走向世界的舞台 | 吳彞任",
+      "appleId": "1000676700378",
+      "publishDate": "2024-11-12T19:21:41Z"
+    },
+    {
+      "num": null,
+      "titleZh": "Storys 節目介紹",
+      "appleId": "1000676695254",
+      "publishDate": "2024-11-12T19:05:05Z"
+    }
+  ]
 }
