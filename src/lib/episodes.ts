@@ -3,9 +3,21 @@ import rawEpisodes from "../data/episodes.json";
 
 export interface SyncedEpisode {
   num: number | null;
-  titleZh: string;
-  appleId: string | null;
   publishDate: string | null;
+  titleZh: string;
+  titleEn: string | null;
+  guestName: string | null;
+  guestTitle: string | null;
+  brandNameZh: string | null;
+  brandId: string | null;
+  appleId: string | null;
+  spotifyId: string | null;
+  soundonUrl: string | null;
+  kkboxUrl: string | null;
+  durationSec: number | null;
+  transcriptFile: string | null;
+  coverFile: string | null;
+  summary: string | null;
 }
 
 export interface EpisodesData {
@@ -36,9 +48,21 @@ export function getAllEpisodes(): SyncedEpisode[] {
   const derived: SyncedEpisode[] = BRANDS.flatMap((b) =>
     b.episodes.map((e) => ({
       num: e.num,
-      titleZh: e.titleZh,
-      appleId: e.appleId,
       publishDate: null,
+      titleZh: e.titleZh,
+      titleEn: null,
+      guestName: null,
+      guestTitle: null,
+      brandNameZh: b.nameZh,
+      brandId: b.id,
+      appleId: e.appleId,
+      spotifyId: null,
+      soundonUrl: null,
+      kkboxUrl: null,
+      durationSec: null,
+      transcriptFile: null,
+      coverFile: null,
+      summary: null,
     })),
   );
   return derived.sort((a, b) => (b.num ?? 0) - (a.num ?? 0));

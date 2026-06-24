@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { BRANDS } from "../data/brands";
+import { BRANDS, brandLogoUrl } from "../data/brands";
 
 // Only retail brands with at least one geocoded location can be on a walking route.
 const candidates = BRANDS.filter(
@@ -11,6 +11,7 @@ const candidates = BRANDS.filter(
   nameEn: b.nameEn,
   category: b.category,
   domain: b.domain,
+  logoUrl: brandLogoUrl(b),
   loc: b.locations![0],
 }));
 
@@ -94,7 +95,9 @@ const bootstrap = `window.__VISIT_BRANDS__ = ${JSON.stringify(candidates)};`;
       function escapeHtml(s) {
         return String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
       }
-      function logoSrc(domain) { return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`; }
+      function logoSrc(brand) {
+        return brand.logoUrl || `https://www.google.com/s2/favicons?domain=${brand.domain}&sz=128`;
+      }
       function gmapsUrl(loc) {
         const q = loc.addressZh || loc.addressEn || `${loc.lat},${loc.lng}`;
         return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
@@ -116,7 +119,7 @@ const bootstrap = `window.__VISIT_BRANDS__ = ${JSON.stringify(candidates)};`;
           return `
             <li class="picker__row ${isSelected ? "is-selected" : ""}" data-id="${escapeHtml(b.id)}">
               <span class="picker__logo">
-                <img src="${escapeHtml(logoSrc(b.domain))}" alt="" loading="lazy" />
+                <img src="${escapeHtml(logoSrc(b))}" alt="" loading="lazy" />
               </span>
               <span class="picker__body">
                 <span class="picker__name">${escapeHtml(b.nameZh)}</span>

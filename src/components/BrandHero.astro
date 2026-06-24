@@ -1,14 +1,12 @@
 ---
-import type { Brand } from "../data/brands";
+import { brandLogoUrl, type Brand } from "../data/brands";
 
 interface Props {
   brand: Brand;
 }
 
 const { brand } = Astro.props;
-const logoSrc = brand.logo
-  ? `/brand/logos/${brand.id}.png`
-  : `https://www.google.com/s2/favicons?domain=${brand.domain}&sz=128`;
+const logoSrc = brandLogoUrl(brand);
 ---
 
 <header class="brand-hero" data-cat={brand.category}>

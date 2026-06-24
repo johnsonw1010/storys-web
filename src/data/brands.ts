@@ -58,12 +58,27 @@ export interface Brand {
 export const SHOW_ID = "1779337239";
 export const SHOW_URL = `https://podcasts.apple.com/tw/podcast/id${SHOW_ID}`;
 
+/**
+ * Resolve a brand's display logo URL.
+ *   - If the brand has a hand-curated PNG in public/brand/logos/{id}.png
+ *     (marked via `logo: true` on the Brand), use that.
+ *   - Otherwise fall back to a Google favicon for the brand's domain.
+ */
+export function brandLogoUrl(
+  brand: Pick<Brand, "id" | "domain" | "logo">,
+): string {
+  return brand.logo
+    ? `/brand/logos/${brand.id}.png`
+    : `https://www.google.com/s2/favicons?domain=${brand.domain}&sz=128`;
+}
+
 export const BRANDS: Brand[] = [
   // ============================================================
   // RETAIL — brands you can walk into and shop
   // ============================================================
   {
     id: "zhenfan",
+    logo: true,
     nameZh: "真芳 碳烤吐司",
     nameEn: "Zhen Fang",
     category: "food",
@@ -106,6 +121,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "vacanza",
+    logo: true,
     nameZh: "Vacanza Accessory",
     nameEn: "Vacanza Accessory",
     category: "fashion",
@@ -160,6 +176,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "backerfounder",
+    logo: true,
     nameZh: "貝殼放大",
     nameEn: "Backer-Founder",
     category: "platform",
@@ -182,6 +199,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "cofit",
+    logo: true,
     nameZh: "Cofit 群健",
     nameEn: "Cofit",
     category: "wellness",
@@ -204,6 +222,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "appworks",
+    logo: true,
     nameZh: "AppWorks 之初加速器",
     nameEn: "AppWorks",
     category: "investment",
@@ -226,6 +245,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "dengyi",
+    logo: true,
     nameZh: "登義漢方",
     nameEn: "Dengyi",
     category: "wellness",
@@ -248,6 +268,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "kure8",
+    logo: true,
     nameZh: "KURE8 8酵茶",
     nameEn: "KURE8 Kombucha",
     category: "food",
@@ -298,6 +319,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "nubra",
+    logo: true,
     nameZh: "NuBra 絕世好波",
     nameEn: "NuBra",
     category: "fashion",
@@ -323,6 +345,7 @@ export const BRANDS: Brand[] = [
   // ============================================================
   {
     id: "phrozen",
+    logo: true,
     nameZh: "Phrozen 普羅森",
     nameEn: "Phrozen",
     category: "tech",
@@ -339,6 +362,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "tixcraft",
+    logo: true,
     nameZh: "拓元售票 tixCraft",
     nameEn: "tixCraft",
     category: "platform",
@@ -355,6 +379,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "kkday",
+    logo: true,
     nameZh: "KKday 酷遊天",
     nameEn: "KKday",
     category: "travel",
@@ -371,6 +396,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "4foodie",
+    logo: true,
     nameZh: "4Foodie",
     nameEn: "4Foodie",
     category: "media",
@@ -387,6 +413,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "cyberbiz",
+    logo: true,
     nameZh: "CYBERBIZ 順立智慧",
     nameEn: "CYBERBIZ",
     category: "platform",
@@ -403,6 +430,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "popdaily",
+    logo: true,
     nameZh: "PopDaily 波波黛莉",
     nameEn: "PopDaily",
     category: "media",
@@ -419,6 +447,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "pressplay",
+    logo: true,
     nameZh: "PressPlay",
     nameEn: "PressPlay",
     category: "creator",
@@ -452,6 +481,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "wemo",
+    logo: true,
     nameZh: "WeMo Scooter",
     nameEn: "WeMo Scooter",
     category: "mobility",
@@ -468,6 +498,7 @@ export const BRANDS: Brand[] = [
 
   {
     id: "nunox",
+    logo: true,
     nameZh: "NunoX",
     nameEn: "NunoX",
     category: "tech",

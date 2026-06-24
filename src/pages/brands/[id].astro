@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import BrandHero from "../../components/BrandHero.astro";
 import BrandLocations from "../../components/BrandLocations.astro";
 import BrandEpisodeList from "../../components/BrandEpisodeList.astro";
-import { BRANDS } from "../../data/brands";
+import { BRANDS, brandLogoUrl } from "../../data/brands";
 
 export function getStaticPaths() {
   return BRANDS.map((brand) => ({
@@ -34,7 +34,7 @@ const otherBrands = BRANDS.filter((b) => b.id !== brand.id && b.category === bra
           {otherBrands.map((b) => (
             <a class="brand-tile" href={`/brands/${b.id}`}>
               <span class="brand-tile__logo">
-                <img src={`https://www.google.com/s2/favicons?domain=${b.domain}&sz=128`} alt="" loading="lazy" />
+                <img src={brandLogoUrl(b)} alt="" loading="lazy" />
               </span>
               <div class="brand-tile__body">
                 <span class="brand-tile__cat" data-i18n={`cat.${b.category}`}>{b.category}</span>
