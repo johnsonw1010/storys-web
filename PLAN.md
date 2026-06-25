@@ -73,6 +73,7 @@ flowchart LR
 - 2026-06-24 — **Location display:** add `kind` (store|hq); HQ off the consumer map, shown on the brand page. Migrate 3 office rows to `hq`.
 - 2026-06-24 — **Visual direction = "Editorial Luxury"** (keep forest/cream/orange; elevate type + texture + depth). Mockup-first before building.
 - 2026-06-24 — **This journal = two files** (`PLAN.md` current + `CHANGELOG.md` history), split by mutability; entry via `CLAUDE.md` / `AGENTS.md`.
+- 2026-06-25 — **Automation = Apps Script (Google side) + GitHub Actions (build/deploy); no n8n / no orchestrator** until a concrete multi-service need forces it. Same "stay lean" rule as no-database / no-admin-UI.
 
 ## Risks / known issues
 - 🔴 Contact / sponsor / application forms are **inert** — still Netlify Forms markup on a Cloudflare host, so submissions go nowhere. Plan to fix: `docs/plans/inbound-forms.md`.
