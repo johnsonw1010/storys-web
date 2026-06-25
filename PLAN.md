@@ -90,6 +90,7 @@ flowchart LR
 ## Pointers
 - VA handoff brief + import CSVs: `docs/va-handoff/`
 - Inbound forms plan (not built): `docs/plans/inbound-forms.md`
+- Partner/sponsor showcase plan (not built; sponsor tiers deferred): `docs/plans/partner-showcase.md`
 - ⏳ TODO (Johnson asked to be reminded): re-create the VA handoff in **Traditional Chinese (zh-Hant)** — resolve the pending content edits + fill the contact/deadline blanks first.
 - Episode pages: proposed click-to-expand panel (embedded Apple+Spotify right, brand-voiced summary left). Approach + brand tone under discussion — not locked.
 - (If opened as an Obsidian vault, add `.obsidian/` to `.gitignore`.)
