@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<!-- Source for public/og/default.png (1200x630 OG share card).
+     Regenerate: serve this file over http (svg path resolves from repo layout),
+     open in a 1200x630 viewport, screenshot PNG -> public/og/default.png.
+     Redo when the VIS fonts (Neue Kabel + 王漢宗特黑體繁) land. -->
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; padding: 0; }
+  body { width: 1200px; height: 630px; overflow: hidden; }
+  .card {
+    position: relative;
+    width: 1200px; height: 630px;
+    background: #162114;
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* soft editorial glow, forest over deep */
+  .card::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 900px 520px at 50% 42%, rgba(50, 68, 37, 0.85), rgba(50, 68, 37, 0) 70%),
+      radial-gradient(ellipse 700px 300px at 50% 108%, rgba(240, 109, 45, 0.14), rgba(240, 109, 45, 0) 65%);
+  }
+  /* double-bezel echo: thin line inset, like the site's cards */
+  .bezel {
+    position: absolute; inset: 26px;
+    border: 1.5px solid rgba(199, 208, 178, 0.28);
+    border-radius: 18px;
+  }
+  .bezel::after {
+    content: "";
+    position: absolute; inset: 6px;
+    border: 1px solid rgba(199, 208, 178, 0.12);
+    border-radius: 12px;
+  }
+  .lockup {
+    position: relative;
+    width: 660px;
+    display: block;
+  }
+  .accent {
+    position: absolute;
+    left: 50%; bottom: 78px;
+    transform: translateX(-50%);
+    width: 56px; height: 4px;
+    border-radius: 2px;
+    background: #f06d2d;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="bezel"></div>
+    <img class="lockup" src="../../public/brand/Logo_STORYS_icon-logotype-tagline-dark.svg" alt="">
+    <div class="accent"></div>
+  </div>
+</body>
+</html>

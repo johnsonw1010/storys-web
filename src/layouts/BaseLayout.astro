@@ -33,11 +33,10 @@ const metaDescription = description ?? I18N.zh["meta.description"];
 const siteOrigin = Astro.site ?? new URL("https://storys.fm");
 const canonicalURL =
   canonical ?? new URL(Astro.url.pathname.replace(/\/+$/, "") || "/", siteOrigin).href;
-const ogImageURL = ogImage
-  ? ogImage.startsWith("http")
-    ? ogImage
-    : new URL(ogImage, siteOrigin).href
-  : null;
+const ogImageSrc = ogImage ?? "/og/default.png";
+const ogImageURL = ogImageSrc.startsWith("http")
+  ? ogImageSrc
+  : new URL(ogImageSrc, siteOrigin).href;
 
 // Serialize the i18n dictionary so the client-side script can apply translations.
 const i18nJson = JSON.stringify(I18N);
@@ -59,11 +58,13 @@ const i18nJson = JSON.stringify(I18N);
     <meta property="og:title" content={metaTitle} />
     <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonicalURL} />
-    {ogImageURL && <meta property="og:image" content={ogImageURL} />}
-    <meta name="twitter:card" content={ogImageURL ? "summary_large_image" : "summary"} />
+    <meta property="og:image" content={ogImageURL} />
+    {!ogImage && <meta property="og:image:width" content="1200" />}
+    {!ogImage && <meta property="og:image:height" content="630" />}
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={metaTitle} />
     <meta name="twitter:description" content={metaDescription} />
-    {ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
+    <meta name="twitter:image" content={ogImageURL} />
 
     <link rel="icon" type="image/svg+xml" href="/brand/Logo_STORYS_icon-logotype.svg" />
 
