@@ -1,4 +1,4 @@
-name: Sync episodes from RSS
+name: Sync episodes from Master Sheet
 
 on:
   schedule:
@@ -33,5 +33,5 @@ jobs:
           git config user.name "storys-bot"
           git config user.email "bot@storys.fm"
           git add src/data/episodes.json
-          git commit -m "chore: sync episodes from RSS"
+          git commit -m "chore: sync episodes from Master Sheet"
           git push
