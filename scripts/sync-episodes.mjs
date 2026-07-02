@@ -20,8 +20,10 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Default = the Storys Master Sheet's Episodes tab (repointed 2026-07-02; the old
+// Michelle sheet 1aYKpPGqVYiUCG4Ky2p_bPwAhigAGRABdIPQ07d_num8 is retired as a source).
 const SHEET_ID =
-  process.env.STORYS_SHEET_ID ?? "1aYKpPGqVYiUCG4Ky2p_bPwAhigAGRABdIPQ07d_num8";
+  process.env.STORYS_SHEET_ID ?? "1axbM6qDG1pz1jCZ3_NyBZWtgcNbNb6cNtnou7FBI2P4";
 const SHEET_GID = process.env.STORYS_SHEET_GID ?? "0";
 const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${SHEET_GID}`;
 const OUTPUT = resolve(__dirname, "..", "src", "data", "episodes.json");
@@ -69,6 +71,12 @@ const clean = (v) => {
   if (s === "" || s === "無" || s === "缺") return null;
   return s;
 };
+// Only accept http(s) URLs — a sheet-authored `javascript:`/`data:` URL must never
+// reach an href (same guard as sync.mjs's httpUrl for brand websites).
+const httpUrl = (v) => {
+  const s = clean(v);
+  return s && /^https?:\/\//i.test(s) ? s : null;
+};
 const num = (v) => {
   const s = clean(v);
   if (s == null) return null;
@@ -114,8 +122,8 @@ function normalizeRow(row) {
     brandId: clean(brandId),
     appleId: clean(appleId),
     spotifyId: clean(spotifyId),
-    soundonUrl: clean(soundonUrl),
-    kkboxUrl: clean(kkboxUrl),
+    soundonUrl: httpUrl(soundonUrl),
+    kkboxUrl: httpUrl(kkboxUrl),
     durationSec: num(durationSec),
     transcriptFile: clean(transcriptFile),
     coverFile: clean(coverFile),
@@ -150,6 +158,23 @@ async function main() {
   const rows = parseCsv(csv);
   const [header, ...body] = rows;
   console.log(`[sync-episodes] CSV header: ${header.length} cols, ${body.length} rows`);
+
+  // normalizeRow parses POSITIONALLY — guard the column order so an inserted or
+  // reordered sheet column fails loudly instead of silently shifting every field.
+  const EXPECTED_HEADER = [
+    "集數", "上線日期", "中文標題", "英文標題", "來賓姓名", "來賓職稱",
+    "品牌中文名", "brand_id", "Apple Podcasts ID", "Spotify Episode ID",
+    "SoundOn 連結", "KKBOX 連結", "集數時長（秒）", "逐字稿 Drive 連結", "封面圖 Drive 連結",
+  ];
+  const headerTrim = header.map((h) => h.trim());
+  const mismatch = EXPECTED_HEADER.findIndex((h, i) => headerTrim[i] !== h);
+  if (mismatch !== -1) {
+    throw new Error(
+      `Sheet column order changed: col ${mismatch + 1} is ${JSON.stringify(headerTrim[mismatch])}, ` +
+        `expected ${JSON.stringify(EXPECTED_HEADER[mismatch])}. ` +
+        `Update EXPECTED_HEADER + normalizeRow together, then re-run.`,
+    );
+  }
 
   const existingSummaries = await loadExistingSummaries();
 

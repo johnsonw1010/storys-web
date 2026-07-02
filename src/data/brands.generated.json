@@ -1,0 +1,1053 @@
+[
+  {
+    "id": "zhenfang",
+    "nameZh": "真芳 碳烤吐司",
+    "nameEn": "Zhen Fang",
+    "category": "food",
+    "type": "retail",
+    "descZh": "把台式早餐做到極致的當代炭烤吐司品牌。",
+    "descEn": "A modern Taiwanese breakfast brand reimagining charcoal-grilled toast.",
+    "domain": "zhenfang.com.tw",
+    "website": "https://jhenfang.freestore.tw/",
+    "episodes": [
+      {
+        "num": 5,
+        "titleZh": "真芳炭烤土司 ZhenFang｜堅持與熱愛：創辦人 Russell 如何帶領真芳成為觀光客心中的早餐首選",
+        "appleId": "1000683093233"
+      },
+      {
+        "num": 6,
+        "titleZh": "真芳炭烤土司 ZhenFang - 主持人訪後收穫以及觀眾提問",
+        "appleId": "1000684914835"
+      }
+    ],
+    "locations": [
+      {
+        "nameZh": "信義創始店",
+        "nameEn": "Xinyi (Original)",
+        "addressZh": "台北市信義區忠孝東路四段559巷16弄17號",
+        "addressEn": "No. 17, Aly. 16, Ln. 559, Sec. 4, Zhongxiao E. Rd., Xinyi Dist., Taipei",
+        "lat": 25.042401,
+        "lng": 121.564244
+      },
+      {
+        "nameZh": "民生松江店",
+        "nameEn": "Minsheng-Songjiang",
+        "addressZh": "台北市中山區民生東路二段129號",
+        "addressEn": "No. 129, Sec. 2, Minsheng E. Rd., Zhongshan Dist., Taipei",
+        "lat": 25.058086,
+        "lng": 121.532289
+      },
+      {
+        "nameZh": "大安和平店",
+        "nameEn": "Da'an-Heping",
+        "addressZh": "台北市大安區和平東路二段209號",
+        "addressEn": "No. 209, Sec. 2, Heping E. Rd., Da'an Dist., Taipei",
+        "lat": 25.025193,
+        "lng": 121.542559
+      },
+      {
+        "nameZh": "長安天津店",
+        "nameEn": "Chang'an-Tianjin",
+        "addressZh": "台北市中山區長安東路一段19號",
+        "addressEn": "No. 19, Sec. 1, Chang'an E. Rd., Zhongshan Dist., Taipei",
+        "lat": 25.049633,
+        "lng": 121.522984
+      },
+      {
+        "nameZh": "民生敦北店",
+        "nameEn": "Minsheng-Dunbei",
+        "addressZh": "台北市松山區民生東路四段105號",
+        "addressEn": "No. 105, Sec. 4, Minsheng E. Rd., Songshan Dist., Taipei",
+        "lat": 25.058189,
+        "lng": 121.552629
+      },
+      {
+        "nameZh": "內湖港墘店",
+        "nameEn": "Neihu-Gangqian",
+        "addressZh": "台北市內湖區港墘路169號",
+        "addressEn": "No. 169, Gangqian Rd., Neihu Dist., Taipei",
+        "lat": 25.076768,
+        "lng": 121.575348
+      },
+      {
+        "nameZh": "圓山酒泉店",
+        "nameEn": "Yuanshan Jiuquan",
+        "addressZh": "台北市大同區酒泉街17號",
+        "addressEn": "",
+        "lat": 25.070715,
+        "lng": 121.519575
+      }
+    ],
+    "logo": true
+  },
+  {
+    "id": "vacanza",
+    "nameZh": "Vacanza Accessory",
+    "nameEn": "Vacanza Accessory",
+    "category": "fashion",
+    "type": "retail",
+    "descZh": "以「日常感」聞名的台灣輕珠寶品牌，全台逾 30 個據點。",
+    "descEn": "A Taiwan-born jewelry label known for everyday-wearable design — 30+ locations nationwide.",
+    "domain": "vacanza.com.tw",
+    "website": "https://www.vacanza.com.tw",
+    "episodes": [
+      {
+        "num": 9,
+        "titleZh": "#9 Vacanza 創辦人 亦 & 蟲蟲 (Part 1/5)｜踏上飾品銷售的起源",
+        "appleId": "1000697737498"
+      },
+      {
+        "num": 10,
+        "titleZh": "Vacanza 創辦人 亦 & 蟲蟲 (Part 2/5)｜結識蟲蟲和品牌名稱的由來 & 夜市商圈經營迭代擴張",
+        "appleId": "1000697737497"
+      },
+      {
+        "num": 11,
+        "titleZh": "Vacanza 創辦人 亦 & 蟲蟲 (Part 3/5)｜東區開店背後原因竟然是因為…",
+        "appleId": "1000698809014"
+      },
+      {
+        "num": 12,
+        "titleZh": "Vacanza 創辦人 亦 & 蟲蟲 (Part 4/5)｜三年內成長超過五倍的秘訣",
+        "appleId": "1000698809074"
+      },
+      {
+        "num": 13,
+        "titleZh": "Vacanza 創辦人 亦 & 蟲蟲 (Part 5/5)｜夫妻共同打造家庭和永續經營企業的訣竅",
+        "appleId": "1000698809052"
+      },
+      {
+        "num": 14,
+        "titleZh": "Vacanza - 主持人訪後收穫 & 觀眾提問",
+        "appleId": "1000699729058"
+      }
+    ],
+    "locations": [
+      {
+        "nameZh": "Vacanza Lab 實驗店",
+        "nameEn": "Vacanza Lab",
+        "addressZh": "台北市中山區中山北路二段36巷37號1F",
+        "addressEn": "1F, No. 37, Ln. 36, Sec. 2, Zhongshan N. Rd., Zhongshan Dist., Taipei",
+        "lat": 25.054359,
+        "lng": 121.520707
+      },
+      {
+        "nameZh": "Vacanza Crush",
+        "nameEn": "Vacanza Crush",
+        "addressZh": "台北市中山區中山北路二段42巷25號",
+        "addressEn": "No. 25, Ln. 42, Sec. 2, Zhongshan N. Rd., Zhongshan Dist., Taipei",
+        "lat": 25.054768,
+        "lng": 121.520851
+      },
+      {
+        "nameZh": "Vacanza Tea Time 信義威秀",
+        "nameEn": "Vacanza Tea Time — Xinyi Vieshow",
+        "addressZh": "台北市信義區松壽路20號",
+        "addressEn": "No. 20, Songshou Rd., Xinyi Dist., Taipei",
+        "lat": 25.035641,
+        "lng": 121.567405
+      },
+      {
+        "nameZh": "Vacanza Park 台北車站店",
+        "nameEn": "Vacanza Park — Taipei Station",
+        "addressZh": "台北市大同區承德路一段1號B1F",
+        "addressEn": "B1F, No. 1, Sec. 1, Chengde Rd., Datong Dist., Taipei",
+        "lat": 25.04909,
+        "lng": 121.516784
+      },
+      {
+        "nameZh": "Vacanza Coffee Town 中山店",
+        "nameEn": "Vacanza Coffee Town",
+        "addressZh": "台北市大同區南京西路25巷4-1號",
+        "addressEn": "No. 4-1, Ln. 25, Nanjing W. Rd., Datong Dist., Taipei",
+        "lat": 25.053843,
+        "lng": 121.520279
+      },
+      {
+        "nameZh": "誠品松菸概念店",
+        "nameEn": "Eslite Songshan",
+        "addressZh": "台北市信義區菸廠路88號2F",
+        "addressEn": "2F, No. 88, Yancang Rd., Xinyi Dist., Taipei",
+        "lat": 25.044737,
+        "lng": 121.561111
+      },
+      {
+        "nameZh": "信義新光三越專櫃",
+        "nameEn": "Shin Kong Mitsukoshi Xinyi A8",
+        "addressZh": "台北市信義區松高路12號",
+        "addressEn": "No. 12, Songgao Rd., Xinyi Dist., Taipei",
+        "lat": 25.038813,
+        "lng": 121.5668
+      },
+      {
+        "nameZh": "Lalaport 南港",
+        "nameEn": "Lalaport Nangang",
+        "addressZh": "台北市南港區經貿二路131號3F",
+        "addressEn": "3F, No. 131, Jingmao 2nd Rd., Nangang Dist., Taipei",
+        "lat": 25.059345,
+        "lng": 121.617583
+      },
+      {
+        "nameZh": "假期飾品貿易公司（西門）",
+        "nameEn": "Trading Company Ximen",
+        "addressZh": "台北市萬華區西寧南路70號1樓之1",
+        "addressEn": "",
+        "lat": 25.043549,
+        "lng": 121.505904
+      },
+      {
+        "nameZh": "中山耳夾專門所形象店",
+        "nameEn": "Ear Clip Studio Zhongshan",
+        "addressZh": "台北市中山區南京西路16號B1F",
+        "addressEn": "",
+        "lat": 25.052021,
+        "lng": 121.520331
+      },
+      {
+        "nameZh": "台北101專櫃",
+        "nameEn": "Taipei 101",
+        "addressZh": "台北市信義區信義路五段7號B1F",
+        "addressEn": "",
+        "lat": 25.033976,
+        "lng": 121.564539
+      },
+      {
+        "nameZh": "統一時代百貨專櫃",
+        "nameEn": "Uni-Ustyle Taipei",
+        "addressZh": "台北市信義區忠孝東路五段8號B1",
+        "addressEn": "",
+        "lat": 25.040741,
+        "lng": 121.565544
+      },
+      {
+        "nameZh": "新光三越南西三館專櫃",
+        "nameEn": "SKM Nanxi 3",
+        "addressZh": "台北市中山區南京西路15號1F",
+        "addressEn": "",
+        "lat": 25.052828,
+        "lng": 121.520746
+      },
+      {
+        "nameZh": "誠品R79專櫃",
+        "nameEn": "Eslite R79",
+        "addressZh": "台北市大同區南京西路16號B1F",
+        "addressEn": "",
+        "lat": 25.052021,
+        "lng": 121.520331
+      },
+      {
+        "nameZh": "板橋大遠百專櫃",
+        "nameEn": "Mega City Banqiao",
+        "addressZh": "新北市板橋區新站路28號4F",
+        "addressEn": "",
+        "lat": 25.013592,
+        "lng": 121.466871
+      },
+      {
+        "nameZh": "林口三井二館專櫃",
+        "nameEn": "Mitsui Outlet Park Linkou 2",
+        "addressZh": "新北市林口區文化二路一段123號3F",
+        "addressEn": "",
+        "lat": 25.06909,
+        "lng": 121.365354
+      },
+      {
+        "nameZh": "誠品新店專櫃",
+        "nameEn": "Eslite Xindian (Yulon City)",
+        "addressZh": "新北市新店區中興路三段70號2F",
+        "addressEn": "",
+        "lat": 24.978061,
+        "lng": 121.546478
+      },
+      {
+        "nameZh": "大江購物中心專櫃",
+        "nameEn": "MetroWalk Zhongli",
+        "addressZh": "桃園市中壢區中園路二段501號西側2F",
+        "addressEn": "",
+        "lat": 25.000988,
+        "lng": 121.228654
+      },
+      {
+        "nameZh": "台茂購物中心專櫃",
+        "nameEn": "Taimall Nankan",
+        "addressZh": "桃園市蘆竹區南崁路一段112號B2F",
+        "addressEn": "",
+        "lat": 25.05366,
+        "lng": 121.288565
+      },
+      {
+        "nameZh": "統領廣場專櫃",
+        "nameEn": "Tonlin Plaza Taoyuan",
+        "addressZh": "桃園市桃園區中正路61號1F",
+        "addressEn": "",
+        "lat": 24.991063,
+        "lng": 121.312432
+      },
+      {
+        "nameZh": "華泰名品城專櫃",
+        "nameEn": "Gloria Outlets",
+        "addressZh": "桃園市中壢區春德路189號1F",
+        "addressEn": "",
+        "lat": 25.015611,
+        "lng": 121.214342
+      },
+      {
+        "nameZh": "遠東巨城購物中心專櫃",
+        "nameEn": "Big City Hsinchu",
+        "addressZh": "新竹市東區中央路229號3F",
+        "addressEn": "",
+        "lat": 24.809896,
+        "lng": 120.975084
+      },
+      {
+        "nameZh": "Lalaport台中專櫃",
+        "nameEn": "Lalaport Taichung",
+        "addressZh": "台中市東區進德路600號北館3樓",
+        "addressEn": "",
+        "lat": 24.135757,
+        "lng": 120.692549
+      },
+      {
+        "nameZh": "一中耳夾專門所概念店",
+        "nameEn": "Ear Clip Concept Store Yizhong",
+        "addressZh": "台中市北區一中街165號",
+        "addressEn": "",
+        "lat": 24.151381,
+        "lng": 120.685854
+      },
+      {
+        "nameZh": "勤美誠品專櫃",
+        "nameEn": "Eslite Park Lane Taichung",
+        "addressZh": "台中市西區公益路68號B2",
+        "addressEn": "",
+        "lat": 24.15132,
+        "lng": 120.663938
+      },
+      {
+        "nameZh": "文心秀泰專櫃",
+        "nameEn": "Showtimes Wenxin Taichung",
+        "addressZh": "台中市南屯區文心南路289號2F",
+        "addressEn": "",
+        "lat": 24.129704,
+        "lng": 120.645575
+      },
+      {
+        "nameZh": "新光三越中港專櫃",
+        "nameEn": "SKM Taichung Zhonggang",
+        "addressZh": "台中市西屯區臺灣大道三段301號B1",
+        "addressEn": "",
+        "lat": 24.164767,
+        "lng": 120.643475
+      },
+      {
+        "nameZh": "台中大遠百專櫃",
+        "nameEn": "Top City Taichung",
+        "addressZh": "台中市西屯區臺灣大道三段251號B1北棟",
+        "addressEn": "",
+        "lat": 24.163382,
+        "lng": 120.644656
+      },
+      {
+        "nameZh": "漢神洲際專櫃",
+        "nameEn": "Hanshin Intercontinental Taichung",
+        "addressZh": "台中市北屯區崇德路三段865號4F",
+        "addressEn": "",
+        "lat": 24.198143,
+        "lng": 120.686083
+      },
+      {
+        "nameZh": "南紡購物中心專櫃",
+        "nameEn": "T.S. Mall Tainan",
+        "addressZh": "台南市東區中華東路一段366號A1館2F",
+        "addressEn": "",
+        "lat": 22.990884,
+        "lng": 120.232882
+      },
+      {
+        "nameZh": "新光三越小北門專櫃",
+        "nameEn": "SKM Tainan Xiaobeimen",
+        "addressZh": "台南市北區西門路四段135號2樓",
+        "addressEn": "",
+        "lat": 23.009063,
+        "lng": 120.207384
+      },
+      {
+        "nameZh": "漢神巨蛋專櫃",
+        "nameEn": "Hanshin Arena Kaohsiung",
+        "addressZh": "高雄市左營區博愛二路777號4F",
+        "addressEn": "",
+        "lat": 22.668671,
+        "lng": 120.302751
+      },
+      {
+        "nameZh": "夢時代購物中心專櫃",
+        "nameEn": "Dream Mall Kaohsiung",
+        "addressZh": "高雄市前鎮區中華五路789號3F",
+        "addressEn": "",
+        "lat": 22.594829,
+        "lng": 120.306972
+      }
+    ],
+    "logo": true
+  },
+  {
+    "id": "backerfounder",
+    "nameZh": "貝殼放大",
+    "nameEn": "Backer-Founder",
+    "category": "platform",
+    "type": "retail",
+    "descZh": "華語世界最大的群眾集資顧問公司，從 0 到 50 億的集資推手。",
+    "descEn": "The largest crowdfunding agency in the Chinese-speaking world — over NT$5B raised for clients.",
+    "domain": "backer-founder.com",
+    "website": "https://backer-founder.com",
+    "episodes": [
+      {
+        "num": 15,
+        "titleZh": "貝殼放大｜創辦人 林大涵如何從 0 到 50 億集資，打造募資領航品牌",
+        "appleId": "1000703674337"
+      },
+      {
+        "num": 16,
+        "titleZh": "貝殼放大 - 主持人訪後收穫 & 觀眾提問",
+        "appleId": "1000708387751"
+      }
+    ],
+    "locations": [
+      {
+        "nameZh": "貝殼放大 總部",
+        "nameEn": "Backer-Founder HQ",
+        "addressZh": "台北市萬華區大理街132之7號1樓",
+        "addressEn": "1F, No. 132-7, Dali St., Wanhua Dist., Taipei",
+        "lat": 25.034068,
+        "lng": 121.496682
+      }
+    ],
+    "logo": true
+  },
+  {
+    "id": "cofit",
+    "nameZh": "Cofit 群健",
+    "nameEn": "Cofit",
+    "category": "wellness",
+    "type": "retail",
+    "descZh": "結合營養師與 AI 的個人化健康管理平台，全台最大線上營養師團隊。",
+    "descEn": "A personalized health platform combining registered dietitians with AI — Taiwan's largest online dietitian team.",
+    "domain": "cofit.me",
+    "website": "https://events.cofit.me",
+    "episodes": [
+      {
+        "num": 19,
+        "titleZh": "Cofit & 初日醫學｜Part 1",
+        "appleId": "1000710194273"
+      },
+      {
+        "num": 20,
+        "titleZh": "Cofit & 初日醫學｜Part 2",
+        "appleId": "1000710194271"
+      },
+      {
+        "num": 21,
+        "titleZh": "Cofit & 初日醫學｜Part 3",
+        "appleId": "1000710194272"
+      },
+      {
+        "num": 22,
+        "titleZh": "Cofit & 初日醫學｜Part 4",
+        "appleId": "1000710194159"
+      },
+      {
+        "num": 23,
+        "titleZh": "Cofit - 主持人訪後收穫",
+        "appleId": "1000712363677"
+      }
+    ],
+    "locations": [
+      {
+        "nameZh": "Cofit 總部",
+        "nameEn": "Cofit HQ",
+        "addressZh": "台北市中山區松江路363號12樓",
+        "addressEn": "12F, No. 363, Songjiang Rd., Zhongshan Dist., Taipei",
+        "lat": 25.063826,
+        "lng": 121.533458
+      }
+    ],
+    "logo": true
+  },
+  {
+    "id": "appworks",
+    "nameZh": "AppWorks 之初加速器",
+    "nameEn": "AppWorks",
+    "category": "investment",
+    "type": "retail",
+    "descZh": "大東南亞最大的新創加速器與創投，培育超過 500 家新創。",
+    "descEn": "Greater Southeast Asia's largest startup accelerator and venture capital — 500+ portfolio companies.",
+    "domain": "appworks.tw",
+    "website": "https://appworks.tw",
+    "episodes": [
+      {
+        "num": 39,
+        "titleZh": "AppWorks 創辦人 林之晨 Jamie｜從翹課學霸到創造兆元市值，如何在挫敗中找到 ”非成功不可的理由”",
+        "appleId": "1000736340024"
+      },
+      {
+        "num": 40,
+        "titleZh": "AppWorks 訪後回顧｜解讀 Jamie 林之晨：從網路泡沫的倖存者到造浪者，與父親林芳郁醫師的利他傳承",
+        "appleId": "1000738440284"
+      }
+    ],
+    "locations": [
+      {
+        "nameZh": "AppWorks 辦公室",
+        "nameEn": "AppWorks Office",
+        "addressZh": "台北市信義區基隆路一段178號6F",
+        "addressEn": "6F, No. 178, Sec. 1, Keelung Rd., Xinyi Dist., Taipei",
+        "lat": 25.042394,
+        "lng": 121.564965
+      }
+    ],
+    "logo": true
+  },
+  {
+    "id": "dengyi",
+    "nameZh": "登義漢方",
+    "nameEn": "Dengyi",
+    "category": "wellness",
+    "type": "retail",
+    "descZh": "百年漢方藥行的當代轉譯，把中醫帶回日常。",
+    "descEn": "A century-old Chinese medicine house translated for modern daily life.",
+    "domain": "dengyi1985.com",
+    "website": "https://www.dengyi1985.com",
+    "episodes": [
+      {
+        "num": 49,
+        "titleZh": "差點破產！登義漢方營運長吳孟宸：我靠一包「中藥」救回五年的心血？",
+        "appleId": "1000758618871"
+      },
+      {
+        "num": 50,
+        "titleZh": "登義訪後回顧｜從夕陽產業到百貨新星，二代接班如何讓傳統中藥走進新時代？",
+        "appleId": "1000761504794"
+      }
+    ],
+    "locations": [
+      {
+        "nameZh": "登義參藥行（新莊輔大店）",
+        "nameEn": "Dengyi (Xinzhuang Fu Jen)",
+        "addressZh": "新北市新莊區建福路59巷8號",
+        "addressEn": "No. 8, Ln. 59, Jianfu Rd., Xinzhuang Dist., New Taipei City",
+        "lat": 25.027264,
+        "lng": 121.427194
+      },
+      {
+        "nameZh": "南西分行",
+        "nameEn": "Nanxi Branch (Eslite Nanxi 4F)",
+        "addressZh": "台北市中山區南京西路14號4F",
+        "addressEn": "",
+        "lat": 25.052386,
+        "lng": 121.520834
+      },
+      {
+        "nameZh": "新店分行",
+        "nameEn": "Xindian Branch (Yulon City B1)",
+        "addressZh": "新北市新店區中興路三段70號B1",
+        "addressEn": "",
+        "lat": 24.978061,
+        "lng": 121.546478
+      },
+      {
+        "nameZh": "南港分行",
+        "nameEn": "Nangang Branch (Lalaport Nangang B1)",
+        "addressZh": "台北市南港區經貿二路131號B1",
+        "addressEn": "",
+        "lat": 25.059542,
+        "lng": 121.617528
+      },
+      {
+        "nameZh": "宏匯分行",
+        "nameEn": "Honghui Branch (Honhui Plaza B2)",
+        "addressZh": "新北市新莊區新北大道四段3號B2",
+        "addressEn": "",
+        "lat": 25.059678,
+        "lng": 121.449573
+      },
+      {
+        "nameZh": "傳藝分行",
+        "nameEn": "Chuanyi Branch (NCFTA Yilan)",
+        "addressZh": "宜蘭縣五結鄉五濱路二段201號（文昌街33號）",
+        "addressEn": "",
+        "lat": 24.685621,
+        "lng": 121.824047
+      },
+      {
+        "nameZh": "漢藥體驗館",
+        "nameEn": "Herbal Medicine Experience Hall",
+        "addressZh": "宜蘭縣五結鄉五濱路二段201號（文昌街2號）",
+        "addressEn": "",
+        "lat": 24.68553,
+        "lng": 121.823474
+      }
+    ],
+    "logo": true
+  },
+  {
+    "id": "kure8",
+    "nameZh": "KURE8 8酵茶",
+    "nameEn": "KURE8 Kombucha",
+    "category": "food",
+    "type": "retail",
+    "descZh": "全台首間主打康普茶的手搖飲料品牌，現拉精釀、微氣泡。",
+    "descEn": "Taiwan's first kombucha-led tea bar — small-batch brewed with sparkling fruit notes.",
+    "domain": "kure8kombucha.com",
+    "website": "https://www.kure8kombucha.com",
+    "episodes": [
+      {
+        "num": 51,
+        "titleZh": "創業是一場沒有終點的無限賽局！Kure8 創辦人 Nehemiah：只要還在場上，挫折就只是邁向成功的入場券",
+        "appleId": "1000764276375"
+      },
+      {
+        "num": 52,
+        "titleZh": "Kure8訪後回顧｜在手搖飲紅海中賣生活方式，康普茶如何用品牌力突圍？",
+        "appleId": "1000767556276"
+      }
+    ],
+    "locations": [
+      {
+        "nameZh": "大安復興店",
+        "nameEn": "Da'an-Fuxing Flagship",
+        "addressZh": "台北市大安區復興南路二段9號",
+        "addressEn": "No. 9, Sec. 2, Fuxing S. Rd., Da'an Dist., Taipei",
+        "lat": 25.032701,
+        "lng": 121.543793
+      },
+      {
+        "nameZh": "南港店",
+        "nameEn": "Nangang",
+        "addressZh": "台北市南港區興東街3號",
+        "addressEn": "No. 3, Xingdong St., Nangang Dist., Taipei",
+        "lat": 25.055594,
+        "lng": 121.612945
+      },
+      {
+        "nameZh": "大安忠孝店",
+        "nameEn": "Da'an-Zhongxiao",
+        "addressZh": "台北市大安區忠孝東路四段181巷7弄3號",
+        "addressEn": "No. 3, Aly. 7, Ln. 181, Sec. 4, Zhongxiao E. Rd., Da'an Dist., Taipei",
+        "lat": 25.042191,
+        "lng": 121.550946
+      }
+    ],
+    "logo": true
+  },
+  {
+    "id": "chill-ice-bath",
+    "nameZh": "Chill Ice Bath",
+    "nameEn": "Chill",
+    "category": "wellness",
+    "type": "retail",
+    "descZh": "台灣第一家以冷熱療法為核心的恢復空間，由 Jacky 創立。",
+    "descEn": "Taiwan's first contrast-therapy recovery studio — founded by Jacky.",
+    "domain": "chilltaiwan.substack.com",
+    "website": "https://www.instagram.com/chill.taiwan/",
+    "episodes": [
+      {
+        "num": 53,
+        "titleZh": "放下一切的工程師... 在 4°C 冰水內突破人生極限 — Chill Ice Bath 共同創辦人 Jacky Wang & Matt Lee｜Storys",
+        "appleId": "1000769800578"
+      },
+      {
+        "num": 54,
+        "titleZh": "Chill 冰澡 訪後回顧｜解密高智商執行力：如何將 10 年的成長壓縮在 12 個月內完成？",
+        "appleId": "1000772005488"
+      }
+    ],
+    "locations": [
+      {
+        "nameZh": "Chill 大安店",
+        "nameEn": "Chill — Da'an",
+        "addressZh": "台北市大安區敦化南路二段63巷46號",
+        "addressEn": "No. 46, Ln. 63, Sec. 2, Dunhua S. Rd., Da'an Dist., Taipei",
+        "lat": 25.030889,
+        "lng": 121.551169
+      }
+    ],
+    "logo": true
+  },
+  {
+    "id": "nubra",
+    "nameZh": "NuBra 絕世好波",
+    "nameEn": "NuBra",
+    "category": "fashion",
+    "type": "retail",
+    "descZh": "風靡全球的隱形內衣品牌，在台灣以 nu9 經營專櫃與旗艦店。",
+    "descEn": "The globally-loved adhesive bra, operated in Taiwan as nu9 with department-store counters and a Xinyi flagship.",
+    "domain": "nu9.com.tw",
+    "website": "https://www.nu9.com.tw",
+    "episodes": [
+      {
+        "num": 41,
+        "titleZh": "NuBra Taiwan & 福忠字號創辦人 小慧姊｜革命性女性穿搭，破億營收！如何在官司與SARS中逆轉勝？feat. 福忠字號",
+        "appleId": "1000740517642"
+      },
+      {
+        "num": 42,
+        "titleZh": "NuBra 訪後回顧｜解讀小慧姐：從業務天花板到品牌創辦人，領悟中興百貨時期的貴人學與接班智慧",
+        "appleId": "1000742525950"
+      }
+    ],
+    "locations": [
+      {
+        "nameZh": "NuBra 信義旗艦店",
+        "nameEn": "NuBra Xinyi Flagship",
+        "addressZh": "台北市信義區松高路12號2樓",
+        "addressEn": "2F, No. 12, Songgao Rd., Xinyi Dist., Taipei",
+        "lat": 25.038813,
+        "lng": 121.5668
+      }
+    ],
+    "logo": true
+  },
+  {
+    "id": "phrozen",
+    "nameZh": "Phrozen 普羅森",
+    "nameEn": "Phrozen",
+    "category": "tech",
+    "type": "online",
+    "descZh": "全球領先的 LCD 3D 列印機品牌，總部位於新竹。",
+    "descEn": "A leading global LCD 3D printer brand, headquartered in Hsinchu.",
+    "domain": "phrozen3d.com",
+    "website": "https://phrozen3d.com",
+    "episodes": [
+      {
+        "num": 1,
+        "titleZh": "普羅森 Phrozen｜3D 列印革命： 創辦人 Ray 如何讓台灣品牌走向世界的舞台",
+        "appleId": "1000676700378"
+      },
+      {
+        "num": 2,
+        "titleZh": "普羅森 Phrozen - 討論",
+        "appleId": "1000678337524"
+      }
+    ],
+    "locations": [],
+    "logo": true
+  },
+  {
+    "id": "tixcraft",
+    "nameZh": "拓元售票 tixCraft",
+    "nameEn": "tixCraft",
+    "category": "platform",
+    "type": "online",
+    "descZh": "台灣最大的售票平台之一，承接無數演唱會與表演。",
+    "descEn": "One of Taiwan's largest ticketing platforms, powering countless live shows.",
+    "domain": "tixcraft.com",
+    "website": "https://tixcraft.com",
+    "episodes": [
+      {
+        "num": 3,
+        "titleZh": "拓元售票 tixCraft｜從棒球迷到票務產業巨擘：創辦人 KT 與拓元如何改寫售票遊戲規則",
+        "appleId": "1000679943845"
+      },
+      {
+        "num": 4,
+        "titleZh": "拓元售票 tixCraft - 討論",
+        "appleId": "1000678337524"
+      }
+    ],
+    "locations": [],
+    "logo": true
+  },
+  {
+    "id": "kkday",
+    "nameZh": "KKday 酷遊天",
+    "nameEn": "KKday",
+    "category": "travel",
+    "type": "online",
+    "descZh": "亞洲領先的旅遊體驗預訂平台，總部位於台北。",
+    "descEn": "Asia's leading travel-experiences marketplace, headquartered in Taipei.",
+    "domain": "kkday.com",
+    "website": "https://www.kkday.com",
+    "episodes": [
+      {
+        "num": 7,
+        "titleZh": "酷遊天 KKday｜從易遊網到 KKday，創辦人陳明明如何用 20 年經驗打造旅遊產業新時代？",
+        "appleId": "1000689073825"
+      },
+      {
+        "num": 8,
+        "titleZh": "酷遊天 KKday - 主持人訪後收穫 & 觀眾提問",
+        "appleId": "1000693768117"
+      }
+    ],
+    "locations": [],
+    "logo": true
+  },
+  {
+    "id": "4foodie",
+    "nameZh": "4Foodie",
+    "nameEn": "4Foodie",
+    "category": "media",
+    "type": "online",
+    "descZh": "美食愛好者的內容社群，從 IG 起家的吃貨宇宙。",
+    "descEn": "A food-lover's content community born on Instagram.",
+    "domain": "instagram.com",
+    "website": "https://www.instagram.com/4foodie",
+    "episodes": [
+      {
+        "num": 17,
+        "titleZh": "4foodie 創辦人 徐詩晴 Ava：不只是追蹤數！4foodie教你如何把流量變成真實收入",
+        "appleId": "1000705474928"
+      },
+      {
+        "num": 18,
+        "titleZh": "4foodie - 主持人訪後收穫 & 觀眾提問",
+        "appleId": "1000708387751"
+      }
+    ],
+    "locations": [],
+    "logo": true
+  },
+  {
+    "id": "cyberbiz",
+    "nameZh": "CYBERBIZ 順立智慧",
+    "nameEn": "CYBERBIZ",
+    "category": "platform",
+    "type": "online",
+    "descZh": "全方位的台灣電商開店平台，賦能上萬個品牌。",
+    "descEn": "A full-stack Taiwanese e-commerce platform empowering thousands of brands.",
+    "domain": "cyberbiz.io",
+    "website": "https://www.cyberbiz.io",
+    "episodes": [
+      {
+        "num": 24,
+        "titleZh": "CYBERBIZ 順立智慧｜Part 1｜創辦人 蘇基明 Jimmy",
+        "appleId": "1000714418540"
+      },
+      {
+        "num": 25,
+        "titleZh": "CYBERBIZ 順立智慧｜Part 2｜創辦人 蘇基明 Jimmy",
+        "appleId": "1000714418539"
+      },
+      {
+        "num": 26,
+        "titleZh": "CYBERBIZ 順立智慧｜Part 3｜創辦人 蘇基明 Jimmy",
+        "appleId": "1000714418631"
+      },
+      {
+        "num": 27,
+        "titleZh": "CYBERBIZ 順立智慧｜Part 4｜創辦人 蘇基明 Jimmy",
+        "appleId": "1000714418598"
+      },
+      {
+        "num": 28,
+        "titleZh": "CYBERBIZ 順立智慧｜Part 5｜創辦人 蘇基明 Jimmy",
+        "appleId": "1000714418630"
+      },
+      {
+        "num": 29,
+        "titleZh": "CYBERBIZ - 主持人訪後收穫",
+        "appleId": "1000716398883"
+      }
+    ],
+    "locations": [],
+    "logo": true
+  },
+  {
+    "id": "popdaily",
+    "nameZh": "PopDaily 波波黛莉",
+    "nameEn": "PopDaily",
+    "category": "media",
+    "type": "online",
+    "descZh": "台灣女性世代最大的生活媒體與社群。",
+    "descEn": "Taiwan's largest lifestyle media platform for the next-gen female audience.",
+    "domain": "popdaily.com.tw",
+    "website": "https://www.popdaily.com.tw",
+    "episodes": [
+      {
+        "num": 30,
+        "titleZh": "PopDaily & 阿金人生進化中 創辦人 黃晨皓 Kim｜他靠內容翻轉命運，卻在成功後選擇教人面對焦慮與自我──阿金聊創業的內外修煉",
+        "appleId": "1000718528705"
+      },
+      {
+        "num": 31,
+        "titleZh": "PopDaily 訪後收穫 & 十場訪談的回顧",
+        "appleId": "1000720813139"
+      }
+    ],
+    "locations": [],
+    "logo": true
+  },
+  {
+    "id": "pressplay",
+    "nameZh": "PressPlay",
+    "nameEn": "PressPlay",
+    "category": "creator",
+    "type": "online",
+    "descZh": "華語最大的創作者訂閱與課程平台。",
+    "descEn": "The largest Chinese-language creator subscription and course platform.",
+    "domain": "pressplay.cc",
+    "website": "https://www.pressplay.cc",
+    "episodes": [
+      {
+        "num": 32,
+        "titleZh": "PressPlay 共同創辦人暨 PressPlay Academy 執行長｜林鼎鈞 Dennis",
+        "appleId": "1000722716287"
+      },
+      {
+        "num": 33,
+        "titleZh": "PressPlay 訪後討論 & Storys 品牌 Rebrand!",
+        "appleId": "1000724645734"
+      }
+    ],
+    "locations": [],
+    "logo": true
+  },
+  {
+    "id": "speak",
+    "nameZh": "Speak",
+    "nameEn": "Speak",
+    "category": "education",
+    "type": "online",
+    "descZh": "用 AI 對話練習口說的英文學習 app，由 12 歲上大學的天才創辦。",
+    "descEn": "An AI-powered conversational English-learning app — co-founded by a child prodigy who entered college at 12.",
+    "domain": "speak.com",
+    "website": "https://www.speak.com",
+    "episodes": [
+      {
+        "num": 34,
+        "titleZh": "Speak Cofounder & CTO: Andrew Hsu｜A child prodigy turned tech serial entrepreneur, building the next Ed Tech Giant with AI",
+        "appleId": "1000727120488"
+      },
+      {
+        "num": 35,
+        "titleZh": "Speak 共同創辦人暨 CTO Andrew Hsu 徐安廬的故事：從天才少年到 AI 創業者｜Speak 創辦人特別篇",
+        "appleId": "1000727120347"
+      },
+      {
+        "num": 36,
+        "titleZh": "#36 年少出書的天才兒童，怎麼奠定成為百億公司的共同創辦人｜主持人帶你聽聽 Andrew Hsu 徐安廬的故事（全英文內容）",
+        "appleId": "1000729417747"
+      },
+      {
+        "num": 43,
+        "titleZh": "【特別公告】12 歲上大學的 AI 傳奇：專訪 Speak 創辦人 Andrew Hsu（內含 YouTube 雙語版連結）",
+        "appleId": "1000744368136"
+      }
+    ],
+    "locations": [],
+    "logo": true
+  },
+  {
+    "id": "wemo",
+    "nameZh": "WeMo Scooter",
+    "nameEn": "WeMo Scooter",
+    "category": "mobility",
+    "type": "online",
+    "descZh": "台灣首個共享電動機車服務，城市移動的綠色解方。",
+    "descEn": "Taiwan's first shared e-scooter service — sustainable urban mobility.",
+    "domain": "wemoscooter.com",
+    "website": "https://www.wemoscooter.com",
+    "episodes": [
+      {
+        "num": 37,
+        "titleZh": "WeMo 共同創辦人 吳昕霈 Jeffrey｜我跳脫千萬年薪的「安逸焦慮」，跳入創業，就是為了給台灣下一代更好的城市交通",
+        "appleId": "1000731878500"
+      },
+      {
+        "num": 38,
+        "titleZh": "WeMo 訪後回顧 & 討論",
+        "appleId": "1000733944393"
+      }
+    ],
+    "locations": [],
+    "logo": true
+  },
+  {
+    "id": "nunox",
+    "nameZh": "NunoX",
+    "nameEn": "NunoX",
+    "category": "tech",
+    "type": "online",
+    "descZh": "用 AI 把布料數位化的 SaaS，重塑紡織業數位流程。",
+    "descEn": "An AI SaaS digitizing textiles — transforming how the apparel industry works.",
+    "domain": "nunox.ai",
+    "website": "https://nunox.ai",
+    "episodes": [
+      {
+        "num": 44,
+        "titleZh": "NunoX 創辦人 謝賀祥 Jac｜燒光積蓄、小孩出生...他卻堅持回頭救傳產？「這輩子我非解這一題不可！」",
+        "appleId": "1000746018831"
+      },
+      {
+        "num": 45,
+        "titleZh": "NunoX 訪後回顧｜解讀 Jack 謝賀祥：從 Acer 到 Yahoo 的大廠磨練，領悟紡織世家的傳承與品牌國際化心法",
+        "appleId": "1000747996663"
+      }
+    ],
+    "locations": [],
+    "logo": true
+  },
+  {
+    "id": "megan",
+    "nameZh": "Megan Chang",
+    "nameEn": "Megan Chang",
+    "category": "creator",
+    "type": "online",
+    "descZh": "Soft Skill Savant — 把職場軟實力說得既誠實又有力的創作者。",
+    "descEn": "Soft Skill Savant — a creator translating workplace soft skills with honesty and power.",
+    "domain": "softskillsavant.com",
+    "website": "https://www.softskillsavant.com",
+    "episodes": [
+      {
+        "num": 47,
+        "titleZh": "從 iPhone 5 美妝影片到品牌創辦人：Megan 揭秘 10 年創業韌性，為什麼「先開始」比「準備好」更重要？",
+        "appleId": "1000753021284"
+      },
+      {
+        "num": 48,
+        "titleZh": "Megan 訪後回顧｜國民閨密 Megan 的真實力：從情傷黑洞到「拿回主控權」的底氣進化論",
+        "appleId": "1000755928779"
+      }
+    ],
+    "locations": [],
+    "logo": false
+  },
+  {
+    "id": "howkind",
+    "nameZh": "好客健身",
+    "nameEn": "howkind fitness",
+    "category": "wellness",
+    "type": "retail",
+    "descZh": "",
+    "descEn": "",
+    "domain": "",
+    "website": "",
+    "episodes": [
+      {
+        "num": 55,
+        "titleZh": "好客健身 創辦人 Eddie 周慶安｜當完兵戶頭只剩 1000 元，30 天後他做了一件事...",
+        "appleId": "1000774017137"
+      }
+    ],
+    "locations": [
+      {
+        "nameZh": "Howkind Fitness 好客健身房｜土城自由教練訓練場",
+        "nameEn": "",
+        "addressZh": "新北市土城區學府路一段86號B1",
+        "addressEn": "",
+        "lat": 24.988155,
+        "lng": 121.456287
+      },
+      {
+        "nameZh": "Howkind Fitness 好客健身房｜汐止肌力體能訓練館",
+        "nameEn": "",
+        "addressZh": "新北市汐止區新台五路一段208號B1",
+        "addressEn": "",
+        "lat": 25.062904,
+        "lng": 121.655546
+      }
+    ],
+    "logo": true
+  }
+]

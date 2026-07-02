@@ -1,6 +1,60 @@
 {
-  "syncedAt": "2026-08-23T04:35:38.540Z",
+  "syncedAt": "2026-07-02T09:24:17.011Z",
   "items": [
+    {
+      "num": 55,
+      "publishDate": "2026-06-24",
+      "titleZh": "#55 Storys｜好客健身 創辦人 Eddie 周慶安｜當完兵戶頭只剩 1000 元，30 天後他做了一件事...",
+      "titleEn": null,
+      "guestName": "周慶安",
+      "guestTitle": "好客健身創辦人",
+      "brandNameZh": "好客健身",
+      "brandId": "howkind",
+      "appleId": "1000774017137",
+      "spotifyId": "3F9CJKaonqI62Jx1NZyjev",
+      "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/3d24e4e7-42e1-4a81-a6dd-e270a5912f06",
+      "kkboxUrl": "https://podcast.kkbox.com/sg/episode/WqmZfQsOa7LDxumQV3",
+      "durationSec": 3780,
+      "transcriptFile": "https://docs.google.com/document/d/161HE2obrLaieIqCTdB2Z09SClZ83T325/edit?usp=share_link&ouid=110410980823326056557&rtpof=true&sd=true",
+      "coverFile": "https://drive.google.com/file/d/1_oIuthsRS-TH-Gy128ss2VTzvSY0ysQs/view?usp=share_link",
+      "summary": null
+    },
+    {
+      "num": 54,
+      "publishDate": "2026-06-10",
+      "titleZh": "#54 Storys｜Chill 冰澡 訪後回顧｜解密高智商執行力：如何將 10 年的成長壓縮在 12 個月內完成？",
+      "titleEn": null,
+      "guestName": "Jonathan、Tim、Johnson",
+      "guestTitle": "Storys主持群",
+      "brandNameZh": null,
+      "brandId": null,
+      "appleId": "1000772005488",
+      "spotifyId": "1GjZBewkVlKThPSnL36L2c",
+      "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/f4098758-2fef-4335-97f8-a7997047da2e",
+      "kkboxUrl": "https://podcast.kkbox.com/sg/episode/GkVHwpLhGiNepNXzwT",
+      "durationSec": 720,
+      "transcriptFile": "https://docs.google.com/document/d/1Wevf6sEHjBkE2v2ezJA9MF_VbnoqrU5d/edit?usp=share_link&ouid=110410980823326056557&rtpof=true&sd=true",
+      "coverFile": "storys.png",
+      "summary": null
+    },
+    {
+      "num": 53,
+      "publishDate": "2026-05-27",
+      "titleZh": "#53 Storys | 放下一切的工程師... 在 4°C 冰水內突破人生極限 — Chill Ice Bath 共同創辦人 Jacky Wang & Matt Lee｜Storys",
+      "titleEn": null,
+      "guestName": "Jacky",
+      "guestTitle": "Chill Ice Bath & Sauna 共同創辦人",
+      "brandNameZh": "Chill Ice Bath & Sauna",
+      "brandId": "chill-ice-bath",
+      "appleId": "1000769800578",
+      "spotifyId": "2L39QBhmD74fiOZVnBY7hr",
+      "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/c603a89c-7f5c-4fad-9568-a9cf8e162df5",
+      "kkboxUrl": "https://podcast.kkbox.com/sg/episode/GpUDVxcg9vi_8NYVyJ",
+      "durationSec": 4320,
+      "transcriptFile": "https://docs.google.com/document/d/1l_KaH5fmfgxFc7I__F1-0h2bO9PR74Sd/edit?usp=share_link&ouid=110410980823326056557&rtpof=true&sd=true",
+      "coverFile": "https://drive.google.com/file/d/1RVsHm4Zo7D09su6W7Yrx_wjXkk3u3mzy/view?usp=share_link",
+      "summary": null
+    },
     {
       "num": 52,
       "publishDate": "2026-05-13",
@@ -16,7 +70,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/0rfMaKqEJxzmTDLzh-",
       "durationSec": 551,
       "transcriptFile": "https://drive.google.com/file/d/1rG4eaPYhH0BF-cK_b1Bx8vweUv55htmx/view",
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -27,14 +81,14 @@
       "guestName": "Nehemiah",
       "guestTitle": "Kure8 創辦人",
       "brandNameZh": "Kure8",
-      "brandId": "Kure8",
+      "brandId": "kure8",
       "appleId": "1000764276375",
       "spotifyId": "3xxhL5ojT6oATtNoGpbSpA",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/55292c1e-db8a-452b-93ed-39c8a70eab3a",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/PXhPH5BJdrj-47zbOR",
       "durationSec": 4049,
       "transcriptFile": "https://drive.google.com/file/d/1ZvmkyngqD7M7uRqi4V9YBNFu0765pU6z/view",
-      "coverFile": "EP051_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1P4iiCQv2efmY1cyVmDxnBZcTKaOhOVdl/view?usp=share_link",
       "summary": null
     },
     {
@@ -52,7 +106,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/Sl53Mw68a9yZE7cGYC",
       "durationSec": 960,
       "transcriptFile": "https://drive.google.com/file/d/1y_gm-wUGoxpTiIrGRUhwxBu0TZPET3bh/view",
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -70,7 +124,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/-tcFVGfNizEIDwmuo4",
       "durationSec": 7413,
       "transcriptFile": "https://drive.google.com/file/d/1AT_1Gn4lzrTyYrd1iQM-30k9mKXQYGg1/view",
-      "coverFile": "EP049_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1xjKEqycbJSA0-wPw6oXIRym6TnflFdh9/view?usp=share_link",
       "summary": null
     },
     {
@@ -88,7 +142,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/GpIDlZcg9vi_8ADP3A",
       "durationSec": 862,
       "transcriptFile": "https://drive.google.com/file/d/10DLbswl_bBuyedLpmwY8fs357GkLUjhW/view",
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -99,14 +153,14 @@
       "guestName": "Megan",
       "guestTitle": "soft savant skill 創辦人",
       "brandNameZh": "soft savant skill",
-      "brandId": "soft savant skill",
+      "brandId": "megan",
       "appleId": "1000753021284",
       "spotifyId": "2oFhPcKvtFQ238yxvFcm6W",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/f331260b-8667-40ee-bc83-8671a3a93d86",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/P_bOg9Yg6hSeaWOEdD",
       "durationSec": 5513,
       "transcriptFile": "https://drive.google.com/file/d/1rCXHmMtCSg7B_hCyifwfrUJHT77YGxHS/view",
-      "coverFile": "EP047_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1MEMJNvhhm4YxDBGTmYaSetBWBt_rdsVR/view?usp=share_link",
       "summary": null
     },
     {
@@ -124,7 +178,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/8oADc0_-nviaVkWTs8",
       "durationSec": 2592,
       "transcriptFile": "https://drive.google.com/file/d/1yu0jth1l4DrV4GVuUM-Z6eXLXtVD5vHL/view",
-      "coverFile": "EP046_cover.jpg",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -142,7 +196,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/H-zBR9szqMi0y9mSiV",
       "durationSec": 677,
       "transcriptFile": "https://drive.google.com/file/d/1Nn-SGhUdrkwh0wIOhHEJ51XcfH6bLaS6/view",
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -153,14 +207,14 @@
       "guestName": "謝賀祥",
       "guestTitle": "NunoX 創辦人 謝賀祥",
       "brandNameZh": "NunoX",
-      "brandId": "NunoX",
+      "brandId": "nunox",
       "appleId": "1000746018831",
       "spotifyId": "5N1JtWyHLnVsL6ZzHdtu4k",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/e816457a-c438-490e-aa4c-202ff9544681",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/LYqmMdPTuqRmKPa-l1",
       "durationSec": 5814,
       "transcriptFile": "https://drive.google.com/file/d/10HsB_VD6vzKHNCFUcVInDQMXGIVA9jbq/view",
-      "coverFile": "EP044_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/19yaqzcbghJQyeCQXDT90wyBiPBRFNpeP/view?usp=share_link",
       "summary": null
     },
     {
@@ -178,7 +232,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/CpAMNBAhy6y91dNkqn",
       "durationSec": 95,
       "transcriptFile": "https://drive.google.com/file/d/1iJGFZGQACLJlKsKIx4ZA83IiPP-Z_wzL/view",
-      "coverFile": "EP043_cover.jpg",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -196,7 +250,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/9ZtDDpQoTdwZl2CvV7",
       "durationSec": 652,
       "transcriptFile": "https://drive.google.com/file/d/1evN3cSQc-gmP1ta0BDrtNkiMv9Q98QtS/view",
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -207,14 +261,14 @@
       "guestName": "黃慧晶",
       "guestTitle": "NuBra Taiwan & 福忠字號創辦人",
       "brandNameZh": "NuBra Taiwan & 福忠字號",
-      "brandId": "NuBra",
+      "brandId": "nubra",
       "appleId": "1000740517642",
       "spotifyId": "50tqycIuuFATAMXsXRhPKR",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/b238eb2f-cdea-4b15-8558-4f22bd883d2c",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/1YAqRA4GLAHqAwzFQ6",
       "durationSec": 4772,
       "transcriptFile": "https://drive.google.com/file/d/1zlLR06SBJ734uKIdeIS7JF9MdLUQWw9o/view",
-      "coverFile": "EP041_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1e_GaVoL6g8qD-Nh6Gey1680iQgoO4Cxk/view?usp=share_link",
       "summary": null
     },
     {
@@ -232,7 +286,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/ClDekU0ZULzRi_Kgcz",
       "durationSec": 1013,
       "transcriptFile": "https://drive.google.com/file/d/1mCtNf8xAXgA-KY-vNbOunhKqRQi6TN7z/view",
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -243,14 +297,14 @@
       "guestName": "林之晨",
       "guestTitle": "AppWorks 創辦人",
       "brandNameZh": "AppWorks",
-      "brandId": "AppWorks",
+      "brandId": "appworks",
       "appleId": "1000736340024",
       "spotifyId": "6P0Ru4fjGrbdD9NK2HYPUl",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/fab82282-ca8c-4b16-a7b2-84128c3bea28",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/Oo2SWKoGni5YoT6w6D",
       "durationSec": 5917,
       "transcriptFile": "https://drive.google.com/file/d/1WpMvT5pL16zvGumxfk_dvpwygMMIIzg6/view",
-      "coverFile": "EP039_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1tJP-hIJW4ExPBkhEBf5WXgwZaPbHz1xt/view?usp=share_link",
       "summary": null
     },
     {
@@ -268,7 +322,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/CsPhg97h4JP3KH1pJT",
       "durationSec": 1609,
       "transcriptFile": "https://drive.google.com/file/d/180xMTxMYOiMV7WUW9j4NEiY3PYqhYDRc/view",
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -279,14 +333,14 @@
       "guestName": "吳昕霈",
       "guestTitle": "WeMo 共同創辦人",
       "brandNameZh": "WeMo",
-      "brandId": "WeMo",
+      "brandId": "wemo",
       "appleId": "1000731878500",
       "spotifyId": "4lpzVdbj89o1kOsrPjnKIG",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/24e12885-dc89-41e2-871d-578bccb01a19",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/9Zgb3mQoTdwZlBph9Q",
       "durationSec": 6485,
       "transcriptFile": "https://drive.google.com/file/d/1JBeIUcjfJt4nAExfSfTY6GGcm9qFZnBj/view",
-      "coverFile": "EP037_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1iaSjvSFBjgpEmgKzeo1N769MH6wVNm8g/view?usp=share_link",
       "summary": null
     },
     {
@@ -304,7 +358,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/Optu15tn514wQmPPVU",
       "durationSec": 3166,
       "transcriptFile": "https://drive.google.com/file/d/1uFFtCMbKTtzCzgTqbh1qFCvOU_AfAiBe/view",
-      "coverFile": "EP036_cover.jpg",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -322,7 +376,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/OrMX5zkSh-LTHd4iND",
       "durationSec": 4446,
       "transcriptFile": "https://drive.google.com/file/d/17zPqEfc-pTtxT1VOgohdLnrSZkLqQJ8a/view",
-      "coverFile": "EP035_cover.jpg",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -333,14 +387,14 @@
       "guestName": "徐安廬",
       "guestTitle": "Speak 共同創辦人暨 CTO",
       "brandNameZh": "Speak",
-      "brandId": "Speak",
+      "brandId": "speak",
       "appleId": "1000727120488",
       "spotifyId": "6GmymTtuOheiQUuf0Az7uV",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/05c5b366-b25c-47bd-bd1e-46d51c7b903c",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/4l1venTDBxnBPJBmDE",
       "durationSec": 3825,
       "transcriptFile": "https://drive.google.com/file/d/18YLjbmFP1BiYHInF4WolrCDaXSU9XkP1/view",
-      "coverFile": "EP034_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1D3Z2sYYKxQVOZK0pokxCzNhKkfHwkWpT/view?usp=share_link",
       "summary": null
     },
     {
@@ -358,7 +412,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/PZU-7SlGFr5CvkYkhk",
       "durationSec": 979,
       "transcriptFile": "https://drive.google.com/file/d/1bFRU0pToDuibCIXtY6nIIgLotp-CJeD1/view",
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -369,14 +423,14 @@
       "guestName": "林鼎鈞",
       "guestTitle": "PressPlay 共同創辦人暨 PressPlay Academy 執行長",
       "brandNameZh": "PressPlay",
-      "brandId": "PressPlay",
+      "brandId": "pressplay",
       "appleId": "1000722716287",
       "spotifyId": "5ocQSpDwwQK10Hkn33LDBR",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/bb309cbf-c362-4123-ace9-69e5bdcdb366",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/_ajtgjbHD5oGpFrh-b",
       "durationSec": 6066,
       "transcriptFile": "https://drive.google.com/file/d/1azuG6owQ_jKA5fp1u6OffBM9MYSZmI1c/view",
-      "coverFile": "EP032_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1vKlrioAcLtVlJF3zt8qtREGL_i3TZIYg/view?usp=share_link",
       "summary": null
     },
     {
@@ -394,7 +448,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/P-ZAVW8mQRlCsTrwDY",
       "durationSec": 901,
       "transcriptFile": "https://drive.google.com/file/d/19E2PZPyw42APteH1t_TMzrc3z0X1iDOp/view",
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -405,14 +459,14 @@
       "guestName": "黃晨皓",
       "guestTitle": "PopDaily & 阿金人生進化中 創辦人",
       "brandNameZh": "波波黛莉 & 阿金人生進化中",
-      "brandId": "PopDaily",
+      "brandId": "popdaily",
       "appleId": "1000718528705",
       "spotifyId": "6UeDJ50Utkao5HsMwdGwzd",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/8ac7ea3a-b8d2-44ce-9601-04c3f922ae33",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/Gk2ZF-LhGiNerEz70L",
       "durationSec": 5732,
       "transcriptFile": "https://drive.google.com/file/d/1OmWKkoxOU9flc-dnLdfEPUchW6CEDbqB/view",
-      "coverFile": "EP030_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/18o7CVwr6xSs1l4HBmxJWu-mplTt3yYHV/view?usp=share_link",
       "summary": null
     },
     {
@@ -430,7 +484,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/1_UAqQViufooKylPtJ",
       "durationSec": 1064,
       "transcriptFile": "https://drive.google.com/file/d/1lLzKF5t73rY_G0xMIpJ_LeK5JoprnpmU/view",
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -441,14 +495,14 @@
       "guestName": "蘇基明",
       "guestTitle": "CYBERBIZ 順立智慧創辦人",
       "brandNameZh": "CYBERBIZ 順立智慧",
-      "brandId": "CYBERBIZ",
+      "brandId": "cyberbiz",
       "appleId": "1000714418630",
       "spotifyId": "01Bn60UjZ9d4aT00yLg3lO",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/88c8a00d-a530-4396-a3be-1e9dfa0ad26e",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/HZNBq_p9Wvi34lZbfz",
       "durationSec": 1103,
       "transcriptFile": "https://drive.google.com/file/d/1D687qIa4RlnxKk8DTRDwaqAiS1O_aO0q/view",
-      "coverFile": "EP028_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1S3oRtYvm37rMFTmgQ11FJvgZh2rwkd1L/view?usp=share_link",
       "summary": null
     },
     {
@@ -459,14 +513,14 @@
       "guestName": "蘇基明",
       "guestTitle": "CYBERBIZ 順立智慧創辦人",
       "brandNameZh": "CYBERBIZ 順立智慧",
-      "brandId": "CYBERBIZ",
+      "brandId": "cyberbiz",
       "appleId": "1000714418598",
       "spotifyId": "2DNuvtMopgGSFWy09tAiSb",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/d4dbffbc-15ea-440f-8c19-e5126b8ff1aa",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/SsE8WfBurrf1QFnt2G",
       "durationSec": 842,
       "transcriptFile": "https://drive.google.com/file/d/1JylRqvWPnUdcaDMtHHCTKs7KZayZNzWW/view",
-      "coverFile": "EP027_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1S3oRtYvm37rMFTmgQ11FJvgZh2rwkd1L/view?usp=share_link",
       "summary": null
     },
     {
@@ -477,14 +531,14 @@
       "guestName": "蘇基明",
       "guestTitle": "CYBERBIZ 順立智慧創辦人",
       "brandNameZh": "CYBERBIZ 順立智慧",
-      "brandId": "CYBERBIZ",
+      "brandId": "cyberbiz",
       "appleId": "1000714418631",
       "spotifyId": "5D1mNiz22p3vwbut5abL70",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/90292dce-d71e-4462-8281-54550e3cb78e",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/5-d_r5aeFSxp8Es326",
       "durationSec": 962,
       "transcriptFile": "https://drive.google.com/file/d/1qePBWGxJIkra8gRoDRDIOl_jFNrJxfl0/view",
-      "coverFile": "EP026_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1S3oRtYvm37rMFTmgQ11FJvgZh2rwkd1L/view?usp=share_link",
       "summary": null
     },
     {
@@ -495,14 +549,14 @@
       "guestName": "蘇基明",
       "guestTitle": "CYBERBIZ 順立智慧創辦人",
       "brandNameZh": "CYBERBIZ 順立智慧",
-      "brandId": "CYBERBIZ",
+      "brandId": "cyberbiz",
       "appleId": "1000714418539",
       "spotifyId": "47XGnv7tY43e2GwOlRqoOa",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/492a07e9-062a-4a4a-91f6-e4e9c496b639",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/OpaSNmtn514wTvHZh6",
       "durationSec": 1182,
       "transcriptFile": "https://drive.google.com/file/d/1KzKvMLT7xLAizLdZo6h2j9qGDia-_uQQ/view?usp=share_link",
-      "coverFile": "EP025_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1S3oRtYvm37rMFTmgQ11FJvgZh2rwkd1L/view?usp=share_link",
       "summary": null
     },
     {
@@ -513,14 +567,14 @@
       "guestName": "蘇基明",
       "guestTitle": "CYBERBIZ 順立智慧創辦人",
       "brandNameZh": "CYBERBIZ 順立智慧",
-      "brandId": "CYBERBIZ",
+      "brandId": "cyberbiz",
       "appleId": "1000714418540",
       "spotifyId": "0vBwV9uEwe4RsOVo6SAIu9",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/61b6bf92-5a6b-42d9-a54e-bec1048e421d",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/_XxwItClCKbEx6byyo",
       "durationSec": 721,
       "transcriptFile": "https://drive.google.com/file/d/12fQ76L8DWemwg0ISyKjo9Y2LNDUbAgte/view",
-      "coverFile": "EP024_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1S3oRtYvm37rMFTmgQ11FJvgZh2rwkd1L/view?usp=share_link",
       "summary": null
     },
     {
@@ -538,7 +592,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/D-xpDR5pZ1lOjJUMjY",
       "durationSec": 682,
       "transcriptFile": "https://drive.google.com/file/d/1gr1hky6-d_twi483VKcBsWbdCUKMg26T/view",
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -549,14 +603,14 @@
       "guestName": "林暐淳",
       "guestTitle": "Cofit 創辦人",
       "brandNameZh": "Cofit",
-      "brandId": "Cofit",
+      "brandId": "cofit",
       "appleId": "1000710194159",
       "spotifyId": "33vbj0J7OYY3Ew6eLUmuJi",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/b9bb612e-d682-40fd-a42e-8483bc9ebdaf",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/H_1kOC0BdlBs825KFm",
       "durationSec": 1329,
       "transcriptFile": "https://drive.google.com/file/d/1r3vGyYOigxu3pf4YSth4RkL0fj3W_Spk/view",
-      "coverFile": "EP022_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1XIUuUsjRSPAK3xB_YyOzXw6S-2Dc2J41/view?usp=share_link",
       "summary": null
     },
     {
@@ -567,14 +621,14 @@
       "guestName": "林暐淳",
       "guestTitle": "Cofit 創辦人",
       "brandNameZh": "Cofit",
-      "brandId": "Cofit",
+      "brandId": "cofit",
       "appleId": "1000710194272",
       "spotifyId": "2Tq8VihYFbadYmVx0AaSXP",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/81557285-2b41-4f96-a2d7-6fa8908e7a33",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/4thVQRmWJQzgLQMBgH",
       "durationSec": 1302,
       "transcriptFile": "https://drive.google.com/file/d/1k2i0OF_-7dWGFUpbj9Sw779LcjynvhCw/view",
-      "coverFile": "EP021_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1XIUuUsjRSPAK3xB_YyOzXw6S-2Dc2J41/view?usp=share_link",
       "summary": null
     },
     {
@@ -585,14 +639,14 @@
       "guestName": "林暐淳",
       "guestTitle": "Cofit 創辦人",
       "brandNameZh": "Cofit",
-      "brandId": "Cofit",
+      "brandId": "cofit",
       "appleId": "1000710194271",
       "spotifyId": "1uhNSH1JdZ9bX8AuLdg72m",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/1d61199c-1ca5-4ae0-9def-4d74abb44b9a",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/KtvLvLGcfD89HYQc2l",
       "durationSec": 1268,
       "transcriptFile": "https://drive.google.com/file/d/1ZZoqE70KNDLoW9A-qpq5U_wcYmQYN0rF/view",
-      "coverFile": "EP020_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1XIUuUsjRSPAK3xB_YyOzXw6S-2Dc2J41/view?usp=share_link",
       "summary": null
     },
     {
@@ -603,14 +657,14 @@
       "guestName": "林暐淳",
       "guestTitle": "Cofit 創辦人",
       "brandNameZh": "Cofit",
-      "brandId": "Cofit",
+      "brandId": "cofit",
       "appleId": "1000710194273",
       "spotifyId": "2qQBoIXE2QCbEJYOJQIQNy",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/06b0ca12-11b4-40b4-bd05-9ecb2f23521b",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/OtlDhfDCu6AHk-lhXh",
       "durationSec": 1249,
       "transcriptFile": "https://drive.google.com/file/d/1-RxYIp_Yf6aqDxxinzelTdzpXB_Zh5Fo/view",
-      "coverFile": "EP019_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1XIUuUsjRSPAK3xB_YyOzXw6S-2Dc2J41/view?usp=share_link",
       "summary": null
     },
     {
@@ -628,7 +682,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/-m6HeIudKLVoaI_IiR",
       "durationSec": 918,
       "transcriptFile": "https://drive.google.com/file/d/17FJ9NtRPYTSmAx1ajZqrnBsE4EJA2UHU/view",
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -646,7 +700,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/8s3BbakpJ5ht8Xg-zX",
       "durationSec": 3213,
       "transcriptFile": "https://drive.google.com/file/d/1QqH6QSW6K0lt-RKn16m26sQDWvhQUFPh/view",
-      "coverFile": "EP017_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1U5shrs4ZsZ8vo0GtC36kMjD3ClQD4lm4/view?usp=share_link",
       "summary": null
     },
     {
@@ -664,7 +718,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/5_DRxMGFosnd0P9eG0",
       "durationSec": 796,
       "transcriptFile": "https://drive.google.com/file/d/1X8K8QJ6-6-cT8cIXpGI-c96KWBD_nRJz/view",
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -675,14 +729,14 @@
       "guestName": "林大涵",
       "guestTitle": "貝殼放大創辦人",
       "brandNameZh": "貝殼放大",
-      "brandId": "backfounder",
+      "brandId": "backerfounder",
       "appleId": "1000703674337",
       "spotifyId": "7L1jo9pWIfsv5247DWdViE",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/378ea030-c55a-4922-bb47-9b1ad1e677e1",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/KoqzB2bE3h-xN6uCD-",
       "durationSec": 5592,
       "transcriptFile": "https://drive.google.com/file/d/1cKxvkzU2TIPKHvzNnxGBSFn1QENQDFWo/view",
-      "coverFile": "EP015_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1KpY7q_isHxua5j84S0VknEgDfHLN3RqT/view?usp=share_link",
       "summary": null
     },
     {
@@ -700,7 +754,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/PZ_7L1lGFr5CtDvXFk",
       "durationSec": 958,
       "transcriptFile": null,
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -718,7 +772,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/OkLnSaNEQ0crTU72Ei",
       "durationSec": 2149,
       "transcriptFile": "https://drive.google.com/file/d/1DBwf3_gocPC9WN2L3TMxNn5ZSqtS-Ts_/view",
-      "coverFile": "EP013_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/11YjE5KmPaZaf1L0FzPNZ70cJoFu8wt6j/view?usp=share_link",
       "summary": null
     },
     {
@@ -736,7 +790,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/KmRn7cUTx6Wkll-kzr",
       "durationSec": 1229,
       "transcriptFile": "https://drive.google.com/file/d/1YkEAYAiTjPbLQ3a2WZEwqmrHOjyz2LTZ/view",
-      "coverFile": "EP012_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/11YjE5KmPaZaf1L0FzPNZ70cJoFu8wt6j/view?usp=share_link",
       "summary": null
     },
     {
@@ -754,7 +808,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/PZm7j0lGFr5CtAdJO0",
       "durationSec": 1073,
       "transcriptFile": "https://drive.google.com/file/d/1aArJfnGg2gNCa0VvhVRAzkWT1p7mmtZM/view",
-      "coverFile": "EP011_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/11YjE5KmPaZaf1L0FzPNZ70cJoFu8wt6j/view?usp=share_link",
       "summary": null
     },
     {
@@ -772,7 +826,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/DXK0OieWwJ30_N9eqi",
       "durationSec": 1220,
       "transcriptFile": "https://drive.google.com/file/d/1WcqOU3co0dcsxf4_eINAm7GZCMBw9XvK/view",
-      "coverFile": "EP010_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/11YjE5KmPaZaf1L0FzPNZ70cJoFu8wt6j/view?usp=share_link",
       "summary": null
     },
     {
@@ -790,7 +844,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/T-QR3mLofsrHvSkOR3",
       "durationSec": 1208,
       "transcriptFile": "https://drive.google.com/file/d/1IbAsfItmS63ZZ_-oNrcXpn0oZT3a4c25/view",
-      "coverFile": "EP009_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/11YjE5KmPaZaf1L0FzPNZ70cJoFu8wt6j/view?usp=share_link",
       "summary": null
     },
     {
@@ -808,7 +862,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/OsmDnSfv70BylEF_mt",
       "durationSec": 896,
       "transcriptFile": "https://drive.google.com/file/d/1HC2q3JQ-2N34vLJgx3Y92BjMlfEzaugJ/view",
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -826,7 +880,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/0mQk7l7f30TxkkFEg-",
       "durationSec": 4687,
       "transcriptFile": "https://drive.google.com/file/d/1kPukS-ZpELBi2TEFQGxLLDco9od_Zh4J/view",
-      "coverFile": "EP007_cover.jpg",
+      "coverFile": "https://drive.google.com/file/d/1qRI9DXu0UDVGLAXqgI1HYxKnKUw_LtZw/view?usp=share_link",
       "summary": null
     },
     {
@@ -844,7 +898,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/Kqr75wVWicr1YFjGl0",
       "durationSec": 1223,
       "transcriptFile": null,
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -855,14 +909,14 @@
       "guestName": "張文哲",
       "guestTitle": "真芳炭烤土司創辦人",
       "brandNameZh": "真芳炭烤土司",
-      "brandId": "ZhenFang",
+      "brandId": "zhenfang",
       "appleId": "1000683093233",
       "spotifyId": "18fVD13WWHGua8KdKePFoI",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/20c277ad-7878-4dc0-b948-64cb4d2e35f3",
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/WlqMJlFjRGOY3JWZYn",
       "durationSec": 5346,
       "transcriptFile": "https://drive.google.com/file/d/1Ic6IxIFADSsQdk8FFgrviGWt2Vco0owa/view",
-      "coverFile": "https://drive.google.com/file/d/1gSg8NIybV6hdCjiCXvrTrXYlT5itEY3K/view",
+      "coverFile": "https://drive.google.com/file/d/1ndpxSJIB5TyOovnm59GK8geOp40Rj_Qf/view?usp=share_link",
       "summary": null
     },
     {
@@ -880,7 +934,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/5_Mo5cGFosnd3laoxf",
       "durationSec": 985,
       "transcriptFile": null,
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -898,7 +952,7 @@
       "kkboxUrl": "https://kkbox.fm/8x1Wu4",
       "durationSec": 5277,
       "transcriptFile": "https://drive.google.com/file/d/1uFOTlUXx5YsAVty7w7fld5qBje3-jxBT/view",
-      "coverFile": "https://drive.google.com/file/d/1rsetZD7V2QNMYxOwsIBg-vzZYA5lZJvc/view",
+      "coverFile": "https://drive.google.com/file/d/1ihbDYMFvxPIYzfagU26Y-tqvM0FtIPky/view?usp=share_link",
       "summary": null
     },
     {
@@ -916,7 +970,7 @@
       "kkboxUrl": "https://podcast.kkbox.com/sg/episode/8qJSjJeiDa_mye1fJw",
       "durationSec": 1245,
       "transcriptFile": null,
-      "coverFile": "https://drive.google.com/file/d/1SWO6Zb0pMmFZPbpusMOYjnGw0FSgb9ns/view",
+      "coverFile": "storys.png",
       "summary": null
     },
     {
@@ -927,14 +981,14 @@
       "guestName": "吳彞任",
       "guestTitle": "Phrozen 共同創辦人",
       "brandNameZh": "普羅森科技",
-      "brandId": "Phrozen",
+      "brandId": "phrozen",
       "appleId": "1000676700378",
       "spotifyId": "0nPxr4U0JlsAddnEDbOyJL",
       "soundonUrl": "https://player.soundon.fm/p/16efb251-2142-479a-abb8-fdaa10385c40/episodes/f4a4de91-ff25-4a0a-aa88-f5ad6a799771",
       "kkboxUrl": "https://kkbox.fm/6x1Smj",
       "durationSec": 6569,
       "transcriptFile": "https://drive.google.com/file/d/1mX3LJNzw3_0vsusYX_guc9SvgtfbkSgT/view",
-      "coverFile": "https://drive.google.com/file/d/1J72I-gucLGkJIRZ8VIUYq9hKnzQ1lzpE/view",
+      "coverFile": "https://drive.google.com/file/d/1wc4UU5X-Yf3mYtGJ4-NQeaf0_lI0Ke0v/view?usp=share_link",
       "summary": null
     }
   ]

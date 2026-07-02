@@ -7,6 +7,11 @@ export default defineConfig({
   output: "hybrid",
   trailingSlash: "ignore",
 
+  // Brand id renamed zhenfan → zhenfang (matches the Master Sheet); keep the old URL alive.
+  redirects: {
+    "/brands/zhenfan": "/brands/zhenfang",
+  },
+
   build: {
     inlineStylesheets: "auto",
   },
