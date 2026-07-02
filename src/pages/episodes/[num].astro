@@ -1,0 +1,448 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  getAllEpisodes,
+  getEpisodeSummary,
+  getEpisodeReels,
+  findBrandByAppleId,
+  appleEmbedUrl,
+  spotifyEmbedUrl,
+  appleEpisodeUrl,
+  cleanEpisodeTitle,
+} from "../../lib/episodes";
+import { brandLogoUrl, SHOW_URL } from "../../data/brands";
+
+export function getStaticPaths() {
+  return getAllEpisodes()
+    .filter((e) => e.num != null)
+    .map((ep) => ({ params: { num: String(ep.num) }, props: { ep } }));
+}
+
+const { ep } = Astro.props;
+
+const title = cleanEpisodeTitle(ep.titleZh);
+const summary = getEpisodeSummary(ep.num);
+const brand = findBrandByAppleId(ep.appleId);
+const reels = getEpisodeReels(ep.brandId ?? brand?.id, ep.num);
+const appleEmbed = appleEmbedUrl(ep.appleId);
+// Spotify episode IDs are 22-char base62 (sheet col J fixed 2026-07-02); keep the
+// format check as a safety so a future bad ID hides the link/embed instead of 404ing.
+const spotifyValid = /^[A-Za-z0-9]{22}$/.test(ep.spotifyId ?? "");
+const spotifyEmbed = spotifyValid ? spotifyEmbedUrl(ep.spotifyId) : null;
+const coverUrl = `/episodes/covers/${ep.num}.jpg`;
+const brandLogo = brand ? brandLogoUrl(brand) : null;
+
+const all = getAllEpisodes().filter((e) => e.num != null);
+const idx = all.findIndex((e) => e.num === ep.num);
+const newer = idx > 0 ? all[idx - 1] : null;
+const older = idx >= 0 && idx < all.length - 1 ? all[idx + 1] : null;
+
+const metaTitle = `${title} · Storys 創業之聲`;
+const metaDesc = summary?.metaDesc ?? `${title}｜Storys 創業之聲 EP #${ep.num}`;
+
+const jsonLd: Record<string, unknown> = {
+  "@context": "https://schema.org",
+  "@type": "PodcastEpisode",
+  name: title,
+  description: metaDesc,
+  url: `https://storys.fm/episodes/${ep.num}`,
+  partOfSeries: { "@type": "PodcastSeries", name: "Storys 創業之聲", url: SHOW_URL },
+  associatedMedia: { "@type": "MediaObject", contentUrl: appleEpisodeUrl(ep.appleId) },
+};
+if (ep.publishDate) jsonLd.datePublished = ep.publishDate;
+if (ep.guestName) jsonLd.actor = { "@type": "Person", name: ep.guestName };
+---
+
+<BaseLayout
+  title={metaTitle}
+  description={metaDesc}
+  ogType="article"
+  ogImage={coverUrl}
+  canonical={`https://storys.fm/episodes/${ep.num}`}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} />
+  </Fragment>
+
+  <article class="ep">
+    <div class="wrap ep__top">
+      <div class="ep__cover">
+        <div class="ep__cover-inner">
+          <img
+            src={coverUrl}
+            alt={title}
+            onerror={`this.style.display='none';this.parentElement.classList.add('is-fallback');${brandLogo ? `this.insertAdjacentHTML('afterend','<img class=\\'ep__cover-fallback\\' src=\\'${brandLogo}\\' alt=\\'\\'>')` : ""}`}
+          />
+        </div>
+      </div>
+
+      <div class="ep__head">
+        <div class="ep__meta">
+          <span class="ep__num">EP #{ep.num}</span>
+          {ep.publishDate && <span class="ep__date">{ep.publishDate}</span>}
+          {brand && <a class="ep__brand-tag" href={`/brands/${brand.id}`}>{brand.nameZh}</a>}
+        </div>
+        <h1 class="ep__title">{title}</h1>
+        {ep.guestName && (
+          <p class="ep__guest">
+            <span class="ep__guest-name">{ep.guestName}</span>
+            {ep.guestTitle && <span class="ep__guest-title">{ep.guestTitle}</span>}
+          </p>
+        )}
+        <div class="ep__listen-row">
+          <span class="ep__listen-label">在這裡收聽</span>
+          <a class="ep__listen-link ep__listen-link--apple" href={appleEpisodeUrl(ep.appleId)} target="_blank" rel="noreferrer">Apple Podcasts</a>
+          {spotifyValid && (
+            <a class="ep__listen-link" href={`https://open.spotify.com/episode/${ep.spotifyId}`} target="_blank" rel="noreferrer">Spotify</a>
+          )}
+          {ep.soundonUrl && (
+            <a class="ep__listen-link" href={ep.soundonUrl} target="_blank" rel="noreferrer">SoundOn</a>
+          )}
+          {ep.kkboxUrl && (
+            <a class="ep__listen-link" href={ep.kkboxUrl} target="_blank" rel="noreferrer">KKBOX</a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    {appleEmbed && (
+      <section class="wrap ep__player-wrap">
+        <iframe class="ep__player" src={appleEmbed} title="Apple Podcasts player"
+          allow="autoplay *; encrypted-media *; clipboard-write" loading="lazy" frameborder="0"></iframe>
+        {spotifyEmbed && (
+          <iframe class="ep__player ep__player--spotify" src={spotifyEmbed} title="Spotify player"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" frameborder="0"></iframe>
+        )}
+      </section>
+    )}
+
+    {summary && (
+      <section class="wrap ep__story">
+        <span class="eyebrow">本集故事 · The story</span>
+        <p class="ep__blurb">{summary.blurb}</p>
+        <ul class="ep__takeaways">
+          {summary.takeaways.map((t) => (
+            <li class="ep__takeaway">
+              <h3>{t.title}</h3>
+              <p>{t.body}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {reels.length > 0 && (
+      <section class="wrap ep__reels">
+        <span class="eyebrow">本集精選 · Reels</span>
+        <div class="ep__reels-row">
+          {reels.map((r) => (
+            <div class="reel" data-code={r.code}>
+              <div class="reel__media">
+                <button class="reel__facade" type="button" aria-label={`播放 Instagram Reel（${r.likes} 個讚）`}>
+                  <img class="reel__cover" src={`/ig/covers/${r.code}.jpg`} alt="" loading="lazy"
+                    onerror="this.remove()" />
+                  <span class="reel__scrim" aria-hidden="true"></span>
+                  <span class="reel__play" aria-hidden="true"></span>
+                </button>
+              </div>
+              <a class="reel__bar" href={`https://www.instagram.com/reel/${r.code}/`} target="_blank" rel="noreferrer">
+                <span class="reel__bar-likes">{r.likes.toLocaleString("zh-Hant-TW")} 個讚</span>
+                <span class="reel__bar-link">在 Instagram 開啟 ↗</span>
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <nav class="wrap ep__nav">
+      {newer ? <a href={`/episodes/${newer.num}`}>← 較新一集</a> : <span></span>}
+      <a class="ep__nav-all" href="/episodes">所有節目</a>
+      {older ? <a href={`/episodes/${older.num}`}>較舊一集 →</a> : <span></span>}
+    </nav>
+  </article>
+</BaseLayout>
+
+<script>
+  // Reels are click-to-load: Instagram's embed is heavy, so the iframe only
+  // exists after the user asks for it. Shortcode is re-validated at the sink.
+  const CODE_RE = /^[A-Za-z0-9_-]{5,20}$/;
+
+  // IG's embed posts MEASURE messages with its natural document height (this is
+  // how instagram.com/embed.js resizes). Giving the iframe its natural height
+  // stops IG from shrinking the media to fit, so the video renders at its true
+  // aspect and our top/bottom crop becomes deterministic.
+  if (document.querySelector(".reel"))
+  window.addEventListener("message", (e) => {
+    if (e.origin !== "https://www.instagram.com") return;
+    let d: any = e.data;
+    try { if (typeof d === "string") d = JSON.parse(d); } catch { return; }
+    const h = d?.type === "MEASURE" && Number(d?.details?.height);
+    if (!h || h < 200 || h > 4000) return;
+    // Give the iframe its NATURAL height so IG lays the media out at its true
+    // aspect (it shrinks media to fit forced heights). The media box's own
+    // aspect-ratio then crops header above and footer chrome below — exactly.
+    document.querySelectorAll<HTMLIFrameElement>(".reel__frame").forEach((f) => {
+      if (f.contentWindow === e.source) f.style.height = `${h}px`;
+    });
+  });
+  document.querySelectorAll<HTMLElement>(".reel").forEach((box) => {
+    const btn = box.querySelector<HTMLButtonElement>(".reel__facade");
+    const code = box.dataset.code ?? "";
+    if (!btn || !CODE_RE.test(code)) return;
+    const media = box.querySelector<HTMLElement>(".reel__media");
+    if (!media) return;
+    btn.addEventListener("click", () => {
+      if (media.querySelector(".reel__frame")) return;
+      // One reel at a time: collapse any other playing card back to its facade
+      // (avoids overlapping audio + stacked IG embed bundles on phones).
+      document.querySelectorAll<HTMLElement>(".reel.is-playing").forEach((other) => {
+        if (other === box) return;
+        other.querySelector(".reel__frame")?.remove();
+        other.querySelector(".reel__fallback")?.remove();
+        other.classList.remove("is-playing", "is-loaded");
+      });
+      const frame = document.createElement("iframe");
+      frame.src = `https://www.instagram.com/reel/${code}/embed/`;
+      frame.className = "reel__frame";
+      frame.setAttribute("title", "Instagram Reel");
+      frame.setAttribute("allow", "autoplay; clipboard-write; encrypted-media; picture-in-picture; fullscreen");
+      frame.setAttribute("allowfullscreen", "");
+      frame.setAttribute("loading", "eager");
+      // If the frame never loads (offline / blocked), swap in a direct link
+      // instead of leaving a dead blank box.
+      const bail = setTimeout(() => {
+        if (box.classList.contains("is-loaded")) return;
+        frame.remove();
+        const a = document.createElement("a");
+        a.href = `https://www.instagram.com/reel/${code}/`;
+        a.target = "_blank";
+        a.rel = "noreferrer";
+        a.className = "reel__fallback";
+        a.textContent = "在 Instagram 上觀看 →";
+        media.appendChild(a);
+      }, 6000);
+      frame.addEventListener("load", () => {
+        clearTimeout(bail);
+        box.classList.add("is-loaded");
+      });
+      media.appendChild(frame);
+      box.classList.add("is-playing");
+    });
+  });
+</script>
+
+<style>
+  .ep { padding: 48px 0 80px; }
+  .ep__top {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  /* Double-bezel cover frame */
+  .ep__cover {
+    background: var(--c-sage);
+    padding: 8px;
+    border-radius: 24px;
+    box-shadow: 0 18px 50px rgba(22, 33, 20, 0.12);
+  }
+  .ep__cover-inner {
+    border-radius: 18px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--c-forest), var(--c-sage));
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-items: center;
+  }
+  .ep__cover-inner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ep__cover-fallback { width: 60% !important; height: auto !important; object-fit: contain !important; }
+
+  .ep__meta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+  .ep__num { font-family: var(--font-en); font-weight: 800; font-size: 13px; letter-spacing: 0.08em; color: var(--c-orange); }
+  .ep__date { font-family: var(--font-en); font-size: 13px; color: var(--c-muted); }
+  .ep__brand-tag {
+    font-size: 13px; color: var(--c-forest); text-decoration: none;
+    border: 1px solid var(--c-line); border-radius: 999px; padding: 3px 12px;
+    transition: background 0.2s var(--ease), color 0.2s var(--ease);
+  }
+  .ep__brand-tag:hover { background: var(--c-forest); color: var(--c-cream); }
+  .ep__title {
+    font-family: var(--font-zh); font-weight: 900; line-height: 1.15;
+    font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.01em; margin: 0 0 14px;
+  }
+  .ep__guest { display: flex; gap: 10px; align-items: baseline; margin: 0 0 24px; }
+  .ep__guest-name { font-weight: 700; }
+  .ep__guest-title { color: var(--c-muted); font-size: 14px; }
+  .ep__cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  /* Button-in-button trailing icon */
+  .ep__listen { padding-right: 8px; gap: 12px; }
+  .ep__listen-ico {
+    display: grid; place-items: center; width: 30px; height: 30px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22); font-family: var(--font-en);
+    transition: transform 0.2s var(--ease);
+  }
+  .ep__listen:hover .ep__listen-ico { transform: translateX(2px); }
+
+  .ep__story { margin-top: 56px; max-width: 760px; }
+  .ep__blurb { font-size: 18px; line-height: 1.9; color: var(--c-deep); margin: 12px 0 32px; }
+  .ep__takeaways { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+  .ep__takeaway {
+    border-left: 3px solid var(--c-orange); padding: 4px 0 4px 18px;
+  }
+  .ep__takeaway h3 { margin: 0 0 4px; font-size: 16px; font-weight: 800; color: var(--c-forest); }
+  .ep__takeaway p { margin: 0; font-size: 15px; line-height: 1.7; color: var(--c-muted); }
+
+  .ep__player-wrap { margin-top: 32px; display: grid; gap: 14px; }
+  .ep__player { width: 100%; height: 175px; border-radius: 14px; border: 1px solid var(--c-line); background: white; }
+  .ep__player--spotify { height: 152px; border: none; border-radius: 14px; }
+
+  .ep__listen-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .ep__listen-label { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: var(--c-muted); }
+  .ep__listen-link {
+    font-family: var(--font-en); font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+    color: var(--c-forest); text-decoration: none; border-bottom: 1.5px solid transparent; padding-bottom: 1px;
+    transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+  }
+  .ep__listen-link:hover { color: var(--c-orange); border-color: var(--c-orange); }
+  .ep__listen-link--apple { color: var(--c-orange); }
+
+  /* ===== Instagram reels (click-to-load facades) ===== */
+  .ep__reels { margin-top: 56px; }
+  .ep__reels-row {
+    margin-top: 14px;
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;
+  }
+  .reel {
+    flex: none;
+    width: min(375px, 84vw);
+    border-radius: 22px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    background: var(--c-deep);
+    display: flex;
+    flex-direction: column;
+  }
+  /* The media box matches the clips' natural video aspect (~375:426), so the
+     playing iframe's header/footer chrome is cropped away exactly. */
+  .reel__media {
+    position: relative;
+    aspect-ratio: 375 / 426;
+    background: linear-gradient(160deg, var(--c-forest) 0%, #16211466 140%), var(--c-deep);
+    overflow: hidden;
+  }
+  .reel__cover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .reel__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(22, 33, 20, 0.10) 50%, rgba(22, 33, 20, 0.42) 100%);
+  }
+  .reel__facade {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    color: var(--c-cream);
+    cursor: pointer;
+  }
+  .reel__facade:hover { background: rgba(240, 109, 45, 0.10); }
+  .reel__facade:hover .reel__play { transform: scale(1.08); }
+  .reel__facade:active .reel__play { transform: scale(0.96); }
+  .reel__play {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border-radius: 999px;
+    background: var(--c-orange);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 10px 30px rgba(22, 33, 20, 0.35);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  /* geometric play triangle (border trick — no icon dependency) */
+  .reel__play::before {
+    content: "";
+    display: block;
+    margin-left: 4px;
+    border-style: solid;
+    border-width: 9px 0 9px 15px;
+    border-color: transparent transparent transparent var(--c-cream);
+  }
+  .reel.is-playing .reel__facade { display: none; }
+  /* Playing: iframe gets its natural height (via IG's MEASURE message); the
+     media box crops the 54px header above and all footer chrome below. */
+  :global(.reel__frame) {
+    position: absolute;
+    top: -54px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 340px);
+    border: 0;
+    background: var(--c-deep);
+    opacity: 0;
+    transition: opacity 0.35s var(--ease);
+  }
+  .reel.is-loaded :global(.reel__frame) { opacity: 1; }
+
+  /* Compact action bar: always present, likes left / open-on-IG right. */
+  .reel__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--c-deep);
+    border-top: 1px solid rgba(246, 248, 238, 0.10);
+    text-decoration: none;
+  }
+  .reel__bar-likes {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--c-sage);
+  }
+  .reel__bar-link {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--c-cream);
+    transition: color 0.2s var(--ease);
+  }
+  .reel__bar:hover .reel__bar-link { color: var(--c-orange); }
+  :global(.reel__fallback) {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: var(--c-cream);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .ep__nav {
+    margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--c-line);
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  }
+  .ep__nav a { text-decoration: none; color: var(--c-forest); font-weight: 600; font-size: 14px; transition: color 0.2s var(--ease); }
+  .ep__nav a:hover { color: var(--c-orange); }
+  .ep__nav-all { color: var(--c-muted) !important; }
+
+  @media (max-width: 760px) {
+    .ep__top { grid-template-columns: 1fr; gap: 28px; }
+    .ep__cover { max-width: 240px; }
+  }
+</style>
