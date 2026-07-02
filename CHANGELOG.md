@@ -129,3 +129,22 @@
 **Reels rendering (same session, "go" given):** `scripts/sync-reels.mjs` (tab pinned by gid → `src/lib/ig-reels.json`, 158 reels/20 brands, shortcode-validated + featured-first/likes-desc sort; review fixes: pinned-to-episode outranks featured, comma-tolerant int parse, load-failure fallback link) + `getEpisodeReels()` in `src/lib/episodes.ts` + click-to-load facades on `/episodes/[num]` (top 3; iframe injected only on tap, shortcode re-validated at the sink; scroll-snap row; no layout shift). Verified live: ep39 plays in place; ep55 (no reels) skips the section. To regenerate: `node scripts/sync-reels.mjs`.
 
 **Reel card design (Johnson-iterated to final on ep39, applies to all episode pages):** card = **video-aspect media box (375:426** — the clips' true near-square format; only covers are 9:16, a key finding) + compact 14px action bar (likes · 在 Instagram 開啟 ↗, always present). At rest: real reel cover (153 harvested → `public/ig/covers/{code}.jpg`, 480px/5.2MB) + play. Playing: **pure video, zero IG chrome** — header cropped, footer falls below the box; iframe sized to its natural height via IG's MEASURE postMessage (origin-checked); off-format videos fail safe (crop video, never show chrome). Rejected on the way: 9:16 card + tall info panel (dead space), fixed oversize crops (IG shrinks media to forced heights). Final review: security clean (origin + contentWindow + clamp on the MEASURE listener; sink-side shortcode re-validation); applied its suggestions — **one-reel-at-a-time playback** (collapses others; no overlapping audio / stacked IG bundles) + zero-reels listener guard. Noted for later: move inline `onerror` handlers into the script before any CSP ships; hoist the 375/426 crop constants to CSS vars if reel formats ever vary. Verified live in Chrome.
+
+---
+
+## 2026-07-03 — Backlog committed + rebased; OG card; cron labels; inbound forms built
+
+**Summary:** The whole uncommitted body of work (07-01→07-03) landed on local `main` as 6 feature commits, then rebased over origin's 8 stale bot commits (`-X theirs`; our Master-Sheet `episodes.json` wins) — main is now 13 ahead / 0 behind, working tree clean. Push + deploy remain Johnson-gated (`scripts/safe-deploy.sh`).
+
+**Major**
+- **Default OG share card** (`public/og/default.png`, 1200×630): official STORYS dark tagline lockup on deep forest, double-bezel inset, orange accent; rendered from `docs/brand/og-card.html` (kept for regeneration after the font pass). `BaseLayout` now defaults `ogImage` to it — every share link gets a branded card; episode pages keep their covers. Verified in built HTML (home = card + width/height hints; ep5 = its cover).
+- **Inbound forms pipeline (code complete)** — replaces the dead Netlify markup. Site: `src/lib/inbound.ts` (endpoint/secret config) + `inbound-client.ts` (urlencoded POST = simple CORS request since Apps Script can't answer preflight; honeypot; pending button; `?sent=1` redirect on success; bilingual inline error otherwise). Google side: `scripts/apps-script/inbound-forms.gs` (secret check → honeypot backstop → appendRow to auto-created `inbound_*` tabs → email). **Verified end-to-end against a mock endpoint** (payload with CJK intact, success redirect + note) and the unconfigured path (honest error, button recovers). Remaining: Johnson's ~10-min Apps Script deploy — walkthrough + defaults recorded in `docs/plans/inbound-forms.md`.
+- **Cron workflow (§5.2):** labels renamed RSS→Master Sheet (the actual repoint rode in with `sync-episodes.mjs` defaults); ⚠️ takes effect on origin only after push — until then the daily cron keeps adding old-sheet bot commits (rebase again if the push waits days).
+
+**Minor:** deleted orphan `zhenfan.png` (byte-identical to `zhenfang.png`, zero references); honeypot CSS class `netlify-honeypot`→`hp-field`.
+
+**Decisions:** forms defaults (separate "Storys Inbound" sheet · honeypot-only · urlencoded transport · honest-error-when-unconfigured); backlog committed & rebased locally, push Johnson-gated. (See PLAN.md Decisions 2026-07-03.)
+
+**Open questions:** `NOTIFY_EMAIL` + public `CONTACT_EMAIL` for forms; when to push (cron divergence grows daily); blurb review still the human gate before deploy.
+
+**Verification:** `validate.mjs` PASS (0 hard, 1 by-design warning) · `npm run build` clean ×3 · `astro check` 0 errors 0 warnings · forms tested in real Chromium both paths · rebased tree byte-identical to pre-rebase (`git diff` empty).
