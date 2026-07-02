@@ -3,11 +3,22 @@ import MapLayout from "../layouts/MapLayout.astro";
 import { BRANDS, SHOW_ID, SHOW_URL } from "../data/brands";
 import { I18N } from "../data/i18n";
 
+// Safe-serialize for embedding in an inline <script>: JSON.stringify does NOT
+// escape </script> or U+2028/2029, so escape them to prevent HTML/script breakout
+// (brand data is now sheet-authored — treat it as untrusted).
+const j = (v: unknown) =>
+  JSON.stringify(v)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026")
+    .replace(/\u2028/g, "\\u2028")
+    .replace(/\u2029/g, "\\u2029");
+
 const bootstrap = `
-  window.BRANDS = ${JSON.stringify(BRANDS)};
-  window.SHOW_ID = ${JSON.stringify(SHOW_ID)};
-  window.SHOW_URL = ${JSON.stringify(SHOW_URL)};
-  window.I18N = ${JSON.stringify(I18N)};
+  window.BRANDS = ${j(BRANDS)};
+  window.SHOW_ID = ${j(SHOW_ID)};
+  window.SHOW_URL = ${j(SHOW_URL)};
+  window.I18N = ${j(I18N)};
 `;
 ---
 
@@ -28,11 +39,8 @@ const bootstrap = `
   <header class="im-header">
     <a class="im-mark" href="/" aria-label="Back to Storys">
       <span class="im-mark__icon" aria-hidden="true">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="2"/>
-          <path d="M11 13.5C11 11.6 12.6 10 14.5 10H17.5C19.4 10 21 11.6 21 13.5V13.5C21 15.4 19.4 17 17.5 17H14.5C12.6 17 11 18.6 11 20.5V20.5C11 22.4 12.6 24 14.5 24H17.5C19.4 24 21 22.4 21 20.5"
-                stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <!-- Official Storys 創業之聲 icon (dark-background variant from the VIS) -->
+        <img src="/brand/Logo_chuangye_icon-dark.svg" alt="" width="32" height="32" />
       </span>
       <span class="im-mark__text">
         <span class="im-mark__zh">創業之聲</span>
@@ -704,7 +712,8 @@ const bootstrap = `
     box-shadow: var(--im-shadow-glow);
   }
   .im-mark { display: inline-flex; align-items: center; gap: 12px; color: var(--im-c-cream); }
-  .im-mark__icon { display: inline-flex; width: 32px; height: 32px; color: var(--im-c-cream); }
+  .im-mark__icon { display: inline-flex; width: 32px; height: 32px; }
+  .im-mark__icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
   .im-mark__text { display: inline-flex; flex-direction: column; line-height: 1; gap: 3px; }
   .im-mark__zh { font-family: var(--font-zh); font-weight: 900; font-size: 13px; letter-spacing: 0.04em; color: var(--im-c-cream); }
   .im-mark__en { font-family: var(--font-en); font-style: italic; font-weight: 800; font-size: 10.5px; letter-spacing: 0.18em; color: var(--im-c-orange); }

@@ -15,7 +15,15 @@ const candidates = BRANDS.filter(
   loc: b.locations![0],
 }));
 
-const bootstrap = `window.__VISIT_BRANDS__ = ${JSON.stringify(candidates)};`;
+// Escape </script> / U+2028-9 for the inline <script> — brand data is sheet-authored (untrusted).
+const j = (v: unknown) =>
+  JSON.stringify(v)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026")
+    .replace(/\u2028/g, "\\u2028")
+    .replace(/\u2029/g, "\\u2029");
+const bootstrap = `window.__VISIT_BRANDS__ = ${j(candidates)};`;
 ---
 
 <BaseLayout
@@ -285,11 +293,21 @@ const bootstrap = `window.__VISIT_BRANDS__ = ${JSON.stringify(candidates)};`;
   .visit-head__sub { color: var(--c-muted); font-size: 16px; }
 
   .visit-app { padding: 40px 0 80px; }
+  /* Near-full-width canvas for the route builder (other pages keep --max-w).
+     `.wrap.visit-app__grid` out-specifies the global `.wrap` (not order-dependent). */
+  .visit-head .wrap,
+  .wrap.visit-app__grid {
+    max-width: min(1720px, 94vw);
+  }
   .visit-app__grid {
     display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 28px;
+    grid-template-columns: 430px 1fr;
+    gap: 32px;
     align-items: start;
+  }
+  /* Small laptops / split-screen: slim the picker so the map keeps the hierarchy. */
+  @media (max-width: 1200px) {
+    .visit-app__grid { grid-template-columns: 360px 1fr; }
   }
   @media (max-width: 900px) {
     .visit-app__grid { grid-template-columns: 1fr; }
@@ -306,40 +324,40 @@ const bootstrap = `window.__VISIT_BRANDS__ = ${JSON.stringify(candidates)};`;
     display: flex;
     flex-direction: column;
   }
-  .picker__head { padding: 20px 22px 14px; border-bottom: 1px solid var(--c-line); }
+  .picker__head { padding: 24px 26px 16px; border-bottom: 1px solid var(--c-line); }
   .picker__title {
     margin: 0 0 4px;
     font-family: var(--font-zh);
     font-weight: 800;
-    font-size: 18px;
+    font-size: 21px;
   }
-  .picker__sub { margin: 0; font-size: 12px; color: var(--c-muted); }
-  .picker__list { list-style: none; margin: 0; padding: 6px; overflow-y: auto; flex: 1; }
+  .picker__sub { margin: 0; font-size: 13px; color: var(--c-muted); }
+  .picker__list { list-style: none; margin: 0; padding: 8px; overflow-y: auto; flex: 1; }
   .picker__row {
     display: grid;
-    grid-template-columns: 32px 1fr 24px;
-    gap: 12px;
+    grid-template-columns: 48px 1fr 26px;
+    gap: 14px;
     align-items: center;
-    padding: 10px 12px;
-    border-radius: 10px;
+    padding: 12px 14px;
+    border-radius: 12px;
     cursor: pointer;
     transition: background 0.2s var(--ease);
   }
   .picker__row:hover { background: #f6f8ee; }
   .picker__row.is-selected { background: rgba(240, 109, 45, 0.10); box-shadow: inset 3px 0 0 var(--c-orange); }
   .picker__logo {
-    width: 32px; height: 32px;
-    border-radius: 8px;
+    width: 48px; height: 48px;
+    border-radius: 10px;
     background: white;
     border: 1px solid var(--c-line);
     display: grid;
     place-items: center;
   }
-  .picker__logo img { width: 22px; height: 22px; object-fit: contain; }
-  .picker__body { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+  .picker__logo img { width: 36px; height: 36px; object-fit: contain; }
+  .picker__body { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
   .picker__name {
     font-weight: 700;
-    font-size: 13px;
+    font-size: 15px;
     color: var(--c-deep);
     white-space: nowrap;
     overflow: hidden;
@@ -347,7 +365,7 @@ const bootstrap = `window.__VISIT_BRANDS__ = ${JSON.stringify(candidates)};`;
   }
   .picker__cat {
     font-family: var(--font-en);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -390,7 +408,7 @@ const bootstrap = `window.__VISIT_BRANDS__ = ${JSON.stringify(candidates)};`;
   .route .btn--ghost:hover { background: var(--c-orange); border-color: var(--c-orange); color: var(--c-cream); }
 
   .route__map {
-    height: 380px;
+    height: clamp(420px, 58vh, 640px);
     background: #0a0e08;
   }
 

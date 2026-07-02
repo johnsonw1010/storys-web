@@ -19,17 +19,6 @@ import { SHOW_URL } from "../data/brands";
         這張地圖讓我們的聽眾走進這些品牌——支持那些勇敢起步的人，把每一段故事帶回到他們親手蓋起的場域。
       </p>
 
-      <h2>Visual Identity</h2>
-      <p>Storys 的視覺從台灣的森林與晨霧汲取靈感——深綠、奶油色、與一抹明亮的橘。</p>
-      <ul class="palette">
-        <li><span style="background:#162114"></span>Deep Forest · #162114</li>
-        <li><span style="background:#324425"></span>Forest · #324425</li>
-        <li><span style="background:#c7d0b2"></span>Sage · #c7d0b2</li>
-        <li><span style="background:#f6f8ee; border:1px solid #d8dec5"></span>Cream · #f6f8ee</li>
-        <li><span style="background:#f06d2d"></span>Orange · #f06d2d</li>
-        <li><span style="background:#f0a92d"></span>Golden · #f0a92d</li>
-      </ul>
-
       <div class="prose__cta">
         <a class="btn btn--accent" href={SHOW_URL} target="_blank" rel="noreferrer" data-i18n="about.cta">收聽 Storys Podcast</a>
       </div>
@@ -57,28 +46,5 @@ import { SHOW_URL } from "../data/brands";
   .prose { padding: 60px 0 80px; }
   .prose .wrap { max-width: 720px; }
   .prose p { font-size: 17px; line-height: 1.75; color: var(--c-forest); margin: 16px 0; }
-  .prose h2 {
-    margin: 48px 0 16px;
-    font-family: var(--font-zh);
-    font-weight: 900;
-    font-size: 26px;
-  }
-  html[lang="en"] .prose h2 { font-family: var(--font-en); font-style: italic; }
-  .palette { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
-  .palette li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: var(--font-en);
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--c-muted);
-  }
-  .palette span {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    flex: 0 0 auto;
-  }
   .prose__cta { margin-top: 36px; }
 </style>

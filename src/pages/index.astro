@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { BRANDS, SHOW_URL, brandLogoUrl } from "../data/brands";
-import { getLatestEpisodes, appleEpisodeUrl, findBrandByAppleId } from "../lib/episodes";
+import { getLatestEpisodes, episodeUrl, cleanEpisodeTitle, findBrandByAppleId } from "../lib/episodes";
 
 const retailBrands = BRANDS.filter((b) => b.type === "retail");
 const totalLocations = retailBrands.reduce((sum, b) => sum + (b.locations?.length ?? 0), 0);
@@ -9,37 +9,43 @@ const totalEpisodes = BRANDS.reduce((sum, b) => sum + b.episodes.filter((e) => e
 
 const featured = BRANDS.slice(0, 6);
 const latest = getLatestEpisodes(5);
+// Marquee: real transparent logos only (favicon fallbacks would break the band).
+const marqueeBrands = BRANDS.filter((b) => b.logo);
+// Logos whose artwork is (near-)white — invisible on cream, so they render as
+// dark-ink silhouettes instead. Measured: mean luminance of opaque pixels > ~195
+// (see CHANGELOG 2026-07-02). Re-measure if the VA delivers replacement logos.
+const LIGHT_LOGOS = new Set(["4foodie", "cofit", "cyberbiz", "tixcraft", "phrozen"]);
 ---
 
 <BaseLayout>
   <section class="hero">
     <div class="wrap hero__inner">
-      <span class="eyebrow" data-i18n="home.hero.eyebrow">Storys Podcast｜原 創業之聲</span>
+      <span class="eyebrow hero-in hero-in--1" data-i18n="home.hero.eyebrow">Storys Podcast｜原 創業之聲</span>
       <h1 class="hero__title">
-        <span data-i18n="home.hero.title">從第一步，</span>
-        <span class="hero__accent" data-i18n="home.hero.titleAccent">到每一步。</span>
+        <span class="hero-in hero-in--2" data-i18n="home.hero.title">從第一步，</span>
+        <span class="hero__accent hero-in hero-in--3" data-i18n="home.hero.titleAccent">到每一步。</span>
       </h1>
-      <p class="hero__sub-en" data-i18n="home.hero.titleEn">first step to every step</p>
-      <p class="hero__body" data-i18n="home.hero.sub">
+      <p class="hero__sub-en hero-in hero-in--4" data-i18n="home.hero.titleEn">first step to every step</p>
+      <p class="hero__body hero-in hero-in--4" data-i18n="home.hero.sub">
         我們訪談每一位創辦人——從第一步走到每一步。把他們的故事帶回到他們親手蓋起的場域。
       </p>
 
-      <div class="hero__stats">
+      <div class="hero__stats hero-in hero-in--5">
         <div class="stat">
-          <strong>{BRANDS.length}</strong>
+          <strong data-countup>{BRANDS.length}</strong>
           <span data-i18n="hero.statBrands">個品牌</span>
         </div>
         <div class="stat">
-          <strong>{totalLocations}</strong>
+          <strong data-countup>{totalLocations}</strong>
           <span data-i18n="hero.statLocations">個實體據點</span>
         </div>
         <div class="stat">
-          <strong>{totalEpisodes}</strong>
+          <strong data-countup>{totalEpisodes}</strong>
           <span data-i18n="hero.statEpisodes">集 Podcast</span>
         </div>
       </div>
 
-      <div class="hero__cta">
+      <div class="hero__cta hero-in hero-in--6">
         <a class="btn btn--accent" href={SHOW_URL} target="_blank" rel="noreferrer" data-i18n="home.hero.ctaListen">收聽 Storys</a>
         <a class="btn btn--ghost" href="/map" data-i18n="home.hero.ctaMap">瀏覽地圖</a>
         <a class="btn btn--ghost" href="/visit" data-i18n="nav.visit">散步路線</a>
@@ -47,16 +53,25 @@ const latest = getLatestEpisodes(5);
     </div>
   </section>
 
+  <!-- Brand band: every featured brand drifting by (the one marquee on the page). -->
+  <div class="brandband" aria-hidden="true">
+    <div class="brandband__track">
+      {[...marqueeBrands, ...marqueeBrands].map((b) => (
+        <img class={LIGHT_LOGOS.has(b.id) ? "is-light" : ""} src={brandLogoUrl(b)} alt="" width="120" height="34" />
+      ))}
+    </div>
+  </div>
+
   <section class="featured">
     <div class="wrap">
-      <header class="section-head">
+      <header class="section-head rv">
         <span class="eyebrow" data-i18n="hero.featuredLabel">最新訪談</span>
         <h2 class="section-title" data-i18n="home.featured.title">受訪品牌</h2>
         <p class="section-sub" data-i18n="home.featured.sub">點擊任一品牌，前往地圖查看完整資訊。</p>
       </header>
       <div class="featured__grid">
-        {featured.map((b) => (
-          <a class="brand-tile" href={`/brands/${b.id}`}>
+        {featured.map((b, i) => (
+          <a class="brand-tile rv" style={`--rvd:${i * 70}ms`} href={`/brands/${b.id}`}>
             <span class="brand-tile__logo">
               <img src={brandLogoUrl(b)} alt="" loading="lazy" />
             </span>
@@ -68,7 +83,7 @@ const latest = getLatestEpisodes(5);
           </a>
         ))}
       </div>
-      <div class="section-foot">
+      <div class="section-foot rv">
         <a class="btn btn--ghost" href="/map" data-i18n="home.featured.cta">看所有品牌</a>
       </div>
     </div>
@@ -76,33 +91,32 @@ const latest = getLatestEpisodes(5);
 
   <section class="latest">
     <div class="wrap">
-      <header class="section-head">
+      <header class="section-head rv">
         <h2 class="section-title" data-i18n="home.latest.title">最新節目</h2>
       </header>
       <ul class="episode-list">
-        {latest.map((ep) => {
+        {latest.map((ep, i) => {
           const brand = findBrandByAppleId(ep.appleId);
           return (
-            <li class="episode-row">
-              <a href={appleEpisodeUrl(ep.appleId)} target="_blank" rel="noreferrer">
+            <li class="episode-row rv" style={`--rvd:${i * 60}ms`}>
+              <a href={episodeUrl(ep)}>
                 <span class="episode-num">{ep.num ? `EP #${ep.num}` : "EP"}</span>
-                <span class="episode-title">{ep.titleZh}</span>
+                <span class="episode-title">{cleanEpisodeTitle(ep.titleZh)}</span>
                 {brand && <span class="episode-brand">{brand.nameZh}</span>}
               </a>
             </li>
           );
         })}
       </ul>
-      <div class="section-foot">
+      <div class="section-foot rv">
         <a class="btn btn--ghost" href="/episodes" data-i18n="home.latest.cta">看全部節目</a>
       </div>
     </div>
   </section>
 
   <section class="about-cta">
-    <div class="wrap about-cta__inner">
+    <div class="wrap about-cta__inner rv">
       <div>
-        <span class="eyebrow" data-i18n="about.eyebrow">關於 Storys</span>
         <h2 class="about-cta__title" data-i18n="home.about.title">關於 Storys</h2>
         <p class="about-cta__body" data-i18n="home.about.body">我們紀錄每一位創辦人的旅程——從沒沒無聞到被聽見。</p>
         <a class="btn" href="/team" data-i18n="home.about.cta">認識我們</a>
@@ -111,9 +125,58 @@ const latest = getLatestEpisodes(5);
   </section>
 </BaseLayout>
 
+<script>
+  // Home-page motion: IO scroll-reveals + stat count-ups.
+  // JS-failure-safe: hidden states only apply under html.rv-ready (set here).
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduce && "IntersectionObserver" in window) {
+    document.documentElement.classList.add("rv-ready");
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add("rv-in");
+            io.unobserve(e.target);
+          }
+        }
+      },
+      // Positive bottom margin pre-triggers reveals just below the fold so fast
+      // scrollers never catch an empty (still-hidden) section.
+      { threshold: 0.12, rootMargin: "0px 0px 18% 0px" },
+    );
+    document.querySelectorAll(".rv").forEach((el) => io.observe(el));
+
+    // Count-up: numbers rise once the stats pill enters view.
+    const ease = (t: number) => 1 - Math.pow(1 - t, 3);
+    const countIo = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          countIo.unobserve(e.target);
+          const el = e.target as HTMLElement;
+          const target = parseInt(el.textContent ?? "0", 10);
+          if (!Number.isFinite(target) || target <= 0) continue;
+          const t0 = performance.now();
+          const dur = 950;
+          const tick = (now: number) => {
+            const p = Math.min((now - t0) / dur, 1);
+            el.textContent = String(Math.round(ease(p) * target));
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+      },
+      { threshold: 0.6 },
+    );
+    document.querySelectorAll("[data-countup]").forEach((el) => countIo.observe(el));
+  }
+</script>
+
 <style>
   .hero {
-    padding: 80px 0 60px;
+    padding: 80px 0 48px;
     text-align: center;
   }
   .hero__inner { max-width: 880px; margin: 0 auto; }
@@ -126,7 +189,8 @@ const latest = getLatestEpisodes(5);
     letter-spacing: -0.02em;
     color: var(--c-deep);
   }
-  .hero__accent { color: var(--c-orange); display: block; }
+  .hero__title > span { display: block; }
+  .hero__accent { color: var(--c-orange); }
   html[lang="en"] .hero__title { font-family: var(--font-en); font-style: italic; }
   .hero__sub-en {
     font-family: var(--font-en);
@@ -160,6 +224,8 @@ const latest = getLatestEpisodes(5);
     font-weight: 800;
     color: var(--c-orange);
     line-height: 1;
+    font-variant-numeric: tabular-nums;
+    min-width: 2ch;
   }
   .stat span {
     font-size: 11px;
@@ -168,6 +234,103 @@ const latest = getLatestEpisodes(5);
     color: var(--c-muted);
   }
   .hero__cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  /* ===== Hero entrance choreography (load-time; pure CSS, no JS dependency).
+     The tagline reveals step-by-step: the brand's own promise, acted out. ===== */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-in {
+      opacity: 0;
+      transform: translateY(22px);
+      animation: hero-rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hero-in--1 { animation-delay: 0.05s; }
+    .hero-in--2 { animation-delay: 0.16s; }
+    .hero-in--3 { animation-delay: 0.34s; }
+    .hero-in--4 { animation-delay: 0.52s; }
+    .hero-in--5 { animation-delay: 0.66s; }
+    .hero-in--6 { animation-delay: 0.78s; }
+    /* The accent line wipes up from its baseline: the "next step" arriving. */
+    .hero__accent.hero-in {
+      clip-path: inset(0 0 100% 0);
+      transform: translateY(30px);
+      animation-name: hero-accent;
+      animation-duration: 0.9s;
+    }
+    @keyframes hero-rise {
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes hero-accent {
+      to { opacity: 1; transform: none; clip-path: inset(-8% 0 -12% 0); }
+    }
+
+    /* Scroll-scrubbed hero exit (progressive: browsers with scroll-driven animations). */
+    @supports (animation-timeline: view()) {
+      .hero__inner {
+        animation: hero-exit linear both;
+        animation-timeline: view();
+        animation-range: exit-crossing 0% exit-crossing 70%;
+      }
+      @keyframes hero-exit {
+        to { opacity: 0.25; transform: translateY(-34px) scale(0.985); }
+      }
+    }
+  }
+
+  /* ===== Brand band (the one marquee): quiet drift of the real logos ===== */
+  .brandband {
+    overflow: hidden;
+    padding: 10px 0 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+  }
+  .brandband__track {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    width: max-content;
+    padding: 14px 32px;
+  }
+  .brandband__track img {
+    height: 56px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    opacity: 0.82;
+    filter: grayscale(0.45) saturate(0.9);
+    transition: opacity 0.3s var(--ease), filter 0.3s var(--ease);
+  }
+  .brandband__track img:hover { opacity: 1; filter: none; }
+  /* white-artwork logos → forest-ink silhouettes (invisible on cream otherwise) */
+  .brandband__track img.is-light { filter: brightness(0.38) saturate(0.5); opacity: 0.66; }
+  .brandband__track img.is-light:hover { filter: brightness(0.3) saturate(0.5); opacity: 0.9; }
+  @media (prefers-reduced-motion: no-preference) {
+    .brandband__track { animation: band-drift 48s linear infinite; }
+    @keyframes band-drift { to { transform: translateX(-50%); } }
+  }
+  @media (max-width: 720px) {
+    /* padding-sum must equal gap for the -50% loop to stay seamless */
+    .brandband__track { gap: 40px; padding: 14px 20px; }
+    .brandband__track img { height: 40px; }
+  }
+
+  /* ===== Scroll reveals (IO adds .rv-in; hidden state gated on html.rv-ready
+     so content is always visible without JS / with reduced motion). ===== */
+  :global(html.rv-ready) .rv {
+    opacity: 0;
+    transform: translateY(26px);
+    /* include background so this rule doesn't clobber .brand-tile's hover ease */
+    transition:
+      opacity 0.7s var(--ease),
+      transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+      background 0.2s var(--ease);
+    transition-delay: var(--rvd, 0s), var(--rvd, 0s), 0s;
+  }
+  :global(html.rv-ready) .rv.rv-in {
+    opacity: 1;
+    transform: none;
+    /* revealed: drop the stagger delay so hover feedback is instant */
+    transition-delay: 0s;
+  }
 
   .featured, .latest, .about-cta { padding: 70px 0; }
   .section-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
@@ -206,6 +369,7 @@ const latest = getLatestEpisodes(5);
     transition: background 0.2s var(--ease);
   }
   .brand-tile:hover { background: #eef1de; }
+  .brand-tile:hover .brand-tile__logo { transform: translateY(-2px); }
   .brand-tile__logo {
     width: 44px;
     height: 44px;
@@ -215,6 +379,7 @@ const latest = getLatestEpisodes(5);
     place-items: center;
     flex: 0 0 auto;
     border: 1px solid var(--c-line);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .brand-tile__logo img { width: 28px; height: 28px; object-fit: contain; }
   .brand-tile__body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
@@ -263,9 +428,37 @@ const latest = getLatestEpisodes(5);
     .episode-brand { display: none; }
   }
 
-  .about-cta { background: var(--c-forest); color: var(--c-cream); margin-top: 80px; }
-  .about-cta__inner { text-align: center; max-width: 720px; margin: 0 auto; }
-  .about-cta__inner .eyebrow { color: var(--c-golden); }
+  .about-cta {
+    background: var(--c-forest);
+    color: var(--c-cream);
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Scroll-scrubbed warm glow drifting through the dark band (progressive). */
+  .about-cta::before {
+    content: "";
+    position: absolute;
+    inset: -60% -10%;
+    background:
+      radial-gradient(42% 55% at 24% 40%, rgba(240, 109, 45, 0.20), transparent 70%),
+      radial-gradient(36% 48% at 78% 65%, rgba(199, 208, 178, 0.14), transparent 70%);
+    pointer-events: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .about-cta::before {
+        animation: glow-drift linear both;
+        animation-timeline: view();
+        animation-range: entry 0% exit 100%;
+      }
+      @keyframes glow-drift {
+        from { transform: translateY(12%); }
+        to { transform: translateY(-12%); }
+      }
+    }
+  }
+  .about-cta__inner { text-align: center; max-width: 720px; margin: 0 auto; position: relative; }
   .about-cta__title {
     margin: 8px 0 14px;
     font-family: var(--font-zh);
