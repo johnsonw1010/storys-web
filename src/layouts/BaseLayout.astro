@@ -7,6 +7,9 @@ import { I18N } from "../data/i18n";
 interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
+  ogType?: string;
+  ogImage?: string;
   hideHeader?: boolean;
   hideFooter?: boolean;
   bodyClass?: string;
@@ -15,6 +18,9 @@ interface Props {
 const {
   title,
   description,
+  canonical,
+  ogType = "website",
+  ogImage,
   hideHeader = false,
   hideFooter = false,
   bodyClass = "",
@@ -22,6 +28,16 @@ const {
 
 const metaTitle = title ?? I18N.zh["meta.title"];
 const metaDescription = description ?? I18N.zh["meta.description"];
+
+// Canonical + social tags, centralized so every page is SEO/AEO-consistent.
+const siteOrigin = Astro.site ?? new URL("https://storys.fm");
+const canonicalURL =
+  canonical ?? new URL(Astro.url.pathname.replace(/\/+$/, "") || "/", siteOrigin).href;
+const ogImageURL = ogImage
+  ? ogImage.startsWith("http")
+    ? ogImage
+    : new URL(ogImage, siteOrigin).href
+  : null;
 
 // Serialize the i18n dictionary so the client-side script can apply translations.
 const i18nJson = JSON.stringify(I18N);
@@ -35,6 +51,19 @@ const i18nJson = JSON.stringify(I18N);
     <meta name="description" content={metaDescription} />
     <meta name="theme-color" content="#162114" />
     <title data-i18n="meta.title">{metaTitle}</title>
+
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Storys 創業之聲" />
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonicalURL} />
+    {ogImageURL && <meta property="og:image" content={ogImageURL} />}
+    <meta name="twitter:card" content={ogImageURL ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={metaTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    {ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
 
     <link rel="icon" type="image/svg+xml" href="/brand/Logo_STORYS_icon-logotype.svg" />
 
