@@ -59,7 +59,7 @@ The 20 brands are already filled in. For each row:
 The map shows a pin for every physical store. The tab currently has only a starter set — **most brands are missing branches.** For **each retail brand**, add a row for **every** store:
 1. Find the brand's official **門市 / 據點 / store-locator** page (best source — more reliable than Google Maps).
 2. Add one row per store: **store name (zh/en) + full, exact address.**
-3. **Leave `lat` / `lng` blank** — coordinates are generated from the address automatically. The one thing that matters is the **address is precise** (building number, district, floor).
+3. **Fill `lat` / `lng` from Google Maps** — find the store in Google Maps, **right-click the pin → click the `25.0…, 121.5…` numbers to copy them**, then paste into the `lat` and `lng` columns. The **address must still be exact** too (building number, district, floor).
 4. **`brand_id` must exactly match the brand's `id`** in the `brands` tab (lowercase).
 5. **`kind` column:** leave it **blank** for any shop a customer can walk into. Type `hq` (lowercase) **only** for a company office/headquarters customers don't visit — those still show on the brand's page, just not as a map pin. (If a place is both a flagship store *and* the office, treat it as a store: leave blank. When unsure → blank.)
 6. **Online-only brand with no place to visit?** Don't add location rows at all — just make sure its `type` is `online` in the `brands` tab, and it'll appear in the Online Directory automatically.
@@ -96,14 +96,14 @@ The map shows a pin for every physical store. The tab currently has only a start
 | `address_zh` | ✅ | full Chinese address — **be exact** | `台北市中山區…` |
 | `address_en` | ⬜ | full English address | `Zhongshan Dist., Taipei…` |
 | `kind` | ⬜ | **blank** = a shop customers visit · `hq` = office/HQ they can't shop at | (blank) |
-| `lat` | auto | **leave blank** — generated from address | |
-| `lng` | auto | **leave blank** — generated from address | |
-| `gmaps_url` | ⬜ | Google Maps link if the locator gives one | |
+| `lat` | ✅ | from Google Maps (right-click pin → click to copy the two numbers) | `25.0330` |
+| `lng` | ✅ | from Google Maps (copied together with `lat`) | `121.5654` |
+| `gmaps_url` | ⬜ | **leave blank** — not needed (the site builds the Maps link automatically from the address/coords) | |
 
 ---
 
 ## ✅ You're done when…
 - [ ] Every brand has a fresh `{id}.png` logo — **transparent background, ≥800 px** — in the folder (all 20 + any new brands).
 - [ ] `brands` tab reviewed; any new brands added.
-- [ ] **Every retail brand's stores fully listed** in `locations` with exact addresses (lat/lng left blank).
+- [ ] **Every retail brand's stores fully listed** in `locations` with exact addresses **and lat/lng from Google Maps**.
 - [ ] Tell 🟨 ‹‹ contact ›› it's ready for review.
