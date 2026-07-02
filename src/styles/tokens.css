@@ -79,5 +79,5 @@ a { color: inherit; }
   color: var(--c-orange);
 }
 
-/* Honeypot for forms (Netlify pattern) */
-.netlify-honeypot { display: none; }
+/* Honeypot field for the inbound forms (bots fill it, humans never see it) */
+.hp-field { display: none; }

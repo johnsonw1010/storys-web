@@ -16,13 +16,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <form
         name="brand-application"
         method="POST"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
+        data-inbound
         action="/apply?sent=1"
         class="form"
       >
         <input type="hidden" name="form-name" value="brand-application" />
-        <p class="netlify-honeypot"><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <p class="hp-field" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
 
         <label class="field">
           <span data-i18n="apply.field.brand">品牌名稱</span>
@@ -55,6 +54,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 </BaseLayout>
 
 <script>
+  import { wireInboundForms } from "../lib/inbound-client";
+  wireInboundForms();
+
   if (typeof window !== "undefined" && new URL(window.location.href).searchParams.get("sent") === "1") {
     const head = document.querySelector(".page-head .wrap");
     if (head) {
@@ -114,4 +116,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     box-shadow: 0 0 0 3px rgba(240, 109, 45, 0.18);
   }
   .form .btn { align-self: flex-start; margin-top: 8px; }
+  :global(.form__error) {
+    margin: 4px 0 0;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(240, 109, 45, 0.1);
+    border: 1px solid rgba(240, 109, 45, 0.35);
+    color: #b44415;
+    font-size: 13px;
+    font-weight: 500;
+  }
 </style>
