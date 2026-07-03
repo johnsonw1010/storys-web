@@ -7,9 +7,9 @@
 Storys (storys.fm) is a bilingual (zh / en) **Astro static site** for a Taiwanese podcast about brand founders, with an **interactive map** of the featured brands' physical stores. It's hosted on **Cloudflare Workers**.
 
 - **Status:** LIVE at https://storys-web.johnsonwang1010.workers.dev (custom domain `storys.fm` not attached yet). **Everything is now COMMITTED locally (2026-07-03) — main is 13 commits ahead of origin, nothing pushed, nothing deployed.** ⚠️ Until we push, the GitHub daily cron keeps committing OLD-sheet episode syncs to origin (already rebased over 8 such bot commits once; each day adds another). Next act: Johnson green-lights **push + `scripts/safe-deploy.sh`**.
-- **Done through 2026-07-03 (committed locally, review-gated):** the whole "Next 10" content stack — **51 episode blurbs** (writer→checker loop; `summaries` tab gid `2040068732`), **55 episode pages** with covers + Spotify/Apple embeds, **SEO/AEO** (sitemap/robots/canonical/OG + **default 1200×630 OG share card**, regen source `docs/brand/og-card.html`), **brands pipeline LIVE** (21 brands · 54 eps · **57 locations**), fresh **logos** (17 transparent + 4 flagged), **scroll-motion landing page**, **/visit** near-full-width, **IG reel cards** on episode pages, and the **inbound-forms pipeline** (site side + Apps Script code done & mock-verified; forms show an honest error until the endpoint is pasted in — no more silent void).
-- **Needs Johnson:** (a) **review 51 blurbs** in the `summaries` tab (human gate before deploy); (b) fonts (Neue Kabel + 王漢宗特黑體繁) → design pass (#6); (c) two flagged Locations rows (vacanza 信義新光三越 likely closed; nubra = 新光三越 A8 2F) — destructive edits, his call; (d) VA: re-do kure8/megan/vacanza/backerfounder logos; (e) **~10-min Apps Script deploy** for the forms (walkthrough in `docs/plans/inbound-forms.md`) + decide `NOTIFY_EMAIL` / public `CONTACT_EMAIL`; (f) **green-light push + deploy** (`scripts/safe-deploy.sh`).
-- **Remaining code lanes:** **#10 ship** (push → `scripts/safe-deploy.sh` → attach storys.fm), paste forms endpoint into `src/lib/inbound.ts` once Johnson deploys the Apps Script, design/VIS pass when fonts land.
+- **Done through 2026-07-03 (committed locally, review-gated):** the whole "Next 10" content stack — **51 episode blurbs** (writer→checker loop; `summaries` tab gid `2040068732`), **55 episode pages** with covers + Spotify/Apple embeds, **SEO/AEO** (sitemap/robots/canonical/OG + **default 1200×630 OG share card**, regen source `docs/brand/og-card.html`), **brands pipeline LIVE** (21 brands · 54 eps · **57 locations**), fresh **logos** (17 transparent + 4 flagged), **scroll-motion landing page**, **/visit** near-full-width, **IG reel cards** on episode pages, and the **inbound-forms pipeline LIVE end-to-end** (private "Storys Inbound" sheet + email notify; verified with real submissions; ships with next deploy).
+- **Needs Johnson:** (a) **review 51 blurbs** in the `summaries` tab (human gate before deploy); (b) fonts (Neue Kabel + 王漢宗特黑體繁) → design pass (#6); (c) two flagged Locations rows (vacanza 信義新光三越 likely closed; nubra = 新光三越 A8 2F) — destructive edits, his call; (d) VA: re-do kure8/megan/vacanza/backerfounder logos; (e) **green-light push + deploy** (`scripts/safe-deploy.sh`).
+- **Remaining code lanes:** **#10 ship** (push → `scripts/safe-deploy.sh` → attach storys.fm), design/VIS pass when fonts land.
 - **To regenerate:** brands `OUT="src/data/brands.generated.json" node scripts/sync.mjs` · summaries `node scripts/sync-summaries.mjs` · episodes `node scripts/sync-episodes.mjs` · reels `node scripts/sync-reels.mjs`. Edit the sheet, not the code — `brands.ts`, `episode-summaries.json`, `episodes.json`, `ig-reels.json` are generated.
 
 ## Key facts / handles (a fresh tool needs these)
@@ -55,7 +55,7 @@ flowchart LR
 - [ ] Image optimization
 - [ ] ⏸️ Auto-*deploy* deferred (keep the manual gate during migration). A **safe-deploy verification loop** exists now: `scripts/safe-deploy.sh` (build + `wrangler deploy --dry-run`, then human-confirmed deploy).
 - [x] Inbound forms **code** (2026-07-03): Astro forms rewired + `src/lib/inbound{,-client}.ts` + `scripts/apps-script/inbound-forms.gs`, mock-verified end-to-end
-- [ ] Inbound forms **enablement** — Johnson deploys the Apps Script (~10 min, walkthrough in `docs/plans/inbound-forms.md`) → paste URL into `src/lib/inbound.ts`
+- [x] Inbound forms **enablement** (2026-07-03): Apps Script deployed on the **private** "Storys Inbound" sheet, endpoint wired into `src/lib/inbound.ts`, verified end-to-end (3 form types → row + email). Live on next site deploy.
 - [x] Default 1200×630 OG share card (2026-07-03) — `public/og/default.png`, source `docs/brand/og-card.html`; redo when fonts land
 - [ ] Attach `storys.fm` custom domain
 
@@ -91,7 +91,7 @@ flowchart LR
 - 2026-07-03 — **Default OG card** rendered from `docs/brand/og-card.html` (official STORYS dark tagline lockup on deep forest, double-bezel, orange accent) → `public/og/default.png`; `BaseLayout` defaults `ogImage` to it, episode pages keep their covers.
 
 ## Risks / known issues
-- 🟠 Forms (live site) are still the old inert Netlify markup **until the next deploy**; after deploy they show an honest error until Johnson's Apps Script endpoint is pasted in (`docs/plans/inbound-forms.md`).
+- 🟠 Forms on the LIVE site are still the old inert Netlify markup **until the next deploy** — the working pipeline (private Inbound sheet + email) ships with it.
 - 🟠 **Push soon:** the GitHub daily cron commits OLD-sheet episode syncs to origin until the repointed script is pushed — local/origin divergence grows by one bot commit per day (rebase again before pushing if delayed).
 - Deploys are manual — easy to forget; the live site lags `main` until someone runs `wrangler deploy`.
 - Episode `brand_id` values in the sheet are inconsistent (case / spaces / typos / blanks) — must be normalized in Phase 1 or episodes won't link to their brand.

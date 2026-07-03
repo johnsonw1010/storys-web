@@ -148,3 +148,31 @@
 **Open questions:** `NOTIFY_EMAIL` + public `CONTACT_EMAIL` for forms; when to push (cron divergence grows daily); blurb review still the human gate before deploy.
 
 **Verification:** `validate.mjs` PASS (0 hard, 1 by-design warning) · `npm run build` clean ×3 · `astro check` 0 errors 0 warnings · forms tested in real Chromium both paths · rebased tree byte-identical to pre-rebase (`git diff` empty).
+
+---
+
+## 2026-07-03 — Setup diagnosis + execution (cross-session tooling; minor for this repo)
+
+**Summary:** Mined all 74 session transcripts with 6 subagents → ranked setup diagnosis → executed it. Full record + execution log: `reflection-notes.md`.
+
+**In this repo:** new `/wrap-session` skill (`.claude/skills/wrap-session/`) automating the session-end journal ceremony (tested with a scenario subagent, 7/7); `CLAUDE.md` gains the `/wrap-session` pointer, a Working-rules section (per-phase `/code-review` + `/security-review` — Johnson's standing rule, now written down), and the preview-server default; `.claude/settings.local.proposed.json` = cleaned permission allowlist awaiting Johnson's review (live file untouched — auto-mode classifier correctly blocked an unreviewed permissions change).
+
+**Elsewhere (see reflection-notes.md):** weekly-vault-digest cron fixed daily→Monday + failure alerts + vault allowlist; vault-root CLAUDE.md; `/plaud-pull`, `/biweekly-report`, `/vault-audit` skills; research-pipeline/notebooklm IMPORT_RESEARCH hardening; pandoc + pdfplumber installed; global CLAUDE.md session-cwd routing rule.
+
+**Decisions:** journal ceremony = `/wrap-session` skill (not a hook); permission widenings require Johnson's review (classifier-enforced, kept).
+
+**Open questions:** apply `settings.local.proposed.json`? commit the new skills in `~/.claude/skills`?
+
+**Verification:** digest schedule reads "At 09:08 AM, only on Monday" (next run 07-06); pandoc 3.10 / pdfplumber 0.11.8 confirmed; all three new workflow skills passed paper-scenario application tests.
+
+---
+
+## 2026-07-03 (cont.) — Inbound forms LIVE end-to-end (Apps Script deployed, wrong-sheet catch)
+
+**Summary:** Johnson deployed the Apps Script; two installation bugs found and fixed by driving his Chrome directly: (1) the script was pasted *inside* the default `myFunction` wrapper (doPost invisible → re-pasted clean, deployment bumped to a new version); (2) **the script was bound to the Master Sheet** — leads would have landed in the link-public sheet whose id sits in the public repo. Rebuilt properly: new container-bound script on a **private "Storys Inbound" spreadsheet**, new deployment (execute-as-owner / access Anyone), authorized by Johnson.
+
+**Verified:** contact/sponsor/brand-application → `{"ok":true}` + row in the right tab + email; bad-secret and unknown-form rejected; honeypot silently dropped; **real browser submit through the built site → row + success UI**; Inbound sheet anonymous access 401 (private ✓); old misplaced deployment archived (404 ✓); test tab deleted from the Master Sheet. Endpoint wired into `src/lib/inbound.ts`, rebuilt, committed.
+
+**Gotchas recorded in `docs/plans/inbound-forms.md`:** curl -L lies about Apps Script POSTs (GET the Location target instead); after any redeploy, re-verify the URL didn't change.
+
+**Open:** public `CONTACT_EMAIL` optional; forms go live on next site deploy.

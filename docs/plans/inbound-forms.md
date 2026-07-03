@@ -1,19 +1,26 @@
-# Inbound forms — plan
+# Inbound forms — LIVE (pipeline complete 2026-07-03)
 
-> Status: **code built (2026-07-03), waiting on Johnson's ~10-min Apps Script deploy.**
-> Site side is fully wired; until the endpoint URL is pasted in, forms show an
-> honest inline error on submit (no more silent void, no fake success). Owner: Johnson.
+> Status: **DONE end-to-end.** Forms POST to the Apps Script Web App bound to the
+> **private "Storys Inbound" spreadsheet** (id `15iXOHSQo9rFTH7xCNpGL33IuhfrLrW9Gtt5YdIFJGXU`,
+> owner johnson@yourbizvoice.com, anonymous access 401). Endpoint URL lives in
+> `src/lib/inbound.ts`; notifications go to johnson@yourbizvoice.com.
+> Verified: all 3 form types → row + email; bad-secret & unknown-form rejected;
+> honeypot silently dropped; real-browser submit through the built site → row + success UI.
+> Goes live on the site with the next deploy.
 
-## What Johnson still does (~10 min)
-1. Create a new Google Sheet named **"Storys Inbound"** (separate from the Master Sheet).
-2. In it: Extensions → Apps Script → paste `scripts/apps-script/inbound-forms.gs` over `Code.gs`.
-3. `CONFIG.NOTIFY_EMAIL` is already set to johnson@yourbizvoice.com — change it there if that ever moves.
-4. Deploy → **New deployment** → type **Web app** → Execute as: **Me** → Who has access: **Anyone** → Deploy → copy the Web app URL.
-5. Paste that URL into `INBOUND_ENDPOINT` in `src/lib/inbound.ts` (and optionally a
-   public address into `CONTACT_EMAIL` for the error-fallback mailto). Rebuild + deploy.
-
-Tabs (`inbound_contact` / `inbound_sponsor` / `inbound_apply`) are created
-automatically with headers on first submission — nothing to set up by hand.
+## Operational notes
+- **First install went to the wrong place:** Extensions→Apps Script was opened from the
+  *Master Sheet*, so leads would have landed in the link-public sheet whose id is in the
+  public repo. Fixed: new container-bound script on the private Inbound sheet; old
+  deployment archived (old URL now 404s); test `inbound_contact` tab deleted from the Master Sheet.
+- **To change the script later:** edit in the Inbound sheet's Apps Script editor, save, then
+  Deploy → Manage deployments → ✏️ → Version: **New version** → Deploy. ⚠️ In practice we saw
+  this archive-and-replace the deployment once (URL changed) — after ANY redeploy, verify the
+  URL still matches `INBOUND_ENDPOINT` in `src/lib/inbound.ts`.
+- **Testing the endpoint from a shell:** Apps Script answers POST with a 302 to
+  script.googleusercontent.com; `curl -L` mangles this hop (shows a Drive error page even on
+  success). GET the `Location` header target instead. Browsers/fetch are unaffected.
+- `CONTACT_EMAIL` (public mailto shown on submit failure) still empty — optional.
 
 ## Decisions taken at build time (defaults, easy to change)
 - **Separate "Storys Inbound" sheet** (not the Master Sheet) — leads apart from content, as the plan leaned.
