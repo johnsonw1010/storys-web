@@ -7,7 +7,7 @@
 ## What Johnson still does (~10 min)
 1. Create a new Google Sheet named **"Storys Inbound"** (separate from the Master Sheet).
 2. In it: Extensions → Apps Script → paste `scripts/apps-script/inbound-forms.gs` over `Code.gs`.
-3. In the script's `CONFIG`: set `NOTIFY_EMAIL` (where lead emails go).
+3. `CONFIG.NOTIFY_EMAIL` is already set to johnson@yourbizvoice.com — change it there if that ever moves.
 4. Deploy → **New deployment** → type **Web app** → Execute as: **Me** → Who has access: **Anyone** → Deploy → copy the Web app URL.
 5. Paste that URL into `INBOUND_ENDPOINT` in `src/lib/inbound.ts` (and optionally a
    public address into `CONTACT_EMAIL` for the error-fallback mailto). Rebuild + deploy.
@@ -18,7 +18,8 @@ automatically with headers on first submission — nothing to set up by hand.
 ## Decisions taken at build time (defaults, easy to change)
 - **Separate "Storys Inbound" sheet** (not the Master Sheet) — leads apart from content, as the plan leaned.
 - **Honeypot only** for spam (client + server backstop); Turnstile can be added later if spam shows up.
-- **Destination email** left as `FILL_ME_IN` in the script config — Johnson's call (open question below).
+- **Destination email** = johnson@yourbizvoice.com (Johnson, 2026-07-03). Public `CONTACT_EMAIL`
+  (the mailto shown on form errors) still unset — optional, decide anytime.
 - Error copy is bilingual inline text (no new `i18n.ts` keys — that file is edit-protected; add keys later if wanted).
 - Transport: `application/x-www-form-urlencoded` POST — a "simple" CORS request, because
   Apps Script web apps can't answer preflight OPTIONS. Don't switch to JSON content-type.

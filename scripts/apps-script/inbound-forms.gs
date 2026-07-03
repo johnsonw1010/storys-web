@@ -19,7 +19,7 @@ const CONFIG = {
   // filters drive-by POSTs, it is not a security boundary.
   SECRET: "storys-inbound-v1",
   // Where notification emails go. Multiple: "a@x.com,b@y.com".
-  NOTIFY_EMAIL: "FILL_ME_IN@example.com",
+  NOTIFY_EMAIL: "johnson@yourbizvoice.com",
   // form-name (hidden field on the site) → tab name + column order.
   FORMS: {
     "contact": {
