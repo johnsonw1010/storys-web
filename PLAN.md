@@ -6,10 +6,10 @@
 ## Start Here
 Storys (storys.fm) is a bilingual (zh / en) **Astro static site** for a Taiwanese podcast about brand founders, with an **interactive map** of the featured brands' physical stores. It's hosted on **Cloudflare Workers**.
 
-- **Status:** LIVE at https://storys-web.johnsonwang1010.workers.dev (custom domain `storys.fm` not attached yet). **Everything is now COMMITTED locally (2026-07-03) — main is 13 commits ahead of origin, nothing pushed, nothing deployed.** ⚠️ Until we push, the GitHub daily cron keeps committing OLD-sheet episode syncs to origin (already rebased over 8 such bot commits once; each day adds another). Next act: Johnson green-lights **push + `scripts/safe-deploy.sh`**.
-- **Done through 2026-07-03 (committed locally, review-gated):** the whole "Next 10" content stack — **51 episode blurbs** (writer→checker loop; `summaries` tab gid `2040068732`), **55 episode pages** with covers + Spotify/Apple embeds, **SEO/AEO** (sitemap/robots/canonical/OG + **default 1200×630 OG share card**, regen source `docs/brand/og-card.html`), **brands pipeline LIVE** (21 brands · 54 eps · **57 locations**), fresh **logos** (17 transparent + 4 flagged), **scroll-motion landing page**, **/visit** near-full-width, **IG reel cards** on episode pages, and the **inbound-forms pipeline LIVE end-to-end** (private "Storys Inbound" sheet + email notify; verified with real submissions; ships with next deploy).
-- **Needs Johnson:** (a) **review 51 blurbs** in the `summaries` tab (human gate before deploy); (b) fonts (Neue Kabel + 王漢宗特黑體繁) → design pass (#6); (c) two flagged Locations rows (vacanza 信義新光三越 likely closed; nubra = 新光三越 A8 2F) — destructive edits, his call; (d) VA: re-do kure8/megan/vacanza/backerfounder logos; (e) **green-light push + deploy** (`scripts/safe-deploy.sh`).
-- **Remaining code lanes:** **#10 ship** (push → `scripts/safe-deploy.sh` → attach storys.fm), design/VIS pass when fonts land.
+- **Status:** LIVE **and fully SHIPPED (2026-08-23)** at https://storys-web.johnsonwang1010.workers.dev — the whole July backlog is pushed to origin AND deployed (blurbs reviewed by Johnson → rebase over 12 bot commits → push → safe-deploy checks → Johnson ran `wrangler deploy`; live site verified end-to-end incl. working forms). main == origin, working tree clean. Only `storys.fm` remains un-attached (domain registered outside Cloudflare — must be added to the CF account first).
+- **Done through 2026-08-23 (all IN PRODUCTION):** the whole "Next 10" content stack — **51 reviewed episode blurbs** (`summaries` tab gid `2040068732`), **55 episode pages** with covers + Spotify/Apple embeds, **SEO/AEO** (sitemap/robots/canonical/OG + default 1200×630 OG card), **brands pipeline** (21 brands · 55 eps · **59 locations**), fresh **logos** (17 transparent + 4 flagged), **scroll-motion landing page**, **/visit** near-full-width, **IG reel cards**, and the **inbound-forms pipeline** (private "Storys Inbound" sheet + email notify — live endpoint verified in the deployed JS bundle).
+- **Needs Johnson:** (a) fonts (Neue Kabel + 王漢宗特黑體繁) → design pass; (b) two flagged Locations rows (vacanza 信義新光三越 likely closed; nubra = 新光三越 A8 2F) — destructive edits, his call; (c) VA: re-do kure8/megan/vacanza/backerfounder logos (megan's missing PNG is the one validate warning); (d) get `storys.fm` into the Cloudflare account (registrar is external), then attach via Workers → storys-web → Domains & Routes; (e) delete 3 stale local branches (classifier blocks git branch-delete): `git branch -D feat/nextjs-migration backup-main-2026-08-11 snapshot-pre-push-2026-08-23` — all three verified superseded by main.
+- **Remaining code lanes:** attach storys.fm · design/VIS pass when fonts land · Phase 2 leftovers (image optimization).
 - **To regenerate:** brands `OUT="src/data/brands.generated.json" node scripts/sync.mjs` · summaries `node scripts/sync-summaries.mjs` · episodes `node scripts/sync-episodes.mjs` · reels `node scripts/sync-reels.mjs`. Edit the sheet, not the code — `brands.ts`, `episode-summaries.json`, `episodes.json`, `ig-reels.json` are generated.
 
 ## Key facts / handles (a fresh tool needs these)
@@ -42,13 +42,13 @@ flowchart LR
 - [x] Build with `@astrojs/cloudflare`; push to `main`; deploy via `wrangler deploy`
 - [x] Verify live — all pages 200, logos serving
 
-### Phase 1 — Sheet-driven content pipeline ⏳ (needs the VA sheet populated)
-- [ ] Repoint sync to the new Master Sheet; **pin tabs by `gid`** (name-based proved fragile — a rename silently returned the wrong tab); parse by header name; normalize `brand_id` (trim + lowercase + typo map)
-- [ ] **Join + reshape** the 3 flat tabs into the site's *nested* `Brand[]` (episodes + locations embedded per brand, camelCase: `name_zh→nameZh`, `gmaps_url→gmaps`, `has_logo→logo`). Keep `brands.ts` types/consts/`brandLogoUrl`; replace only the `BRANDS` array with generated data. **This is the real Phase-1 work** — de-risk one brand end-to-end first.
-- [ ] Coordinates: **entered by hand from Google Maps** in the sheet (geocoding retired); map stays Leaflet+OSM; pin-click → Google Maps
-- [ ] `kind` (store|hq) column added to `locations`; pin shows iff `type==='retail'` AND `kind!=='hq'`; filter hq in **both** `map.astro` (pin loop) **and** `visit.astro` (first non-hq location, handle all-hq case)
-- [ ] Logos: rename `zhenfan`→`zhenfang` (+ `/brands/zhenfan` redirect); copy Drive→`public/brand/logos/`; derive `has_logo`/`logo` from file existence
-- [ ] Clean episode `brand_id` (typo `backfounder`→`backerfounder`; EP47 `soft savant skill`→`megan`; 22 blank on discussion episodes); derive episode `type`/`part_no` from titles
+### Phase 1 — Sheet-driven content pipeline ✅ DONE (built 07-02/03, shipped to prod 2026-08-23)
+- [x] Repoint sync to the new Master Sheet; **pin tabs by `gid`**; parse by header name; normalize `brand_id` (trim + lowercase + typo map). *Verified 2026-08-23: fresh Master-Sheet regen is byte-identical to the cron's output — origin's daily cron has been syncing the right sheet all along.*
+- [x] **Join + reshape** the 3 flat tabs into the site's *nested* `Brand[]` (`brands.generated.json` via `sync.mjs`; `brands.ts` keeps types/consts)
+- [x] Coordinates: **entered by hand from Google Maps** in the sheet (geocoding retired); map stays Leaflet+OSM; pin-click → Google Maps
+- [x] `kind` (store|hq) column in `locations`; hq filtered in map pins and /visit
+- [x] Logos: `zhenfan`→`zhenfang` rename + redirect; transparent VA set in `public/brand/logos/`
+- [x] Episode `brand_id` cleaned via typo map (blanks = discussion episodes, by design); `validate.mjs` guards it
 
 ### Phase 2 — Validate & polish 🔜
 - [ ] Build-time validation (bad category, duplicate id, unresolved `brand_id`, **missing `cat.*` i18n key** → fail build with a clear message)
@@ -89,17 +89,15 @@ flowchart LR
 - 2026-07-03 — **Backlog committed to local main** (6 feature commits) and **rebased over origin's 8 stale bot commits** (`-X theirs`, our Master-Sheet `episodes.json` wins). Push + deploy remain Johnson-gated via `scripts/safe-deploy.sh`.
 - 2026-07-03 — **Inbound forms defaults** (per plan's open questions): separate **"Storys Inbound"** sheet (not the Master Sheet); **honeypot only** (Turnstile later if spam appears); transport = urlencoded POST (**simple CORS request** — Apps Script can't answer preflight, don't switch to JSON); endpoint/secret live in `src/lib/inbound.ts`; while unconfigured, forms show an honest bilingual error (never a fake success). `NOTIFY_EMAIL`/`CONTACT_EMAIL` = Johnson's call.
 - 2026-07-03 — **Default OG card** rendered from `docs/brand/og-card.html` (official STORYS dark tagline lockup on deep forest, double-bezel, orange accent) → `public/og/default.png`; `BaseLayout` defaults `ogImage` to it, episode pages keep their covers.
+- 2026-08-23 — **SHIPPED.** Blurbs reviewed → rebased over origin's 12 bot commits (`-X theirs`) → pushed → safe-deploy checks green → Johnson ran `wrangler deploy`. Live site verified end-to-end (pages 200, forms endpoint in deployed bundle, OG/sitemap/robots serving). **"Old sheet cron" warning retired** — regen from the Master Sheet was byte-identical to the cron's commits, so origin's cron was already on the right sheet; the OLD Michelle sheet is now safe to retire (Johnson's call).
 
 ## Risks / known issues
-- 🟠 Forms on the LIVE site are still the old inert Netlify markup **until the next deploy** — the working pipeline (private Inbound sheet + email) ships with it.
-- 🟠 **Push soon:** the GitHub daily cron commits OLD-sheet episode syncs to origin until the repointed script is pushed — local/origin divergence grows by one bot commit per day (rebase again before pushing if delayed).
-- Deploys are manual — easy to forget; the live site lags `main` until someone runs `wrangler deploy`.
-- Episode `brand_id` values in the sheet are inconsistent (case / spaces / typos / blanks) — must be normalized in Phase 1 or episodes won't link to their brand.
-- `zhenfan` (old id / existing logo file) vs `zhenfang` (new sheet id) — rename needed (+ redirect the live `/brands/zhenfan` path).
-- **Frontend consumes a *nested* `Brand[]`** (episodes + locations embedded per brand, camelCase). The 3 sheet tabs are flat — the sync must **join + reshape**, not just emit 3 JSON files. Easy to underestimate.
-- **Pull tabs by `gid`, not name** — a tab rename (`location`→`locations`) silently made name-based fetch return the wrong tab. gids are rename-proof.
-- Old logos are low quality (small, solid background) — being fully replaced by the VA.
-- Do NOT delete the OLD Michelle sheet (`1aYKp…`) until the sync is repointed to the new one and a build is verified.
+- Deploys are manual — easy to forget; the live site lags `main` until someone runs `wrangler deploy`. (As of 2026-08-23 they are in sync.)
+- The daily episode cron commits to origin — **pull/rebase before local work** after any gap, or local main falls behind again.
+- 4 logos still owed by the VA (kure8/megan/vacanza/backerfounder); megan has **no PNG at all** (the standing validate warning).
+- Two Locations rows flagged for correction (vacanza 信義新光三越 likely closed; nubra = 新光三越 A8 2F) — Johnson's call, destructive sheet edits.
+- **Pull tabs by `gid`, not name** — a tab rename silently made name-based fetch return the wrong tab. gids are rename-proof.
+- OLD Michelle sheet (`1aYKp…`) is now retirable (cron verified on the Master Sheet 2026-08-23) — but deletion is Johnson's call.
 
 ## Conventions
 - **Update at session end:** refresh Start Here + checkboxes + Decisions here; append one entry to `CHANGELOG.md`.

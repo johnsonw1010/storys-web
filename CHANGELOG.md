@@ -176,3 +176,21 @@
 **Gotchas recorded in `docs/plans/inbound-forms.md`:** curl -L lies about Apps Script POSTs (GET the Location target instead); after any redeploy, re-verify the URL didn't change.
 
 **Open:** public `CONTACT_EMAIL` optional; forms go live on next site deploy.
+
+---
+
+## 2026-08-23 — SHIPPED: July backlog pushed + deployed, live site verified
+
+**Summary:** Johnson reviewed the 51 blurbs and green-lit the ship lane. Rebased local main over origin's 12 accumulated bot commits (`-X theirs`, clean, 18 commits replayed incl. a leftover CLAUDE.md docs tweak committed as `52797e5`), pushed (main == origin for the first time since June), safe-deploy checks all green, Johnson ran `wrangler deploy`. Seven weeks of work went live in one shot.
+
+**Major**
+- **Everything from the 07-03 backlog is now IN PRODUCTION:** 55 episode pages with reviewed blurbs, scroll-motion landing, brands pipeline (21 brands · 55 eps · 59 locations), SEO/OG stack, and the inbound-forms pipeline (old Netlify markup gone from the live site; Apps Script endpoint confirmed in the deployed `inbound-client` bundle).
+- **"Old sheet cron" fear retired:** regenerating `episodes.json` from the Master Sheet produced a byte-identical file (timestamp aside) to the cron's bot commits — origin's daily cron has been syncing the right sheet all along. OLD Michelle sheet now retirable (Johnson's call).
+
+**Minor:** repo-hygiene audit after weeks of mixed-topic sessions in this cwd — tracked files untouched; `feat/nextjs-migration` (stale May pointer, zero unique commits) and `backup-main-2026-08-11` (superseded backup) verified safe to delete; deletion itself blocked by the permission classifier, one-liner handed to Johnson.
+
+**Decisions:** ship executed per plan (rebase → push → verify → deploy); see PLAN.md 2026-08-23.
+
+**Open questions:** storys.fm attach (domain at an external registrar — needs adding to the Cloudflare account first); apply `settings.local.proposed.json`?; VA logo redos.
+
+**Verification:** `validate.mjs` PASS (0 hard, 1 known warning: megan logo) · build clean · `wrangler deploy --dry-run` clean · post-deploy: key pages 200 (307s = trailing-slash redirects), `data-inbound` forms live on /contact/, endpoint `AKfycbzO11y…` present in live JS, og/sitemap/robots 200 · post-rebase Master-Sheet regen byte-identical.
