@@ -2,15 +2,16 @@
 
 **Before doing anything, read `PLAN.md`** (project state, plan, key facts, decisions). It is the single source of truth for context.
 
-**Before finishing a session:**
-1. Update `PLAN.md` — refresh the "Start Here" block, tick/add checkboxes, and add any new entry to the Decisions list.
-2. Append one entry to `CHANGELOG.md` (newest at the bottom): date, one-line summary, major vs minor changes, decisions, open questions. Link commits; don't relist files.
+**Before finishing a session:** run `/wrap-session` — it updates `PLAN.md` (Start Here + checkboxes + Decisions), appends the `CHANGELOG.md` entry, and logs to the Obsidian hub (`projects/storys/`) in one pass.
 
 Keep `PLAN.md` current and small; history goes in `CHANGELOG.md`.
 
+## Working rules
+- **After completing a build phase, run `/code-review` and `/security-review`** before moving to the next phase (standing rule from Johnson).
+
 ## Quick facts
 - Deploy is **manual**: `npm run build && npx wrangler@4 deploy` (git push does NOT deploy).
-- Dev: `npm run dev` (:4321, HMR) · `npm run preview` (:8787, real Worker).
+- Dev: `npm run dev` (:4321, HMR) · `npm run preview` (:8787, real Worker). Preview tools: default to the **Astro dev** launch config; use **Wrangler preview** only to test the real Worker.
 - Content is moving from hardcoded `src/data/*` to a Google Master Sheet (see PLAN.md → Phase 1).
 
 ## Ask before editing
